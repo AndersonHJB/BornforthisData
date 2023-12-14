@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2023/12/14 15:13
 # @Author  : AI悦创
-# @FileName: 3.1 SampleLinkedList.py
+# @FileName: 3.2 SampleLinkedList-2.py
 # @Software: PyCharm
 # @Blog    ：https://bornforthis.cn/
 # Created by Bornforthis.
@@ -15,11 +15,14 @@ class IntList(object):
         self.rest = None
 
 
-l1 = IntList()
-l1.first = 5
+l = IntList()
+l.first = 5
+l.rest = None
 
-l2 = IntList()
-l2.first = 10
+l.rest = IntList()
+l.rest.first = 10
+l.rest.rest = None
 
-l3 = IntList()
-l3.first = 15
+l.rest.rest = IntList()
+l.rest.rest.first = 15
+
