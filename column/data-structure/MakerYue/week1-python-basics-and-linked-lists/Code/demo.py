@@ -1,16 +1,23 @@
 # -*- coding: utf-8 -*-
-# @Time    : 2023/12/14 15:13
+# @Time    : 2023/12/15 12:16
 # @Author  : AI悦创
-# @FileName: 3.4 SampleLinkedList-plus.py
+# @FileName: demo.py
 # @Software: PyCharm
 # @Blog    ：https://bornforthis.cn/
 # Created by Bornforthis.
+# filename: compare.py
 class IntList(object):
-    def __init__(self, first, rest):
-        self.first = first
-        self.rest = rest
+    def __init__(self, f, r):
+        """
+        first:存自己本身的数据
+        rest:存下一个节点，也就下一个节点是谁
+        """
+        self.first = f
+        self.rest = r
 
     def size(self):
+        """方法一"""
+        # l == self 抽象理解
         if self.rest is None:
             return 1
         else:
@@ -39,31 +46,13 @@ class IntList(object):
         else:
             return self.rest.get(index - 1)
 
-    def get_index(self, index):
-        '''第二种查询方法'''
-        if index < 0:
-            return -1
-        node = self
-        for _ in range(index):
-            node = node.rest
-        return node.first
 
-
-# l1 = IntList(5, None)
-# l2 = IntList(10, l1)
-# l3 = IntList(15, l2)
-
-
-l = IntList(5, None)
-l = IntList(10, l)
-l = IntList(15, l)
-# print(l.size())
-# print(l.get_length(l))
-# print(l.iterative_size())
-# print(l.get_index(0))
-# print(l.get_index(1))
-# print(l.get_index(2))
-
-print(l.get(0))
-print(l.get(1))
-print(l.get(2))
+l1 = IntList(5, None)
+l2 = IntList(10, l1)
+l3 = IntList(15, l2)
+# print(l1.first)
+# print(l2.first)
+# print(l3.first)
+print(l3.get(0))
+print(l3.get(1))
+print(l3.get(2))
