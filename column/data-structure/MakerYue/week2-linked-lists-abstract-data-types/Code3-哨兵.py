@@ -13,26 +13,31 @@ class IntNode(object):
 
 class SLList(object):
     def __init__(self, x=None):
+        self.__sentinel = IntNode(49, None)
         if x is None:
-            self.__first = None
+            # self.__first = None
             self.__length = 0
         else:
-            self.__first = IntNode(x, None)
+            # self.__first = IntNode(x, None)
+            self.__sentinel.next = IntNode(x, None)
             self.__length = 1
 
     def add_first(self, x):
-        self.__first = IntNode(x, self.__first)
+        original_first = self.__sentinel.next
+        new_first = IntNode(x, original_first)
+        self.__sentinel.next = new_first
         self.__length += 1
 
     def get_first(self):
-        return self.__first.item
+        # return self.__first.item
+        return self.__sentinel.next.item
 
     def add_last(self, x):
-        p = self.__first
-        if p is None:
-            self.__first = IntNode(x, None)
-            self.__length += 1
-            return
+        p = self.__sentinel
+        # if p is None:
+        #     self.__first = IntNode(x, None)
+        #     self.__length += 1
+        #     return
         while p.next is not None:
             p = p.next
         p.next = IntNode(x, None)
