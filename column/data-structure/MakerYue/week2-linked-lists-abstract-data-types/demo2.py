@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-# @Time    : 2023/12/20 21:29
-# @Author  : AI悦创
-# @FileName: demo2.py
-# @Software: PyCharm
-# @Blog    ：https://bornforthis.cn/
-# Created by Bornforthis.
 class IntNode(object):
     def __init__(self, item, next=None, prev=None):
         self.item = item
@@ -14,34 +7,32 @@ class IntNode(object):
 
 class DLList(object):
     def __init__(self, x=None):
-        self.__sentinel = IntNode(49)
-        self.__end = self.__sentinel  # 尾部指针初始化为哨兵节点
+        self.__sentinel_front = IntNode(None)  # 头部哨兵
+        self.__sentinel_end = IntNode(None)  # 尾部哨兵
+        self.__sentinel_front.next = self.__sentinel_end  # 初始化时哨兵节点相连
+        self.__sentinel_end.prev = self.__sentinel_front
+        self.__length = 0
+
         if x is not None:
-            self.__sentinel.next = IntNode(item=x, next=None, prev=self.__sentinel)
-            self.__end = self.__sentinel.next
-            self.__length = 1
-        else:
-            self.__length = 0
+            self.add_last(x)
 
     def add_first(self, x):
-        original_first = self.__sentinel.next
-        new_first = IntNode(item=x, next=original_first, prev=self.__sentinel)
-        self.__sentinel.next = new_first
-        if original_first is not None:  # 如果原本的不是空节点，则需要把原本的第一节车厢的 prev 指向新添加的
-            original_first.prev = new_first
-        else:  # 如果原来链表是空的
-            self.__end = new_first
+        new_first = IntNode(item=x, next=self.__sentinel_front.next, prev=self.__sentinel_front)
+        self.__sentinel_front.next.prev = new_first
+        self.__sentinel_front.next = new_first
         self.__length += 1
 
     def get_first(self):
-        if self.__sentinel.next is not None:
-            return self.__sentinel.next.item
+        if self.__sentinel_front.next != self.__sentinel_end:
+            return self.__sentinel_front.next.item
         return None
 
     def add_last(self, x):
-        new_end = IntNode(x, None, self.__end)
-        self.__end.next = new_end
-        self.__end = new_end
+        new_end = IntNode(item=x, next=self.__sentinel_end, prev=self.__sentinel_end.prev)
+        # new_end = IntNode(item=x, next=self.__sentinel_end, prev=self.__sentinel_front)  # 目前和上面等价，但是推荐上面的写法。这个写法在链表不为空的时候，会出现节点错误
+        self.__sentinel_end.prev.next = new_end
+        # self.__sentinel_front.next = new_end  # 目前和上面等价，但是推荐上面的写法。这个写法在链表不为空的时候，会出现节点错误
+        self.__sentinel_end.prev = new_end
         self.__length += 1
 
     def size(self):
