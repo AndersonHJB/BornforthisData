@@ -21,7 +21,7 @@ class RegistrationPage(tk.Frame):
 
         tk.Label(self, text="角色").grid(row=2, column=0, pady=10)
         self.role_var = tk.StringVar(value="雇主")
-        tk.OptionMenu(self, self.role_var, "雇主", "雇员").grid(row=2, column=1, pady=10)
+        tk.OptionMenu(self, self.role_var, "雇主", "雇员", "管理员").grid(row=2, column=1, pady=10)  # 添加管理员选项
 
         tk.Button(self, text="注册", command=self.register).grid(row=3, column=0, columnspan=2, pady=10)
 
@@ -32,6 +32,6 @@ class RegistrationPage(tk.Frame):
         success = register_user(username, password, role)
         if success:
             messagebox.showinfo("成功", "注册成功")
-            self.controller.show_login_page()
+            self.controller.show_frame("LoginPage")  # 修改为 show_frame("LoginPage")
         else:
             messagebox.showerror("错误", "用户名已存在")

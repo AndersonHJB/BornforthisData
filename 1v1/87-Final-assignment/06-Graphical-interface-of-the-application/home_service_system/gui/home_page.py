@@ -1,6 +1,7 @@
 # gui/home_page.py
 import tkinter as tk
 
+
 class HomePage(tk.Frame):
     def __init__(self, parent, controller, user):
         tk.Frame.__init__(self, parent)
@@ -12,6 +13,12 @@ class HomePage(tk.Frame):
         tk.Label(self, text=f"欢迎, {self.user[1]}!").grid(row=0, column=0, pady=10)
         tk.Button(self, text="查看信息", command=self.view_info).grid(row=1, column=0, pady=10)
         tk.Button(self, text="注销", command=self.logout).grid(row=2, column=0, pady=10)
+
+        # 添加管理员按钮
+        if self.user[3] == "管理员":
+            tk.Button(self, text="管理员界面", command=lambda: self.controller.show_frame("AdminPage")).grid(row=3,
+                                                                                                             column=0,
+                                                                                                             pady=10)
 
     def view_info(self):
         role = self.user[3]
