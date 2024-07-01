@@ -83,6 +83,15 @@ def create_tables():
                         FOREIGN KEY (employer_id) REFERENCES users(id),
                         FOREIGN KEY (employee_id) REFERENCES users(id))''')
 
+    cursor.execute('''CREATE TABLE IF NOT EXISTS reviews (
+                            id INTEGER PRIMARY KEY AUTOINCREMENT,
+                            reviewer_id INTEGER NOT NULL,
+                            reviewee_id INTEGER NOT NULL,
+                            rating INTEGER NOT NULL,
+                            comments TEXT,
+                            FOREIGN KEY (reviewer_id) REFERENCES users(id),
+                            FOREIGN KEY (reviewee_id) REFERENCES users(id))''')
+    
     conn.commit()
     conn.close()
 
