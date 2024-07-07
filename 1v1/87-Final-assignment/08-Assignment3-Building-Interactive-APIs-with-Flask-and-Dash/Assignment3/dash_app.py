@@ -42,3 +42,46 @@ def update_graph(column_name):
 
 if __name__ == '__main__':
     app.run_server(debug=True)
+# import dash
+# import pandas as pd
+# from dash import dcc, html, dash_table, Input, Output
+# import plotly.graph_objs as go  # 使用 Plotly 的图形对象
+#
+# app = dash.Dash(__name__)
+#
+# # 加载数据
+# df = pd.read_csv('static/City_of_Winnipeg_LRS_20240707.csv')  # 确保有一个名为'data.csv'的文件，并且路径正确
+#
+# # 检查数据集是否为空，并适当设置下拉菜单的初始值
+# initial_value = df.columns[0] if not df.empty and df.columns.size > 0 else None
+#
+# app.layout = html.Div([
+#     html.H1("数据展示"),
+#     dash_table.DataTable(
+#         id='table',
+#         columns=[{"name": i, "id": i} for i in df.columns],
+#         data=df.to_dict('records'),
+#     ),
+#     dcc.Graph(id='graph'),
+#     dcc.Dropdown(
+#         id='dropdown',
+#         options=[{'label': i, 'value': i} for i in df.columns if df[i].dtype in ['float64', 'int64']],
+#         value=initial_value
+#     )
+# ])
+#
+# @app.callback(
+#     Output('graph', 'figure'),
+#     [Input('dropdown', 'value')]
+# )
+# def update_graph(column_name):
+#     if column_name:
+#         return {
+#             'data': [go.Scatter(x=df.index, y=df[column_name], mode='lines+markers')],
+#             'layout': go.Layout(title=f'图表：{column_name}', xaxis={'title': 'Index'}, yaxis={'title': column_name})
+#         }
+#     else:
+#         return go.Figure()  # 如果没有有效的列名，返回一个空的图表
+#
+# if __name__ == '__main__':
+#     app.run_server(debug=True)
