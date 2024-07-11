@@ -116,6 +116,26 @@ public class BookManagementSystem extends JFrame {
         registerWindow.setVisible(true);
     }
 
+    //    private void showUserOperations() {
+//        JFrame userWindow = new JFrame("用户操作");
+//        userWindow.setSize(280, 360);
+//        userWindow.setLocationRelativeTo(null);
+//        userWindow.setLayout(new GridLayout(3, 1));
+//
+//        JButton queryBookButton = new JButton("查询图书");
+//        queryBookButton.addActionListener(e -> queryBook());
+//        userWindow.add(queryBookButton);
+//
+//        JButton borrowBookButton = new JButton("借阅图书");
+//        borrowBookButton.addActionListener(e -> borrowBook());
+//        userWindow.add(borrowBookButton);
+//
+//        JButton returnBookButton = new JButton("归还图书");
+//        returnBookButton.addActionListener(e -> returnBook());
+//        userWindow.add(returnBookButton);
+//
+//        userWindow.setVisible(true);
+//    }
     private void showUserOperations() {
         JFrame userWindow = new JFrame("用户操作");
         userWindow.setSize(280, 360);
@@ -127,11 +147,23 @@ public class BookManagementSystem extends JFrame {
         userWindow.add(queryBookButton);
 
         JButton borrowBookButton = new JButton("借阅图书");
-        borrowBookButton.addActionListener(e -> borrowBook());
+        borrowBookButton.addActionListener(e -> {
+            String bookName = JOptionPane.showInputDialog("请输入书名:");
+            String username = JOptionPane.showInputDialog("请输入用户名:");
+            if (bookName != null && username != null) {
+                borrowBook(bookName, username);
+            }
+        });
         userWindow.add(borrowBookButton);
 
         JButton returnBookButton = new JButton("归还图书");
-        returnBookButton.addActionListener(e -> returnBook());
+        returnBookButton.addActionListener(e -> {
+            String bookName = JOptionPane.showInputDialog("请输入书名:");
+            String username = JOptionPane.showInputDialog("请输入用户名:");
+            if (bookName != null && username != null) {
+                returnBook(bookName, username);
+            }
+        });
         userWindow.add(returnBookButton);
 
         userWindow.setVisible(true);
@@ -213,58 +245,102 @@ public class BookManagementSystem extends JFrame {
         queryWindow.setVisible(true);
     }
 
-    private void borrowBook() {
-        JFrame borrowWindow = new JFrame("借阅图书");
-        borrowWindow.setSize(280, 150);
-        borrowWindow.setLocationRelativeTo(null);
-        borrowWindow.setLayout(new GridLayout(2, 2));
+    //    private void borrowBook() {
+//        JFrame borrowWindow = new JFrame("借阅图书");
+//        borrowWindow.setSize(280, 150);
+//        borrowWindow.setLocationRelativeTo(null);
+//        borrowWindow.setLayout(new GridLayout(2, 2));
+//
+//        borrowWindow.add(new JLabel("书名:"));
+//        JTextField borrowBookNameEntry = new JTextField();
+//        borrowWindow.add(borrowBookNameEntry);
+//
+//        JButton borrowButton = new JButton("借阅");
+//        borrowButton.addActionListener(e -> {
+//            String bookName = borrowBookNameEntry.getText();
+//            String result = searchBook(bookName);
+//            if (result != null) {
+//                deleteBookInfo(bookName); // 删除书籍信息表示借出
+//                JOptionPane.showMessageDialog(borrowWindow, "您已成功借阅该书", "借阅成功", JOptionPane.INFORMATION_MESSAGE);
+//                borrowWindow.dispose();
+//            } else {
+//                JOptionPane.showMessageDialog(borrowWindow, "未找到该书信息", "未找到", JOptionPane.WARNING_MESSAGE);
+//            }
+//        });
+//        borrowWindow.add(borrowButton);
+//
+//        borrowWindow.setVisible(true);
+//    }
+    private void borrowBook(String bookName, String username) {
+        try (Connection conn = DatabaseConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement("UPDATE books SET is_available = FALSE WHERE title = ? AND is_available = TRUE");
+             PreparedStatement insertStmt = conn.prepareStatement("INSERT INTO borrow_records (book_id, username, borrow_date) VALUES ((SELECT book_id FROM books WHERE title = ?), ?, ?)")) {
+            conn.setAutoCommit(false); // 开启事务
+            stmt.setString(1, bookName);
+            int affectedRows = stmt.executeUpdate();
 
-        borrowWindow.add(new JLabel("书名:"));
-        JTextField borrowBookNameEntry = new JTextField();
-        borrowWindow.add(borrowBookNameEntry);
-
-        JButton borrowButton = new JButton("借阅");
-        borrowButton.addActionListener(e -> {
-            String bookName = borrowBookNameEntry.getText();
-            String result = searchBook(bookName);
-            if (result != null) {
-                deleteBookInfo(bookName); // 删除书籍信息表示借出
-                JOptionPane.showMessageDialog(borrowWindow, "您已成功借阅该书", "借阅成功", JOptionPane.INFORMATION_MESSAGE);
-                borrowWindow.dispose();
-            } else {
-                JOptionPane.showMessageDialog(borrowWindow, "未找到该书信息", "未找到", JOptionPane.WARNING_MESSAGE);
+            if (affectedRows == 0) {
+                JOptionPane.showMessageDialog(null, "书籍不可借阅或不存在", "借阅失败", JOptionPane.WARNING_MESSAGE);
+                return;
             }
-        });
-        borrowWindow.add(borrowButton);
 
-        borrowWindow.setVisible(true);
+            insertStmt.setString(1, bookName);
+            insertStmt.setString(2, username);
+            insertStmt.setDate(3, new java.sql.Date(System.currentTimeMillis()));
+            insertStmt.executeUpdate();
+
+            conn.commit(); // 提交事务
+            JOptionPane.showMessageDialog(null, "您已成功借阅", "借阅成功", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "借阅过程出错", "错误", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
-    private void returnBook() {
-        JFrame returnWindow = new JFrame("归还图书");
-        returnWindow.setSize(280, 150);
-        returnWindow.setLocationRelativeTo(null);
-        returnWindow.setLayout(new GridLayout(3, 2));
 
-        returnWindow.add(new JLabel("书名:"));
-        JTextField returnBookNameEntry = new JTextField();
-        returnWindow.add(returnBookNameEntry);
+    //    private void returnBook() {
+//        JFrame returnWindow = new JFrame("归还图书");
+//        returnWindow.setSize(280, 150);
+//        returnWindow.setLocationRelativeTo(null);
+//        returnWindow.setLayout(new GridLayout(3, 2));
+//
+//        returnWindow.add(new JLabel("书名:"));
+//        JTextField returnBookNameEntry = new JTextField();
+//        returnWindow.add(returnBookNameEntry);
+//
+//        returnWindow.add(new JLabel("作者:"));
+//        JTextField returnAuthorEntry = new JTextField();
+//        returnWindow.add(returnAuthorEntry);
+//
+//        JButton returnButton = new JButton("归还");
+//        returnButton.addActionListener(e -> {
+//            String bookName = returnBookNameEntry.getText();
+//            String author = returnAuthorEntry.getText();
+//            addBookInfo(bookName, author);
+//            JOptionPane.showMessageDialog(returnWindow, "您已成功归还该书", "归还成功", JOptionPane.INFORMATION_MESSAGE);
+//            returnWindow.dispose();
+//        });
+//        returnWindow.add(returnButton);
+//
+//        returnWindow.setVisible(true);
+//    }
+    private void returnBook(String bookName, String username) {
+        try (Connection conn = DatabaseConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement("UPDATE books SET is_available = TRUE WHERE title = ?");
+             PreparedStatement insertStmt = conn.prepareStatement("INSERT INTO return_records (book_id, username, return_date) VALUES ((SELECT book_id FROM books WHERE title = ?), ?, ?)")) {
+            conn.setAutoCommit(false); // 开启事务
+            stmt.setString(1, bookName);
+            stmt.executeUpdate();
 
-        returnWindow.add(new JLabel("作者:"));
-        JTextField returnAuthorEntry = new JTextField();
-        returnWindow.add(returnAuthorEntry);
+            insertStmt.setString(1, bookName);
+            insertStmt.setString(2, username);
+            insertStmt.setDate(3, new java.sql.Date(System.currentTimeMillis()));
+            insertStmt.executeUpdate();
 
-        JButton returnButton = new JButton("归还");
-        returnButton.addActionListener(e -> {
-            String bookName = returnBookNameEntry.getText();
-            String author = returnAuthorEntry.getText();
-            addBookInfo(bookName, author);
-            JOptionPane.showMessageDialog(returnWindow, "您已成功归还该书", "归还成功", JOptionPane.INFORMATION_MESSAGE);
-            returnWindow.dispose();
-        });
-        returnWindow.add(returnButton);
-
-        returnWindow.setVisible(true);
+            conn.commit(); // 提交事务
+            JOptionPane.showMessageDialog(null, "您已成功归还", "归还成功", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "归还过程出错", "错误", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private void queryStock() {
@@ -416,7 +492,7 @@ public class BookManagementSystem extends JFrame {
         }
     }
 
-//    private boolean checkUserInfo(String username, String password) {
+    //    private boolean checkUserInfo(String username, String password) {
 //        try {
 //            userProperties.load(new FileInputStream(USER_INFO_FILE));
 //            String storedPassword = userProperties.getProperty(username);
@@ -434,20 +510,20 @@ public class BookManagementSystem extends JFrame {
 //            JOptionPane.showMessageDialog(this, "无法保存用户信息", "错误", JOptionPane.ERROR_MESSAGE);
 //        }
 //    }
-private boolean checkUserInfo(String username, String password) {
-    try (Connection conn = DatabaseConnector.getConnection();
-         PreparedStatement stmt = conn.prepareStatement("SELECT password FROM users WHERE username = ?")) {
-        stmt.setString(1, username);
-        ResultSet rs = stmt.executeQuery();
-        if (rs.next()) {
-            String storedPassword = rs.getString("password");
-            return storedPassword.equals(password);
+    private boolean checkUserInfo(String username, String password) {
+        try (Connection conn = DatabaseConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement("SELECT password FROM users WHERE username = ?")) {
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                String storedPassword = rs.getString("password");
+                return storedPassword.equals(password);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "数据库查询失败", "错误", JOptionPane.ERROR_MESSAGE);
         }
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(this, "数据库查询失败", "错误", JOptionPane.ERROR_MESSAGE);
+        return false;
     }
-    return false;
-}
 
     private void saveUserInfo(String username, String password) {
         try (Connection conn = DatabaseConnector.getConnection();
