@@ -7,6 +7,11 @@ import java.io.*;
 import java.util.regex.*;
 import java.util.Properties;
 
+import java.sql.Connection;       // 导入数据库连接类
+import java.sql.PreparedStatement; // 导入预编译语句类
+import java.sql.ResultSet;        // 导入结果集类
+import java.sql.SQLException;      // 导入SQL异常类
+
 
 public class BookManagementSystem extends JFrame {
     // 路径可能需要根据你的实际情况调整
@@ -411,22 +416,48 @@ public class BookManagementSystem extends JFrame {
         }
     }
 
-    private boolean checkUserInfo(String username, String password) {
-        try {
-            userProperties.load(new FileInputStream(USER_INFO_FILE));
-            String storedPassword = userProperties.getProperty(username);
-            return storedPassword != null && storedPassword.equals(password);
-        } catch (IOException e) {
-            return false;
+//    private boolean checkUserInfo(String username, String password) {
+//        try {
+//            userProperties.load(new FileInputStream(USER_INFO_FILE));
+//            String storedPassword = userProperties.getProperty(username);
+//            return storedPassword != null && storedPassword.equals(password);
+//        } catch (IOException e) {
+//            return false;
+//        }
+//    }
+//
+//    private void saveUserInfo(String username, String password) {
+//        try {
+//            userProperties.setProperty(username, password);
+//            userProperties.store(new FileOutputStream(USER_INFO_FILE), "User Credentials");
+//        } catch (IOException e) {
+//            JOptionPane.showMessageDialog(this, "无法保存用户信息", "错误", JOptionPane.ERROR_MESSAGE);
+//        }
+//    }
+private boolean checkUserInfo(String username, String password) {
+    try (Connection conn = DatabaseConnector.getConnection();
+         PreparedStatement stmt = conn.prepareStatement("SELECT password FROM users WHERE username = ?")) {
+        stmt.setString(1, username);
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            String storedPassword = rs.getString("password");
+            return storedPassword.equals(password);
         }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "数据库查询失败", "错误", JOptionPane.ERROR_MESSAGE);
     }
+    return false;
+}
 
     private void saveUserInfo(String username, String password) {
-        try {
-            userProperties.setProperty(username, password);
-            userProperties.store(new FileOutputStream(USER_INFO_FILE), "User Credentials");
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "无法保存用户信息", "错误", JOptionPane.ERROR_MESSAGE);
+        try (Connection conn = DatabaseConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement("INSERT INTO users (username, password) VALUES (?, ?)")) {
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            stmt.executeUpdate();
+            JOptionPane.showMessageDialog(this, "用户信息已保存", "保存成功", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "保存用户信息失败", "错误", JOptionPane.ERROR_MESSAGE);
         }
     }
 
