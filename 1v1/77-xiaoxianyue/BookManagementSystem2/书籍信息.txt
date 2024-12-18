@@ -1,2 +1,5 @@
-aa:作者 :黄家宝
-Python:作者 :AIYC
+aa:作者 :肖羡月
+Python:作者 :肖羡月
+Python/Java:作者 :肖羡月
+Web Site:作者 :肖羡月
+AIGC 通识课:作者 :肖羡月
