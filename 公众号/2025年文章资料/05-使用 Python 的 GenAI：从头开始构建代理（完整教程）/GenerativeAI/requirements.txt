@@ -1,0 +1,16 @@
+## db
+chromadb==0.5.0
+
+## ai
+ollama==0.5.0
+
+## ocr
+pdf2image==1.17.0
+pytesseract==0.3.10
+
+## frontend
+streamlit==1.35.0
+
+## speech
+SpeechRecognition==3.10.4
+gTTS==2.5.1
