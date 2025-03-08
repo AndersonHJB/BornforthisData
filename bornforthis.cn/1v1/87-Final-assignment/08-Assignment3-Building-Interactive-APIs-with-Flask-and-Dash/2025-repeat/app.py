@@ -59,8 +59,8 @@ def text_to_emoji():
     if not text:
         return jsonify({"error": "No text provided"}), 400
     words = text.split()
-    emoji_text = ' '.join([emoji.emojize(word, language='alias') if word.startswith(':') and word.endswith(':') else emoji.emojize(f':{word}:', language='alias') for word in words])
-    return jsonify({"original_text": text, "emoji_text": emoji_text.replace(":", "")}), 200
+    emoji_text = ' '.join([emoji.emojize(f':{word}:', language='alias') if emoji.emojize(f':{word}:', language='alias') != f':{word}:' else word for word in words])
+    return jsonify({"original_text": text, "emoji_text": emoji_text}), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
