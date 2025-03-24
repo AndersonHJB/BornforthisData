@@ -50,4 +50,9 @@ public class AbstractPlayer implements IPlayer {
   public void removeCard(ICard card) {
     this.hand.remove(card);
   }
+
+  @Override
+  public String getName() {
+    return this.name;
+  }
 }

@@ -138,7 +138,7 @@ public class PawnsBoardModelImpl implements IPawnsBoardModel {
     boolean isRedDone = isPlayerDone(red);
     boolean isBlueDone = isPlayerDone(blue);
 
-    if (!isRedDone && !isBlueDone) {
+    if (isRedDone && isBlueDone) {
       determineWinner();
     }
   }
@@ -153,14 +153,13 @@ public class PawnsBoardModelImpl implements IPawnsBoardModel {
       for (int row = 0; row < board.getRows(); row++) {
         for (int col = 0; col < board.getCols(); col++) {
           ICell cell = board.getCell(row, col);
-          if (cell.isEmpty()
-                  || (cell.hasPawns() && cell.getPawnCount() >= card.getCost())) {
-            return true;
+          if (!cell.hasCard() && cell.hasPawns() && card.getCost() <= cell.getPawnCount()) {
+            return false;
           }
         }
       }
     }
-    return false;
+    return true;
   }
 
   @Override
@@ -194,34 +193,30 @@ public class PawnsBoardModelImpl implements IPawnsBoardModel {
     int blueScore = 0;
 
     for (int row = 0; row < board.getRows(); row++) {
-      int red = 0;
-      int blue = 0;
+      int redRow = 0;
+      int blueRow = 0;
       for (int col = 0; col < board.getCols(); col++) {
         ICell cell = board.getCell(row, col);
         if (cell.hasCard()) {
           ICard card = cell.getCard();
           if (cell.isOwnedByRed()) {
-            red += card.getValue();
-          }
-          else {
-            blue += card.getValue();
+            redRow += card.getValue();
+          } else {
+            blueRow += card.getValue();
           }
         }
       }
-      if (red > blue) {
-        redScore += red;
-      }
-      else if (blue > red) {
-        blueScore += blue;
+      if (redRow > blueRow) {
+        redScore += redRow;
+      } else if (blueRow > redRow) {
+        blueScore += blueRow;
       }
     }
     if (redScore > blueScore) {
       gameState = GameState.RED_WINS;
-    }
-    else if (blueScore > redScore) {
+    } else if (blueScore > redScore) {
       gameState = GameState.BLUE_WINS;
-    }
-    else {
+    } else {
       gameState = GameState.TIE;
     }
   }
@@ -234,5 +229,24 @@ public class PawnsBoardModelImpl implements IPawnsBoardModel {
   @Override
   public IBoard getBoard() {
     return board;
+  }
+  @Override
+  public IPlayer getCurrentPlayer() {
+    return isRed ? red : blue;
+  }
+
+  @Override
+  public boolean isLegalMove(int x, int y, ICard card) {
+    if (gameState != GameState.ONGOING) return false;
+    ICell cell = board.getCell(x, y);
+    if (cell.hasCard()) return false;
+    boolean currentIsRed = isRed;
+    if (cell.hasPawns()) {
+      if (card.getCost() > cell.getPawnCount()) return false;
+      if (cell.isOwnedByRed() != currentIsRed) return false;
+    } else {
+      return false;
+    }
+    return true;
   }
 }

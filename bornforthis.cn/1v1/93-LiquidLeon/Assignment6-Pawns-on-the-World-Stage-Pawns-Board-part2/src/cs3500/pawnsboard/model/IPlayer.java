@@ -27,4 +27,6 @@ public interface IPlayer {
    * Discards a card after the player have placed it.
    */
   void removeCard(ICard card);
+
+  String getName();
 }

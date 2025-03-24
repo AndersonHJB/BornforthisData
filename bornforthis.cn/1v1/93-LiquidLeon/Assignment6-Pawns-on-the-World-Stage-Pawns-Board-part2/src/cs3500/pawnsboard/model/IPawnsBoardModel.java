@@ -3,7 +3,7 @@ package cs3500.pawnsboard.model;
 /**
  * Represents the overall game model for Pawns Board.
  */
-public interface IPawnsBoardModel {
+public interface IPawnsBoardModel extends IReadonlyPawnsBoardModel {
   /**
    * Starts the game by initializing player hands and setting up
    * the initial game state.
@@ -37,11 +37,11 @@ public interface IPawnsBoardModel {
    * Gets the current state of the game.
    * @return the current GameState of the game.
    */
-  GameState getGameState();
+//  GameState getGameState();
 
   /**
    * Returns the game board.
    * @return the game board.
    */
-  IBoard getBoard();
+//  IBoard getBoard();
 }
