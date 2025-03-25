@@ -38,15 +38,17 @@ public class StrategyTest {
         ICard card1 = new Card("Card1", 1, 2, influence);
         ICard card2 = new Card("Card2", 1, 3, influence);
 
-        // 为玩家构造牌组
+        // 构造牌组，每个牌组至少包含6张牌，以满足手牌大小条件（handSize <= deck.size()/3）
         List<ICard> redCards = new ArrayList<>();
-        redCards.add(card1);
-        redCards.add(card2);
-        IDeck redDeck = new Deck(redCards);
-
         List<ICard> blueCards = new ArrayList<>();
-        blueCards.add(card1);
-        blueCards.add(card2);
+        // 重复添加牌（例如：重复 3 次，两种牌各 3 张，共 6 张牌）
+        for (int i = 0; i < 3; i++) {
+            redCards.add(card1);
+            redCards.add(card2);
+            blueCards.add(card1);
+            blueCards.add(card2);
+        }
+        IDeck redDeck = new Deck(redCards);
         IDeck blueDeck = new Deck(blueCards);
 
         // 创建玩家（手牌大小为 2），注意玩家名字必须为 "red" 或 "blue" 以便策略判断颜色
