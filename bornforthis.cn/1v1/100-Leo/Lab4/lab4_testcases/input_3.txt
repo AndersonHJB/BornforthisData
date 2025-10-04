@@ -1,0 +1,6 @@
+10
+moving down
+G
+moving up
+G
+moving up

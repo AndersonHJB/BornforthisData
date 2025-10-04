@@ -1,0 +1,2 @@
+Current floor of lift 1 (G/10): Status of lift 1 (moving up/moving down/stopped): Current floor of lift 2 (G/10): Status of lift 2 (moving up/moving down/stopped): Current floor of lift 3 (G/10): Status of lift 3 (moving up/moving down/stopped): Result: 
+Lift 3 will come to pick you up.

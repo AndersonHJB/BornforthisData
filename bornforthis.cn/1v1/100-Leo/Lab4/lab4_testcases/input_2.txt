@@ -1,0 +1,6 @@
+G
+moving up
+10
+moving down
+10
+stopped
