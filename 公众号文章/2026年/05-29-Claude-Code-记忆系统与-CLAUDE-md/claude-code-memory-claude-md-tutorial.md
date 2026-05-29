@@ -1,10 +1,11 @@
 ---
-title: Claude Code 记忆系统实战：用 CLAUDE.md 让 AI 少走弯路
+title: 一份 CLAUDE.md，让 Claude Code 不再每次从零开始
 date: 2026-05-29
 cover: https://raw.githubusercontent.com/AndersonHJB/PicGoImage/main/2026/0529/claude-code-memory/wechat-cover-claude-memory.png
+summary: 你是不是也遇到过：项目用 pnpm，AI 偏要写 npm；架构讲过一次，下个会话又忘了？这篇教你用 CLAUDE.md、rules 和自动记忆，把反复纠正变成稳定规则。
 ---
 
-# Claude Code 记忆系统实战：用 CLAUDE.md 让 AI 少走弯路
+# 一份 CLAUDE.md，让 Claude Code 不再每次从零开始
 
 ## 新书发行：《编程启蒙：思维与代码》
 
