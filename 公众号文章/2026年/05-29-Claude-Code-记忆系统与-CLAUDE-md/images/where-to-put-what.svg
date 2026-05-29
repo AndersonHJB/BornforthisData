@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">记忆内容放置决策图</title>
+  <desc id="desc">帮助判断一条信息应该放进 CLAUDE.md、CLAUDE.local.md、规则文件、文档或自动记忆。</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf5; }
+      .title { font-family: 'PingFang SC','Microsoft YaHei',Arial,sans-serif; font-size: 54px; font-weight: 700; fill: #263238; }
+      .sub { font-family: 'PingFang SC','Microsoft YaHei',Arial,sans-serif; font-size: 24px; font-weight: 400; fill: #667375; }
+      .q { font-family: 'PingFang SC','Microsoft YaHei',Arial,sans-serif; font-size: 28px; font-weight: 700; fill: #23323b; }
+      .a { font-family: 'PingFang SC','Microsoft YaHei',Arial,sans-serif; font-size: 26px; font-weight: 700; fill: #0f4c5c; }
+      .small { font-family: 'PingFang SC','Microsoft YaHei',Arial,sans-serif; font-size: 20px; font-weight: 400; fill: #607174; }
+      .node { fill: #ffffff; stroke: #d8d1c6; stroke-width: 2; rx: 24; }
+      .yes { fill: #e8f4f2; stroke: #79bbb5; stroke-width: 2; rx: 24; }
+      .no { fill: #fff4df; stroke: #edbf72; stroke-width: 2; rx: 24; }
+      .out { fill: #23323b; rx: 20; }
+      .arrow { stroke: #0f8b8d; stroke-width: 5; fill: none; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .line { stroke: #d2cabd; stroke-width: 3; fill: none; }
+    </style>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L12,7 L2,12 Z" fill="#0f8b8d"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="1600" height="900"/>
+  <text class="title" x="90" y="96">这条信息应该放在哪里？</text>
+  <text class="sub" x="92" y="137">不要把所有知识都塞进 CLAUDE.md。先判断加载频率、作用范围和隐私边界。</text>
+
+  <g transform="translate(120 240)">
+    <rect class="node" width="360" height="128"/>
+    <text class="q" x="38" y="54">每次会话都必须知道？</text>
+    <text class="small" x="38" y="90">如技术栈、命令、目录边界</text>
+  </g>
+  <path class="arrow" d="M480 304 H650"/>
+  <g transform="translate(650 228)">
+    <rect class="yes" width="350" height="152"/>
+    <text class="a" x="38" y="56">放 CLAUDE.md</text>
+    <text class="small" x="38" y="92">项目共享：./CLAUDE.md</text>
+    <text class="small" x="38" y="122">个人全局：~/.claude/CLAUDE.md</text>
+  </g>
+
+  <path class="line" d="M300 368 V464"/>
+  <g transform="translate(120 464)">
+    <rect class="node" width="360" height="128"/>
+    <text class="q" x="38" y="54">只对某些文件有用？</text>
+    <text class="small" x="38" y="90">如测试规则、API 响应规范</text>
+  </g>
+  <path class="arrow" d="M480 528 H650"/>
+  <g transform="translate(650 452)">
+    <rect class="yes" width="350" height="152"/>
+    <text class="a" x="38" y="56">放 .claude/rules/</text>
+    <text class="small" x="38" y="92">用 paths 限定触发范围</text>
+    <text class="small" x="38" y="122">保持主题单一、文件名清楚</text>
+  </g>
+
+  <path class="line" d="M300 592 V688"/>
+  <g transform="translate(120 688)">
+    <rect class="node" width="360" height="128"/>
+    <text class="q" x="38" y="54">内容长、偶尔才查？</text>
+    <text class="small" x="38" y="90">如接口清单、部署细节、表结构</text>
+  </g>
+  <path class="arrow" d="M480 752 H650"/>
+  <g transform="translate(650 676)">
+    <rect class="no" width="350" height="152"/>
+    <text class="a" x="38" y="56">放 docs 或 Skill</text>
+    <text class="small" x="38" y="92">CLAUDE.md 里只留入口链接</text>
+    <text class="small" x="38" y="122">需要时用 @docs/... 引入</text>
+  </g>
+
+  <g transform="translate(1110 302)">
+    <rect class="out" width="340" height="156"/>
+    <text x="38" y="58" font-family="'PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="28" font-weight="700" fill="#ffffff">只属于当前机器？</text>
+    <text x="38" y="96" font-family="'PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="21" fill="#cfe8e6">沙箱 URL、个人测试数据、当前任务</text>
+    <text x="38" y="130" font-family="'PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="24" font-weight="700" fill="#f6c177">CLAUDE.local.md</text>
+  </g>
+  <g transform="translate(1110 536)">
+    <rect class="out" width="340" height="156"/>
+    <text x="38" y="58" font-family="'PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="28" font-weight="700" fill="#ffffff">来自反复纠正？</text>
+    <text x="38" y="96" font-family="'PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="21" fill="#cfe8e6">构建坑点、调试路径、偏好模式</text>
+    <text x="38" y="130" font-family="'PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="24" font-weight="700" fill="#f6c177">让 Claude 记入自动记忆</text>
+  </g>
+</svg>

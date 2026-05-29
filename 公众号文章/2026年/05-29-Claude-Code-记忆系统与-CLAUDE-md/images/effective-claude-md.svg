@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">高质量 CLAUDE.md 的四段式规则</title>
+  <desc id="desc">展示一条有效指令应该由适用场景、明确规则、示例和验证方式构成。</desc>
+  <defs>
+    <style>
+      .bg { fill: #f6f5ef; }
+      .title { font-family: 'PingFang SC','Microsoft YaHei',Arial,sans-serif; font-size: 54px; font-weight: 700; fill: #263238; }
+      .sub { font-family: 'PingFang SC','Microsoft YaHei',Arial,sans-serif; font-size: 24px; font-weight: 400; fill: #687679; }
+      .head { font-family: 'PingFang SC','Microsoft YaHei',Arial,sans-serif; font-size: 30px; font-weight: 700; fill: #23323b; }
+      .text { font-family: 'PingFang SC','Microsoft YaHei',Arial,sans-serif; font-size: 22px; font-weight: 400; fill: #556568; }
+      .code { font-family: 'SFMono-Regular', Consolas, Menlo, monospace; font-size: 20px; font-weight: 500; fill: #243238; }
+      .card { fill: #ffffff; stroke: #d9d3c8; stroke-width: 2; rx: 24; }
+      .strip1 { fill: #0f8b8d; }
+      .strip2 { fill: #f6a23a; }
+      .strip3 { fill: #23323b; }
+      .strip4 { fill: #9aa5a7; }
+      .bad { fill: #fff6f1; stroke: #e6a28d; stroke-width: 2; rx: 24; }
+      .good { fill: #eaf5f3; stroke: #7dc0ba; stroke-width: 2; rx: 24; }
+    </style>
+  </defs>
+  <rect class="bg" width="1600" height="900"/>
+  <text class="title" x="90" y="96">高质量 CLAUDE.md：少写口号，多给判定</text>
+  <text class="sub" x="92" y="137">一条规则最好能让 Claude 判断“何时用、怎么做、做到什么程度”。</text>
+
+  <g transform="translate(92 220)">
+    <rect class="bad" width="650" height="190"/>
+    <text class="head" x="34" y="54">低效写法</text>
+    <text class="text" x="34" y="96">请写高质量代码，注意可读性，遵循最佳实践。</text>
+    <text class="text" x="34" y="132">问题：无法验证，无法改变具体决策。</text>
+  </g>
+
+  <g transform="translate(858 220)">
+    <rect class="good" width="650" height="190"/>
+    <text class="head" x="34" y="54">有效写法</text>
+    <text class="text" x="34" y="96">在 controller 中不要直接写 SQL；复杂查询放到 repository。</text>
+    <text class="text" x="34" y="132">问题：有边界、有文件位置、有可检查结果。</text>
+  </g>
+
+  <g transform="translate(92 500)">
+    <rect class="card" width="330" height="230"/>
+    <rect class="strip1" width="330" height="14" rx="7"/>
+    <text class="head" x="34" y="62">1. 场景</text>
+    <text class="text" x="34" y="106">什么时候触发这条规则？</text>
+    <text class="text" x="34" y="142">例如：新增 API 端点时</text>
+  </g>
+  <g transform="translate(462 500)">
+    <rect class="card" width="330" height="230"/>
+    <rect class="strip2" width="330" height="14" rx="7"/>
+    <text class="head" x="34" y="62">2. 指令</text>
+    <text class="text" x="34" y="106">必须做什么，禁止什么？</text>
+    <text class="text" x="34" y="142">例如：输入必须用 Zod 验证</text>
+  </g>
+  <g transform="translate(832 500)">
+    <rect class="card" width="330" height="230"/>
+    <rect class="strip3" width="330" height="14" rx="7"/>
+    <text class="head" x="34" y="62">3. 示例</text>
+    <text class="text" x="34" y="106">给一个可模仿的代码形态</text>
+    <text class="code" x="34" y="150">orderSchema.parse(input)</text>
+  </g>
+  <g transform="translate(1202 500)">
+    <rect class="card" width="306" height="230"/>
+    <rect class="strip4" width="306" height="14" rx="7"/>
+    <text class="head" x="34" y="62">4. 验证</text>
+    <text class="text" x="34" y="106">完成前怎么检查？</text>
+    <text class="text" x="34" y="142">例如：运行 pnpm test</text>
+  </g>
+</svg>

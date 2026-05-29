@@ -1,0 +1,753 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>公众号排版 - Claude Code 记忆系统实战</title>
+  <style>
+    :root {
+      --ink: #243238;
+      --muted: #657579;
+      --teal: #0f8b8d;
+      --teal-soft: #e9f5f4;
+      --gold: #f5a63b;
+      --gold-soft: #fff4df;
+      --line: #ded8cd;
+      --paper: #fbfaf6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 28px 16px 80px;
+      background: #ece8dd;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+    }
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 9;
+      max-width: 780px;
+      margin: 0 auto 18px;
+      padding: 12px;
+      border: 1px solid rgba(36, 50, 56, 0.12);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.92);
+      box-shadow: 0 12px 28px rgba(36,50,56,0.08);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .toolbar span { color: #5d6b70; font-size: 14px; line-height: 1.5; }
+    .toolbar button {
+      border: 0;
+      border-radius: 8px;
+      padding: 10px 16px;
+      color: #fff;
+      background: var(--teal);
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .wechat-shell {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 24px 0;
+      background: #fff;
+      box-shadow: 0 16px 42px rgba(36,50,56,0.10);
+    }
+    #wechat-article {
+      max-width: 677px;
+      margin: 0 auto;
+      padding: 0 18px 42px;
+      background: #fff;
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.95;
+      letter-spacing: 0;
+      overflow-wrap: break-word;
+      word-break: normal;
+    }
+    #wechat-article h1 {
+      margin: 12px 0 24px;
+      padding: 0 0 16px;
+      color: var(--ink);
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1.38;
+      text-align: left;
+      border-bottom: 4px solid var(--teal);
+    }
+    #wechat-article h2 {
+      margin: 34px 0 18px;
+      padding: 10px 14px;
+      border-left: 6px solid var(--teal);
+      border-radius: 0 8px 8px 0;
+      background: var(--teal-soft);
+      color: var(--ink);
+      font-size: 21px;
+      font-weight: 800;
+      line-height: 1.55;
+    }
+    #wechat-article h3 {
+      margin: 28px 0 12px;
+      color: var(--teal);
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.6;
+    }
+    #wechat-article p {
+      margin: 14px 0;
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.95;
+      text-align: justify;
+    }
+    #wechat-article p:has(img) { text-align: center; margin: 24px 0; }
+    #wechat-article img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+      border-radius: 8px;
+      box-shadow: 0 10px 26px rgba(36,50,56,0.12);
+    }
+    #wechat-article hr {
+      height: 1px;
+      margin: 28px 0;
+      border: 0;
+      background: linear-gradient(90deg, transparent, var(--line), transparent);
+    }
+    #wechat-article blockquote {
+      margin: 20px 0;
+      padding: 14px 16px;
+      border-left: 5px solid var(--gold);
+      border-radius: 0 8px 8px 0;
+      background: var(--gold-soft);
+      color: #5d4b2b;
+    }
+    #wechat-article blockquote p {
+      margin: 0;
+      color: #5d4b2b;
+      font-size: 15px;
+      line-height: 1.85;
+      text-align: left;
+    }
+    #wechat-article ul, #wechat-article ol {
+      margin: 14px 0;
+      padding-left: 1.35em;
+      color: var(--ink);
+    }
+    #wechat-article li {
+      margin: 7px 0;
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.85;
+    }
+    #wechat-article table {
+      width: 100%;
+      margin: 22px 0;
+      border-collapse: collapse;
+      border: 1px solid var(--line);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+    #wechat-article th {
+      padding: 10px 8px;
+      border: 1px solid var(--line);
+      background: var(--teal);
+      color: #fff;
+      font-weight: 700;
+      text-align: left;
+    }
+    #wechat-article td {
+      padding: 10px 8px;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      vertical-align: top;
+      background: #fff;
+    }
+    #wechat-article tr:nth-child(even) td { background: #f8fbfb; }
+    #wechat-article code {
+      padding: 2px 6px;
+      border-radius: 5px;
+      background: #f1f4f4;
+      color: #0d6670;
+      font-family: Menlo, Consolas, Monaco, "SFMono-Regular", monospace;
+      font-size: 0.92em;
+      white-space: normal;
+    }
+    #wechat-article pre {
+      margin: 18px 0;
+      padding: 14px 16px;
+      border-radius: 8px;
+      background: #17242b;
+      color: #eaf2f1;
+      overflow-x: auto;
+      line-height: 1.7;
+    }
+    #wechat-article pre code {
+      padding: 0;
+      background: transparent;
+      color: #eaf2f1;
+      font-size: 13px;
+      white-space: pre;
+    }
+    #wechat-article a {
+      color: #0b78c5;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(11,120,197,0.35);
+    }
+    .copied { color: var(--teal); font-weight: 700; }
+    @media (max-width: 720px) {
+      body { padding: 12px 8px 48px; }
+      .toolbar { position: static; flex-direction: column; align-items: stretch; }
+      .toolbar button { width: 100%; }
+      .wechat-shell { box-shadow: none; }
+      #wechat-article { padding: 0 14px 36px; }
+      #wechat-article h1 { font-size: 24px; }
+      #wechat-article h2 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <span id="copy-status">点击右侧按钮复制排版内容，然后粘贴到微信公众号编辑器正文区。</span>
+    <button type="button" onclick="copyWechatArticle()">复制公众号排版</button>
+  </div>
+  <main class="wechat-shell">
+    <article id="wechat-article">
+<h1 id="claude-code-记忆系统实战用-claude.md-让-ai-少走弯路">Claude Code 记忆系统实战：用 CLAUDE.md 让 AI 少走弯路</h1>
+<h2 id="新书发行编程启蒙思维与代码">新书发行：《编程启蒙：思维与代码》</h2>
+<p>我的新书《编程启蒙：思维与代码》已进入发行阶段。本书由北京航空航天大学出版社出版，黄家宝编著，ISBN 为 <code>978-7-5124-4941-1</code>，定价 99.00 元。</p>
+<p>这本书的定位不是单纯教语法，而是从“编程思维”切入：上篇先讲解决问题、抽象、算法、AI 与计算机世界的底层思考方式；下篇再进入 Python 基础训练，帮助读者把思维方法落到代码实践里。简单说，它适合想系统理解编程、AI 与代码关系的初学者，也适合家长、老师和自学者作为编程启蒙读物。</p>
+<p>购买本书可领取配套福利，具体领取方式和细则以随书说明或客服通知为准。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/AndersonHJB/PicGoImage/main/2026/0529/claude-code-memory/book-purchase-benefits.png" alt="购买《编程启蒙：思维与代码》的福利" />
+<figcaption aria-hidden="true">购买《编程启蒙：思维与代码》的福利</figcaption>
+</figure>
+<hr />
+<figure>
+<img src="https://raw.githubusercontent.com/AndersonHJB/PicGoImage/main/2026/0529/claude-code-memory/cover-claude-code-memory.png" alt="Claude Code 记忆系统教程封面" />
+<figcaption aria-hidden="true">Claude Code 记忆系统教程封面</figcaption>
+</figure>
+<p>每次打开一个新的 Claude Code 会话，你面对的都不是“昨天那个已经熟悉项目的同事”，而是一个带着强大能力、但上下文从零开始的新执行者。</p>
+<p>这就是很多人刚开始用 Claude Code 时最容易遇到的问题：</p>
+<ul>
+<li>项目用 <code>pnpm</code>，它又写成了 <code>npm install</code>。</li>
+<li>后端用 Fastify，它又生成了 Express 示例。</li>
+<li>团队要求提交前跑 <code>pnpm lint &amp;&amp; pnpm test</code>，它每次都要你提醒。</li>
+<li>你已经解释过目录结构，换一个会话以后，它又从头猜。</li>
+</ul>
+<p><code>CLAUDE.md</code> 的价值不在于“让 Claude 永远记住一切”，而是把那些每次都要重复解释、反复纠正、影响工程决策的共识，提前写成项目说明书。Claude Code 启动时会读取这些记忆文件，把它们放进当前会话上下文里，然后再开始工作。</p>
+<p>这篇教程不只讲“文件放在哪里”，更重要的是教你判断：什么值得写进 <code>CLAUDE.md</code>，什么应该拆成规则，什么应该交给自动记忆，什么根本不该写进去。</p>
+<blockquote>
+<p>说明：本文以 2026-05-29 的 Claude Code 官方文档为基准。相关功能可能继续变化，团队落地前建议再核对官方文档。</p>
+</blockquote>
+<h2 id="先建立一个正确心智模型">1. 先建立一个正确心智模型</h2>
+<p>Claude Code 的记忆可以分成两类：</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>类型</th>
+<th>谁来写</th>
+<th>主要用途</th>
+<th>加载特点</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>CLAUDE.md</code></td>
+<td>你或团队</td>
+<td>明确告诉 Claude 应该遵守的指令、规范、工作流</td>
+<td>每次会话读取</td>
+</tr>
+<tr class="even">
+<td>自动记忆</td>
+<td>Claude</td>
+<td>从你的更正、项目实践、调试过程里沉淀经验</td>
+<td>每次会话读取索引，细节按需读取</td>
+</tr>
+</tbody>
+</table>
+<p>一句话区分：</p>
+<ul>
+<li><code>CLAUDE.md</code> 是“你告诉 Claude 的规则”。</li>
+<li>自动记忆是“Claude 在工作中给自己写的笔记”。</li>
+</ul>
+<p>但有一个很关键的边界：<code>CLAUDE.md</code> 是上下文指导，不是强制安全策略。如果你必须禁止某个命令、某个工具或某类路径访问，应该使用 settings、permissions、hooks 这类由客户端执行的机制，而不是只在 <code>CLAUDE.md</code> 里写“禁止这样做”。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/AndersonHJB/PicGoImage/main/2026/0529/claude-code-memory/memory-loading-map.png" alt="Claude Code 记忆加载地图" />
+<figcaption aria-hidden="true">Claude Code 记忆加载地图</figcaption>
+</figure>
+<h2 id="四类-claude.md先分清作用范围">2. 四类 CLAUDE.md：先分清作用范围</h2>
+<p>Claude Code 支持不同范围的记忆文件。你不需要一上来全都配置，但要知道它们分别解决什么问题。</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>范围</th>
+<th>位置</th>
+<th>适合写什么</th>
+<th>是否共享</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>组织级</td>
+<td>macOS: <code>/Library/Application Support/ClaudeCode/CLAUDE.md</code>；Linux/WSL: <code>/etc/claude-code/CLAUDE.md</code>；Windows: <code>C:\Program Files\ClaudeCode\CLAUDE.md</code></td>
+<td>公司编码标准、安全合规提醒、组织级开发习惯</td>
+<td>组织内所有人</td>
+</tr>
+<tr class="even">
+<td>用户级</td>
+<td><code>~/.claude/CLAUDE.md</code></td>
+<td>你跨项目都适用的个人偏好</td>
+<td>只属于你</td>
+</tr>
+<tr class="odd">
+<td>项目级</td>
+<td><code>./CLAUDE.md</code> 或 <code>./.claude/CLAUDE.md</code></td>
+<td>技术栈、目录结构、测试命令、团队共享规范</td>
+<td>提交到 Git</td>
+</tr>
+<tr class="even">
+<td>本地级</td>
+<td><code>./CLAUDE.local.md</code></td>
+<td>当前机器、当前 worktree 的本地笔记</td>
+<td>不提交</td>
+</tr>
+</tbody>
+</table>
+<p>如果你是个人开发者，最常用的是两个文件：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> CLAUDE.md</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> CLAUDE.local.md</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;CLAUDE.local.md&quot;</span> <span class="op">&gt;&gt;</span> .gitignore</span></code></pre></div>
+<p><code>CLAUDE.md</code> 放团队也应该知道的内容，<code>CLAUDE.local.md</code> 放你自己的工作区信息。例如本地服务地址、临时调试方式、当前任务备注。</p>
+<p>注意：不要把真实密钥、生产账号、数据库密码写进 <code>CLAUDE.local.md</code>。它虽然不提交，但仍然是明文文件。敏感信息应该放在环境变量、密钥管理器或专门的配置系统里。</p>
+<h2 id="用三分钟搭一个可用的项目记忆">3. 用三分钟搭一个可用的项目记忆</h2>
+<p>你可以在项目根目录运行：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/init</span></span></code></pre></div>
+<p><code>/init</code> 会让 Claude Code 分析当前项目，并生成一个起步版 <code>CLAUDE.md</code>。如果你想手写，也可以从下面这个模板开始。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># 项目：订单管理 API</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## 项目事实</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>运行时：Node.js 20</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>语言：TypeScript strict mode</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Web 框架：Fastify</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>ORM：Prisma</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>数据库：PostgreSQL</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>包管理器：pnpm</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">## 常用命令</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>安装依赖：pnpm install</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>启动开发服务：pnpm dev</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>运行测试：pnpm test</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>代码检查：pnpm lint</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>生成 Prisma Client：pnpm prisma generate</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## 目录边界</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>路由定义放在 src/routes/</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>请求处理放在 src/controllers/</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>业务逻辑放在 src/services/</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>数据库访问放在 src/repositories/</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>输入输出 schema 放在 src/schemas/</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## 必须遵守</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>新增 API 时必须同时添加 Zod schema</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>controller 不直接写 SQL</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>service 不直接读取 HTTP request</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>提交前运行 pnpm lint &amp;&amp; pnpm test</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="fu">## 参考入口</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>API 设计细节见 @docs/api-style.md</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>数据库设计见 @prisma/schema.prisma</span></code></pre></div>
+<p>这个模板的重点不是完整，而是让 Claude 在刚进入项目时知道五件事：</p>
+<ol type="1">
+<li>项目是什么。</li>
+<li>用什么技术栈。</li>
+<li>常用命令是什么。</li>
+<li>代码应该放在哪里。</li>
+<li>哪些规则不能靠自由发挥。</li>
+</ol>
+<h2 id="判断一条信息应该放在哪里">4. 判断一条信息应该放在哪里</h2>
+<p><code>CLAUDE.md</code> 最大的问题不是“不够详细”，而是很容易被写成项目百科。它不是知识库，而是启动上下文。每多一行都会进入会话上下文，长期消耗 token，也会增加冲突概率。</p>
+<p>你可以用下面这张图来做判断。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/AndersonHJB/PicGoImage/main/2026/0529/claude-code-memory/where-to-put-what.png" alt="记忆内容放置决策图" />
+<figcaption aria-hidden="true">记忆内容放置决策图</figcaption>
+</figure>
+<p>几个常见判断：</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>内容</th>
+<th>推荐位置</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>“本项目使用 pnpm，不使用 npm”</td>
+<td><code>CLAUDE.md</code></td>
+<td>每次执行命令都可能用到</td>
+</tr>
+<tr class="even">
+<td>“我的本地 API 地址是 http://localhost:8080”</td>
+<td><code>CLAUDE.local.md</code></td>
+<td>只属于当前机器</td>
+</tr>
+<tr class="odd">
+<td>“所有 React 组件测试使用 Testing Library”</td>
+<td><code>.claude/rules/testing.md</code></td>
+<td>只在测试相关文件中需要</td>
+</tr>
+<tr class="even">
+<td>“完整 API 清单有 200 行”</td>
+<td><code>docs/api.md</code>，在 <code>CLAUDE.md</code> 里引用入口</td>
+<td>太长，不适合每次加载</td>
+</tr>
+<tr class="odd">
+<td>“Claude 最近发现某个测试必须先启动 Redis”</td>
+<td>自动记忆或 <code>CLAUDE.local.md</code></td>
+<td>更像工作经验或本地运行条件</td>
+</tr>
+</tbody>
+</table>
+<p>一个实用原则：</p>
+<blockquote>
+<p>如果 Claude 不知道这条信息，大概率会在很多任务里做错，那就写进 <code>CLAUDE.md</code>。如果只在少数场景需要，就拆出去。</p>
+</blockquote>
+<h2 id="写好-claude.md-的关键具体可检查有边界">5. 写好 CLAUDE.md 的关键：具体、可检查、有边界</h2>
+<p>低质量的 <code>CLAUDE.md</code> 通常长这样：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>请写高质量代码。</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>保持代码整洁。</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>遵循最佳实践。</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>注意安全。</span></code></pre></div>
+<p>这些话看起来正确，但几乎不会改变 Claude 的行为，因为它们没有边界、没有可检查结果，也没有项目特异性。</p>
+<p>更好的写法是：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## API 错误处理</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>业务错误统一抛出 <span class="in">`BusinessError(code, message)`</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>controller 中不要写 try-catch</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>错误响应由 <span class="in">`src/plugins/error-handler.ts`</span> 统一处理</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>示例参考：<span class="in">`src/routes/orders.ts`</span></span></code></pre></div>
+<p>这类规则有效，是因为它回答了三个问题：</p>
+<ul>
+<li>在什么场景使用？</li>
+<li>具体要做什么，不要做什么？</li>
+<li>应该模仿哪个文件，如何检查结果？</li>
+</ul>
+<figure>
+<img src="https://raw.githubusercontent.com/AndersonHJB/PicGoImage/main/2026/0529/claude-code-memory/effective-claude-md.png" alt="高质量 CLAUDE.md 的四段式规则" />
+<figcaption aria-hidden="true">高质量 CLAUDE.md 的四段式规则</figcaption>
+</figure>
+<p>你可以把每条重要规则写成这个格式：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## 新增 API 端点</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>适用场景：新增或修改 HTTP API 时。</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>规则：</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>在 <span class="in">`src/schemas/`</span> 创建 Zod schema</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>在 <span class="in">`src/routes/`</span> 注册路由</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>在 <span class="in">`src/controllers/`</span> 处理请求和响应</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>在 <span class="in">`src/services/`</span> 写业务逻辑</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>不要在 controller 中直接访问 Prisma</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>示例：</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>参考 <span class="in">`src/routes/orders.ts`</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>参考 <span class="in">`src/services/order-service.ts`</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>完成前检查：</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>pnpm lint</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>pnpm test</span></code></pre></div>
+<p>这比“新增 API 要规范”有效得多。</p>
+<h2 id="用-rules-拆分按场景触发的规则">6. 用 rules 拆分按场景触发的规则</h2>
+<p>当 <code>CLAUDE.md</code> 开始变长，第一反应不应该是继续补，而应该是拆。</p>
+<p>Claude Code 支持 <code>.claude/rules/</code> 目录，你可以把不同主题的规则拆成独立文件：</p>
+<pre class="text"><code>.claude/
+└── rules/
+    ├── api-design.md
+    ├── testing.md
+    ├── frontend.md
+    └── security.md</code></pre>
+<p>没有 <code>paths</code> frontmatter 的规则会无条件加载。带 <code>paths</code> 的规则只在 Claude 处理匹配文件时适用。例如：</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="an">paths:</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">  - &quot;src/**/*.test.ts&quot;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">  - &quot;src/**/*.test.tsx&quot;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">  - &quot;tests/**/*.ts&quot;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu"># 测试规则</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>使用 Arrange-Act-Assert 组织测试</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>优先测试用户可观察行为，不测试内部实现细节</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>新增 service 必须覆盖成功路径和主要失败路径</span></code></pre></div>
+<p>这类规则适合测试、前端、API、安全等“不是每个任务都需要，但一旦触发就很重要”的规范。</p>
+<h2 id="用-引用而不是复制整份文档">7. 用 @ 引用，而不是复制整份文档</h2>
+<p><code>CLAUDE.md</code> 支持用 <code>@path</code> 引入其他文件，例如：</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## 参考入口</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>项目说明：@README.md</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>API 风格：@docs/api-style.md</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>数据库 schema：@prisma/schema.prisma</span></code></pre></div>
+<p>注意两点：</p>
+<ol type="1">
+<li>被 <code>@</code> 引用的文件会在启动时展开并加载，所以不要滥用。</li>
+<li><code>@</code> 适合引用短而关键的入口，不适合把几万字文档全部塞进上下文。</li>
+</ol>
+<p>如果只是告诉 Claude “需要时去看这个文件”，可以写成普通说明：</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>详细部署流程在 <span class="in">`docs/deployment.md`</span>，只有处理部署任务时再读取。</span></code></pre></div>
+<p>这样可以避免每次会话都加载部署细节。</p>
+<p>如果仓库里已经有 <code>AGENTS.md</code>，Claude Code 不会直接把它当作自己的记忆文件读取。你可以创建一个 <code>CLAUDE.md</code> 来导入它：</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>@AGENTS.md</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Claude Code 补充规则</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>修改 <span class="in">`src/billing/`</span> 前先说明计划。</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>涉及数据库迁移时必须先查看 <span class="in">`prisma/schema.prisma`</span>。</span></code></pre></div>
+<h2 id="本地记忆记录工作现场但别提交">8. 本地记忆：记录工作现场，但别提交</h2>
+<p><code>CLAUDE.local.md</code> 适合写当前机器相关的信息：</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># 本地工作区</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## 服务地址</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>API: http://localhost:3000</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Web: http://localhost:5173</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Redis: localhost:6379</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## 当前任务</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>正在重构支付回调</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>相关分支：feature/payment-webhook</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>重点关注：幂等处理和失败重试</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="fu">## 调试命令</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>查看支付日志：LOG_LEVEL=debug pnpm dev</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>跑支付测试：pnpm test payment</span></code></pre></div>
+<p>它不适合写团队规则，因为别人拿不到；也不适合写真实密码，因为它仍然是明文。</p>
+<p>你应该确认它已经进入 <code>.gitignore</code>：</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rg</span> <span class="st">&quot;CLAUDE.local.md&quot;</span> .gitignore</span></code></pre></div>
+<p>如果没有：</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">&quot;CLAUDE.local.md&quot;</span> <span class="op">&gt;&gt;</span> .gitignore</span></code></pre></div>
+<h2 id="自动记忆让-claude-记录经验但不要完全依赖它">9. 自动记忆：让 Claude 记录经验，但不要完全依赖它</h2>
+<p>自动记忆会让 Claude 根据工作过程写下未来可能有用的笔记，例如：</p>
+<ul>
+<li>项目的构建命令。</li>
+<li>某类测试失败的排查经验。</li>
+<li>代码库里已经形成的命名习惯。</li>
+<li>你多次纠正过的偏好。</li>
+</ul>
+<p>官方文档说明，自动记忆默认开启，可通过 <code>/memory</code> 或配置项切换。它的项目记忆目录通常位于：</p>
+<pre class="text"><code>~/.claude/projects/&lt;project&gt;/memory/</code></pre>
+<p>其中 <code>MEMORY.md</code> 是入口索引。每次会话开始时，Claude 会读取 <code>MEMORY.md</code> 的前 200 行或前 25KB，以先到者为准。更细的主题文件会按需读取。</p>
+<p>你可以这样使用它：</p>
+<pre class="text"><code>请记住：这个项目运行集成测试前必须先启动本地 Redis。</code></pre>
+<p>如果你希望这条规则变成团队共享规范，就不要只让自动记忆保存，而要明确说：</p>
+<pre class="text"><code>请把“集成测试前必须启动本地 Redis”加入项目 CLAUDE.md。</code></pre>
+<p>自动记忆适合沉淀经验，<code>CLAUDE.md</code> 适合声明规则。两者配合使用，而不是互相替代。</p>
+<h2 id="用-memory-做验收">10. 用 /memory 做验收</h2>
+<p>配置完以后，不要凭感觉判断是否生效。直接在 Claude Code 里运行：</p>
+<pre class="text"><code>/memory</code></pre>
+<p>你应该检查三件事：</p>
+<ol type="1">
+<li>当前会话加载了哪些 <code>CLAUDE.md</code>、<code>CLAUDE.local.md</code> 和 rules 文件。</li>
+<li>自动记忆是否开启。</li>
+<li>是否存在你没想到的上级目录记忆或冲突规则。</li>
+</ol>
+<p>如果 Claude 不遵守某条规则，可以按这个顺序排查：</p>
+<ul>
+<li>这条规则真的被加载了吗？</li>
+<li>规则是否太抽象，例如“保持高质量”？</li>
+<li>是否有另一条规则与它冲突？</li>
+<li>这条规则是不是应该放在 paths 规则里，而不是全局加载？</li>
+<li>你需要的是行为引导，还是硬性权限控制？</li>
+</ul>
+<h2 id="给已有-claude.md-做瘦身">11. 给已有 CLAUDE.md 做瘦身</h2>
+<p>当 <code>CLAUDE.md</code> 长到几百行，常见症状是：</p>
+<ul>
+<li>Claude 启动后要读很久。</li>
+<li>规则互相打架。</li>
+<li>一些已经过期的路径还在影响决策。</li>
+<li>每次都会加载大量当前任务根本用不到的背景材料。</li>
+</ul>
+<p>可以按这个流程处理：</p>
+<figure>
+<img src="https://raw.githubusercontent.com/AndersonHJB/PicGoImage/main/2026/0529/claude-code-memory/memory-maintenance-loop.png" alt="记忆维护闭环" />
+<figcaption aria-hidden="true">记忆维护闭环</figcaption>
+</figure>
+<p>具体做法：</p>
+<ol type="1">
+<li>标记每一段内容的用途：项目事实、硬性工作流、示例入口、背景资料、临时笔记。</li>
+<li>删除空泛句子：例如“写优雅代码”“遵循最佳实践”。</li>
+<li>把长内容移到 <code>docs/</code>，只在 <code>CLAUDE.md</code> 留入口。</li>
+<li>把测试、前端、API 等场景化规则移到 <code>.claude/rules/</code>。</li>
+<li>把个人内容移到 <code>CLAUDE.local.md</code> 或 <code>~/.claude/CLAUDE.md</code>。</li>
+<li>用 <code>/memory</code> 验证加载结果。</li>
+</ol>
+<p>目标不是把文件压到最短，而是让每一行都有长期收益。</p>
+<h2 id="一份可以直接套用的最终模板">12. 一份可以直接套用的最终模板</h2>
+<p>下面是一份更适合真实项目的精简模板。</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># 项目记忆</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## 项目事实</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>技术栈：</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>包管理器：</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>主要入口：</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>数据存储：</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## 常用命令</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>安装依赖：</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>启动开发：</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>运行测试：</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>构建：</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>代码检查：</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## 目录边界</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`src/...`</span>：</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`tests/...`</span>：</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`docs/...`</span>：</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a><span class="fu">## 必须遵守</span></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a><span class="fu">## 不要这样做</span></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span></span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a><span class="fu">## 参考入口</span></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>架构说明：</span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>API 规范：</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>测试规范：</span></code></pre></div>
+<p>填写时记住三条规则：</p>
+<ul>
+<li>能被 Claude 自己从代码里稳定发现的，不必重复。</li>
+<li>只在少数任务里需要的，不放全局。</li>
+<li>一旦会导致错误实现、错误命令或错误目录，就值得写清楚。</li>
+</ul>
+<h2 id="小练习把一句抱怨变成一条有效记忆">13. 小练习：把一句抱怨变成一条有效记忆</h2>
+<p>假设你经常对 Claude 说：</p>
+<pre class="text"><code>不要再用 npm 了，我们项目用 pnpm。</code></pre>
+<p>不要只在聊天里纠正。把它变成项目记忆：</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## 包管理</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>本项目只使用 pnpm。</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>不要生成 npm、npx、yarn 命令。</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>安装依赖使用 <span class="in">`pnpm add &lt;pkg&gt;`</span>。</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>执行脚本使用 <span class="in">`pnpm &lt;script&gt;`</span>。</span></code></pre></div>
+<p>再假设你经常说：</p>
+<pre class="text"><code>别把业务逻辑写到 controller 里。</code></pre>
+<p>把它改成：</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## 分层边界</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>controller 只负责解析请求、调用 service、返回响应。</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>业务判断放在 <span class="in">`src/services/`</span>。</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>数据访问放在 <span class="in">`src/repositories/`</span>。</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>新增复杂逻辑时，优先参考 <span class="in">`src/services/order-service.ts`</span>。</span></code></pre></div>
+<p>这就是 <code>CLAUDE.md</code> 的本质：把反复发生的纠正，升级为稳定的工程规则。</p>
+<h2 id="最后总结">14. 最后总结</h2>
+<p>Claude Code 记忆系统不是为了让 AI 记住所有细节，而是为了减少重复沟通，让协作从“每次重新培训”变成“带着项目手册上岗”。</p>
+<p>实际使用时，按下面的优先级思考：</p>
+<ol type="1">
+<li>团队共享、每次都重要：写进 <code>CLAUDE.md</code>。</li>
+<li>个人偏好、跨项目有效：写进 <code>~/.claude/CLAUDE.md</code>。</li>
+<li>当前机器、当前任务：写进 <code>CLAUDE.local.md</code>。</li>
+<li>文件类型相关：写进 <code>.claude/rules/</code> 并用 <code>paths</code> 限定。</li>
+<li>长文档、背景资料：放进 <code>docs/</code>，只保留入口。</li>
+<li>工作中学到的经验：让自动记忆保存，但关键团队规则仍要显式写进项目文件。</li>
+</ol>
+<p>真正好用的记忆文件不一定长，但一定具体。它应该像项目里的测试一样，持续维护、定期删除过期内容，并且能在关键时刻约束错误方向。</p>
+<p>当你下次又想说“这个我不是说过了吗”，那很可能就是一条应该进入记忆系统的规则。</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a href="https://code.claude.com/docs/zh-CN/memory">Claude Code 官方文档：Claude 如何记住你的项目</a></li>
+<li><a href="https://docs.anthropic.com/zh-CN/docs/claude-code/prompt-caching">Claude Code 官方文档：Prompt caching</a></li>
+</ul>
+
+    </article>
+  </main>
+  <script>
+    const COPY_PROPS = [
+      'display','box-sizing','max-width','min-width','height','margin-top','margin-right','margin-bottom','margin-left',
+      'padding-top','padding-right','padding-bottom','padding-left','border-top','border-right','border-bottom','border-left',
+      'border-radius','background','background-color','color','font-family','font-size','font-weight','font-style',
+      'line-height','letter-spacing','text-align','text-decoration','vertical-align','white-space','overflow-wrap',
+      'word-break','border-collapse','box-shadow'
+    ];
+
+    function inlineComputedStyles(root) {
+      const nodes = [root, ...root.querySelectorAll('*')];
+      nodes.forEach((node) => {
+        const cs = window.getComputedStyle(node);
+        let styleText = '';
+        COPY_PROPS.forEach((prop) => {
+          const value = cs.getPropertyValue(prop);
+          if (value && value !== 'normal' && value !== 'none') styleText += prop + ':' + value + ';';
+        });
+        if (node.tagName === 'IMG') {
+          styleText += 'width:100%;max-width:100%;height:auto;display:block;margin-left:auto;margin-right:auto;';
+        }
+        node.setAttribute('style', styleText);
+      });
+    }
+
+    async function copyWechatArticle() {
+      const status = document.getElementById('copy-status');
+      const source = document.getElementById('wechat-article');
+      const clone = source.cloneNode(true);
+      clone.querySelectorAll('script,style').forEach((el) => el.remove());
+      document.body.appendChild(clone);
+      clone.style.position = 'fixed';
+      clone.style.left = '-99999px';
+      inlineComputedStyles(clone);
+      const html = clone.innerHTML;
+      clone.remove();
+
+      try {
+        if (navigator.clipboard && window.ClipboardItem) {
+          await navigator.clipboard.write([
+            new ClipboardItem({
+              'text/html': new Blob([html], {type: 'text/html'}),
+              'text/plain': new Blob([source.innerText], {type: 'text/plain'})
+            })
+          ]);
+        } else {
+          const box = document.createElement('div');
+          box.contentEditable = 'true';
+          box.style.position = 'fixed';
+          box.style.left = '-99999px';
+          box.innerHTML = html;
+          document.body.appendChild(box);
+          const range = document.createRange();
+          range.selectNodeContents(box);
+          const sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+          document.execCommand('copy');
+          sel.removeAllRanges();
+          box.remove();
+        }
+        status.innerHTML = '<span class="copied">已复制。</span>现在可以粘贴到微信公众号编辑器正文区。';
+      } catch (err) {
+        status.textContent = '自动复制失败：请手动选中文章白色区域内容复制。';
+        console.error(err);
+      }
+    }
+  </script>
+</body>
+</html>

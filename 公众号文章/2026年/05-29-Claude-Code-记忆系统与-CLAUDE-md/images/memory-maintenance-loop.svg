@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">记忆维护闭环</title>
+  <desc id="desc">展示发现重复纠正、更新记忆、验证行为和定期瘦身的维护流程。</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf6; }
+      .title { font-family: 'PingFang SC','Microsoft YaHei',Arial,sans-serif; font-size: 54px; font-weight: 700; fill: #263238; }
+      .sub { font-family: 'PingFang SC','Microsoft YaHei',Arial,sans-serif; font-size: 24px; font-weight: 400; fill: #687679; }
+      .num { font-family: 'PingFang SC','Microsoft YaHei',Arial,sans-serif; font-size: 52px; font-weight: 800; fill: #ffffff; }
+      .head { font-family: 'PingFang SC','Microsoft YaHei',Arial,sans-serif; font-size: 30px; font-weight: 700; fill: #23323b; }
+      .text { font-family: 'PingFang SC','Microsoft YaHei',Arial,sans-serif; font-size: 22px; font-weight: 400; fill: #58676a; }
+      .card { fill: #ffffff; stroke: #d8d2c6; stroke-width: 2; rx: 28; }
+      .circleA { fill: #0f8b8d; }
+      .circleB { fill: #f6a23a; }
+      .circleC { fill: #23323b; }
+      .circleD { fill: #849294; }
+      .arrow { stroke: #0f8b8d; stroke-width: 7; fill: none; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .dash { stroke: #cfc7ba; stroke-width: 3; fill: none; stroke-dasharray: 9 12; }
+    </style>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L12,7 L2,12 Z" fill="#0f8b8d"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="1600" height="900"/>
+  <text class="title" x="90" y="96">把记忆当成工程资产维护</text>
+  <text class="sub" x="92" y="137">不是写完 CLAUDE.md 就结束，而是让它跟着项目一起演进。</text>
+
+  <path class="dash" d="M800 215 C1070 215 1285 360 1285 535 C1285 715 1070 790 800 790 C530 790 315 715 315 535 C315 360 530 215 800 215"/>
+
+  <g transform="translate(230 245)">
+    <rect class="card" width="430" height="185"/>
+    <circle class="circleA" cx="68" cy="72" r="36"/>
+    <text class="num" x="53" y="91">1</text>
+    <text class="head" x="124" y="68">发现重复纠正</text>
+    <text class="text" x="124" y="108">同一个错误第二次出现，就记录。</text>
+    <text class="text" x="124" y="142">不要等它变成团队习惯病。</text>
+  </g>
+
+  <g transform="translate(940 245)">
+    <rect class="card" width="430" height="185"/>
+    <circle class="circleB" cx="68" cy="72" r="36"/>
+    <text class="num" x="53" y="91">2</text>
+    <text class="head" x="124" y="68">写入合适位置</text>
+    <text class="text" x="124" y="108">共享规则进 CLAUDE.md。</text>
+    <text class="text" x="124" y="142">私有笔记进 CLAUDE.local.md。</text>
+  </g>
+
+  <g transform="translate(940 605)">
+    <rect class="card" width="430" height="185"/>
+    <circle class="circleC" cx="68" cy="72" r="36"/>
+    <text class="num" x="53" y="91">3</text>
+    <text class="head" x="124" y="68">用 /memory 验证</text>
+    <text class="text" x="124" y="108">确认本次会话加载了哪些文件。</text>
+    <text class="text" x="124" y="142">必要时让 Claude 解释规则来源。</text>
+  </g>
+
+  <g transform="translate(230 605)">
+    <rect class="card" width="430" height="185"/>
+    <circle class="circleD" cx="68" cy="72" r="36"/>
+    <text class="num" x="53" y="91">4</text>
+    <text class="head" x="124" y="68">定期瘦身</text>
+    <text class="text" x="124" y="108">删除过期、冲突、空泛的内容。</text>
+    <text class="text" x="124" y="142">长文档拆出去，只保留入口。</text>
+  </g>
+
+  <path class="arrow" d="M665 337 H915"/>
+  <path class="arrow" d="M1155 435 V578"/>
+  <path class="arrow" d="M935 697 H685"/>
+  <path class="arrow" d="M445 600 V455"/>
+</svg>

@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Claude Code 记忆加载地图</title>
+  <desc id="desc">展示托管策略、用户指令、项目指令、本地指令、规则和自动记忆如何进入 Claude Code 上下文。</desc>
+  <defs>
+    <style>
+      .bg { fill: #f7f5ef; }
+      .title { font-family: 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif; font-size: 54px; font-weight: 700; fill: #263238; }
+      .sub { font-family: 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif; font-size: 24px; font-weight: 400; fill: #607d7f; }
+      .label { font-family: 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif; font-size: 28px; font-weight: 700; fill: #253136; }
+      .small { font-family: 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif; font-size: 21px; font-weight: 400; fill: #526266; }
+      .tiny { font-family: 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif; font-size: 18px; font-weight: 400; fill: #6c777a; }
+      .card { fill: #ffffff; stroke: #d8d4ca; stroke-width: 2; rx: 22; }
+      .accent { fill: #0f8b8d; }
+      .amber { fill: #f6a23a; }
+      .ink { fill: #23323b; }
+      .muted { fill: #e6f2f1; stroke: #94cfc9; stroke-width: 2; rx: 22; }
+      .rule { fill: #fff4df; stroke: #f0bf70; stroke-width: 2; rx: 22; }
+      .arrow { stroke: #0f8b8d; stroke-width: 6; fill: none; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .thin { stroke: #b4aaa0; stroke-width: 2; fill: none; stroke-dasharray: 8 10; }
+    </style>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L12,7 L2,12 Z" fill="#0f8b8d"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="1600" height="900"/>
+  <text class="title" x="90" y="96">Claude Code 记忆加载地图</text>
+  <text class="sub" x="92" y="137">每次会话都是新上下文，记忆文件决定它开局先知道什么。</text>
+
+  <g transform="translate(90 205)">
+    <rect class="card" width="430" height="96"/>
+    <circle class="amber" cx="48" cy="48" r="20"/>
+    <text class="label" x="86" y="43">托管策略</text>
+    <text class="small" x="86" y="72">组织级 CLAUDE.md，先加载</text>
+  </g>
+  <g transform="translate(90 325)">
+    <rect class="card" width="430" height="96"/>
+    <circle class="accent" cx="48" cy="48" r="20"/>
+    <text class="label" x="86" y="43">用户指令</text>
+    <text class="small" x="86" y="72">~/.claude/CLAUDE.md</text>
+  </g>
+  <g transform="translate(90 445)">
+    <rect class="card" width="430" height="96"/>
+    <circle class="ink" cx="48" cy="48" r="20"/>
+    <text class="label" x="86" y="43">项目指令</text>
+    <text class="tiny" x="86" y="72">./CLAUDE.md 或 ./.claude/CLAUDE.md</text>
+  </g>
+  <g transform="translate(90 565)">
+    <rect class="card" width="430" height="96"/>
+    <circle class="accent" cx="48" cy="48" r="20" opacity=".55"/>
+    <text class="label" x="86" y="43">本地指令</text>
+    <text class="small" x="86" y="72">./CLAUDE.local.md，放入 .gitignore</text>
+  </g>
+
+  <g transform="translate(620 250)">
+    <rect class="muted" width="380" height="170"/>
+    <text class="label" x="38" y="54">规则目录</text>
+    <text class="small" x="38" y="91">.claude/rules/*.md</text>
+    <text class="tiny" x="38" y="124">可用 paths 限定到测试、API、前端等文件</text>
+  </g>
+  <g transform="translate(620 480)">
+    <rect class="rule" width="380" height="170"/>
+    <text class="label" x="38" y="54">自动记忆</text>
+    <text class="small" x="38" y="91">~/.claude/projects/&lt;project&gt;/</text>
+    <text class="small" x="38" y="120">memory/</text>
+    <text class="tiny" x="38" y="148">MEMORY.md 前 200 行或 25KB 会开局加载</text>
+  </g>
+
+  <path class="arrow" d="M520 253 C565 253 570 290 618 310"/>
+  <path class="arrow" d="M520 373 C565 373 570 340 618 335"/>
+  <path class="arrow" d="M520 493 C570 493 575 545 618 555"/>
+  <path class="arrow" d="M520 613 C570 613 575 595 618 585"/>
+  <path class="arrow" d="M1000 335 C1065 335 1078 425 1135 438"/>
+  <path class="arrow" d="M1000 565 C1065 565 1078 480 1135 464"/>
+
+  <g transform="translate(1138 282)">
+    <rect class="card" width="360" height="300"/>
+    <rect x="32" y="36" width="296" height="78" rx="18" fill="#23323b"/>
+    <text x="82" y="86" font-family="'PingFang SC','Microsoft YaHei',Arial,sans-serif" font-size="30" font-weight="700" fill="#ffffff">启动上下文</text>
+    <rect x="50" y="142" width="260" height="18" rx="9" fill="#0f8b8d"/>
+    <rect x="50" y="178" width="210" height="18" rx="9" fill="#f6a23a"/>
+    <rect x="50" y="214" width="236" height="18" rx="9" fill="#b4aaa0"/>
+    <text class="small" x="54" y="270">Claude 读取后开始执行任务</text>
+  </g>
+
+  <line class="thin" x1="1170" y1="624" x2="1498" y2="624"/>
+  <text class="tiny" x="1170" y="664">注意：CLAUDE.md 是行为指导，不是硬性权限控制。</text>
+</svg>
