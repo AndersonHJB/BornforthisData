@@ -1,6 +1,7 @@
 ---
 title: Claude Code 记忆系统实战：用 CLAUDE.md 让 AI 少走弯路
 date: 2026-05-29
+cover: https://raw.githubusercontent.com/AndersonHJB/PicGoImage/main/2026/0529/claude-code-memory/wechat-cover-claude-memory.png
 ---
 
 # Claude Code 记忆系统实战：用 CLAUDE.md 让 AI 少走弯路
