@@ -7,14 +7,10 @@ body {
 }
 
 .header {
-    text-align: center;    
-}
-
-.h1 {
     text-align: center;
 }
 
-.intro {
+.page {
     background: #fff8eb;
     border: 3px solid #1f5f59;
     border-radius: 18px;
@@ -22,9 +18,11 @@ body {
     margin-bottom: 30px;
 }
 
-.row {
-    display: flex;
-    gap: 25px;
+.intro {
+    background: #fff8eb;
+    border: 3px solid #1f5f59;
+    border-radius: 18px;
+    padding: 30px;
     margin-bottom: 30px;
 }
 
