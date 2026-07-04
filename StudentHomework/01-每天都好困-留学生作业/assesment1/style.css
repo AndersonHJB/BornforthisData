@@ -43,6 +43,12 @@ body {
     display: flex;
     gap: 25px;
     align-items: center;
+    transition: transform 1s, background-color 1s;
+}
+
+.feature:hover {
+    background-color: #fffdf3;
+    transform: scale(1.01);
 }
 
 .feature div {
@@ -77,6 +83,12 @@ img {
     background: white;
     border: 2px solid #1f5f59;
     border-radius: 12px;
+    transition: transform 1s, opacity 1s;
+}
+
+img:hover {
+    transform: rotate(2deg) scale(1.05);
+    opacity: 0.85;
 }
 
 .wide-image img {
