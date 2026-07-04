@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+
+    <title>CSS</title>
+    
+    <link rel="icon" type="image/png" href="favicons/favicon-32x32.png">
+    
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+    <script src="script.js"></script>
+    
+</head>
+    
+<body>
+    
+    <h1>CSS BASICS + RESPONSIVE DESIGN</h1>
+    
+        
+    <div class="dropdown" style="float:right;"> <!--this div contains the entire drop down menu. You can see it is closed further down.-->
+            
+        <div class="menu-icon" onclick="navFunction(this)"> <!--this div is inside the one above and contains the three strips of our 'hamburger'-->
+            
+            <div class="menu-icon-bar1"></div>
+            <div class="menu-icon-bar2"></div>
+            <div class="menu-icon-bar3"></div>
+        
+        </div>
+    
+        <div class="dropdown-content"><!--this div contains the contents of our dropdown menu, each is a link that takes us to the specified id inside the tag we want to navigate to.-->
+        
+            <a href="#what">What is Responsive Web Design?</a>
+            <a href="#setting">Setting the Viewport</a>
+            <a href="#grids">Designing with Grids</a>
+            <a href="#queries">Media Queries and Breakpoints</a>
+            <a href="#content">Responsive Text, Images and Videos</a>
+            <a href="#dropdown">Dropdown Menus</a>
+            <a href="#other">Other Fun Stuff</a>
+    
+        </div>
+        
+    </div>
+    
+    
+      <div class="row"> <!-- this div contains two columns, as col-6 has a width of 50%, this row will have a width of 100% -->
+    
+        <div id="what" class="sections col-6"> <!--NOTE - you can assign more than one class to an element, separated by a space. If we wanted to style these we could uncomment the .sections css in the stylesheet - this will reveal borders for our divs and show us how the page is layed out.-->
+    
+          
+                 <h2>How to insert CSS</h2>
+    
+                 <p class="highlights">HINT: Have this site open in your browser as you code today. </p>
+        
+        
+
+                 <p>Cascading style sheets (CSS) is a language used to control the styling of HTML documents, controlling how elements should be displayed.</p>
+        
+                <p class="paragraph2">There are three ways to add CSS to an HTML document - an internal style sheet, an external style sheet and inline styling. For the most part, we will be using <i>EXTERNAL</i> styling. </p>
+        
+                <p class="paragraph2">Inline styling is done by using the <i>style</i> attribute in your html tags. We did this last week.</p>
+        
+                <p>External style sheets are text files that you link to from the head of a HTML document - as you can see if you view source on this document or look at the [link] tags in the [head] of your boilerplate code. </p>
+        
+                <p>To create an internal style sheet you use the &lt;style&gt; tag in your html document and write your CSS there using the same syntax as an external stylesheet. Mostly you will find this method is not necessary.</p>
+        
+                <p>Cascading style sheets are so named because the styling details cascade into a 'virtual' style sheet, with the most recent style rules processed employed for each element, so long as they follow this order of priority:</p>
+        
+                <p>1. Inline style</p>
+                <p>2. External and internal style sheets - the hierarchy is unclear here so use one or the other but not both.</p>
+                <p>3. Browser defaults</p>
+        
+    
+        </div>
+    
+        <div id="setting" class="sections col-6">
+    
+            <h2>Writing CSS</h2>
+        
+            <p>External and internal CSS is written using the following syntax:</p>
+        
+            <img src="images/selector.gif" width=50% title="Image source: https://www.w3schools.com/css/css_syntax.asp">
+        
+             <p>The rule set for a given <b>selector</b> is <b>declared</b> using <b>property</b> and <b>value</b> pairs, with each <b>statement</b> ended by a semi-colon and the whole rule set displayed as a <b>block</b> shown using <b>curly brackets</b>.</p>
+    
+        </div>
+        
+    </div>
+
+    <div class="row"> <!-- this div contains two columns, as col-6 has a width of 50%, this row will have a width of 100% -->
+    
+        <div id="what" class="sections col-6"> <!--NOTE - you can assign more than one class to an element, separated by a space. If we wanted to style these we could uncomment the .sections css in the stylesheet - this will reveal borders for our divs and show us how the page is layed out.-->
+    
+          
+                 <h2>Selectors</h2>
+
+                 See <a href="https://www.w3schools.com/cssref/css_selectors.asp">here</a> for a full list of selectors.
+        
+        <p>The following can all be used as selectors:</p>
+        
+        <p>If you want to style every instance of particular HTML element - for example &lt;h1&gt;, &lt;p&gt;, &lt;div&gt;, etc - they can be selected in the following way: <i>elementname</i> {property:value;} <br><br>
+
+            i.e. "h1. {color:blue; font-size: 2em;}" will make all h1 elements blue and 2em in size.</bt></p>
+        </bt></p>
+        <p>Likewise if you want to select all &lt;div&gt; elements you can use the selector div {property:value;} - this is how the CSS for this page is written.</p>
+        
+        <p>Classes: If you want to make a more refined selection, use CLASSES - put - class="classname" inside the opening tag of an element. These are then selected in CSS in the following way: .<i>.classname</i> {} - look in the source to see how classes and ids are applied to this div, for instance.</p>
+
+        <p>HINT: In this page you can see how I have used two classes for each DIV. 'section' is for styling that applies to all DIVs, while 'col-1-12' determines width. You simply write multiple classes in side the opening tag. i.e. class="sections col-6"</p>
+        
+        <p>Ids - Individual elements can be selected using an ID. These are selected in CSS in the following way: #<i>tagname</i> {}</p>
+        
+        <p>View source on this document for examples - notice that you can also use the universal selector '*' to select multiple elements of a particular class - see the css for columns in this page for instance.</p>
+        
+        <p>Colours - HTML supports 140 standard colour names but colours can also be set using RGB values and HEX values - view source for examples and remember there are many colour pickers online you can use to select individual colours and even whole colour schemes. I have used <a href="http://nipponcolors.com/#tsuyukusa">this </a>site again.</p>
+    
+        <p><b>Task</b> - Add colour styling to an existing project using all three methods above.</p>
+        
+    
+        </div>
+    
+        <div id="setting" class="sections col-6">
+    
+            <h2>The Box Model</h2>
+    
+        <img src="images/box.jpg" width=50%>
+        
+        <p>HTML elements can be thought of as boxes and each has the following as shown in the image here - content surrounded by padding, border, margin.</p>
+            
+        <p><b>Task</b> - Add structure to your project by styling via the box model - use the padding, border, margin css properties.</p>
+        
+        See <a href="https://www.w3schools.com/css/css_boxmodel.asp">here </a>for more information and a tutorial. 
+        
+        <p>Tip - you need to set border-style first when working with borders.</p>
+    
+        </div>
+        
+    </div>
+
+    <div class="row"> <!-- this div contains two columns, as col-6 has a width of 50%, this row will have a width of 100% -->
+    
+        <div id="what" class="sections col-6"> <!--NOTE - you can assign more than one class to an element, separated by a space. If we wanted to style these we could uncomment the .sections css in the stylesheet - this will reveal borders for our divs and show us how the page is layed out.-->
+    
+          
+               <h2>Text, Fonts and Links</h2>
+        
+             <p>CSS is also used to style text and links and control fonts.</p>
+        
+            <p>Text is most commonly coloured, aligned and decorated.</p>
+        
+            <p>The same is true for links but because links involve different <b></b>states we use some further variants on selectors:</p>
+        
+            <p>a:link - a normal, unvisited link</p>
+             <p>a:visited - a link the user has visited</p>
+            <p>a:hover - a link when the user mouses over it</p>
+            <p>a:active - a link the moment it is clicked</p>
+        
+            <p>Fonts are set using the @font-face selector to define a specific font, you can download fonts and link locally, ensuring they will always displya correctly, or you can link to fonts on the web, they will usually have a .ttf extension. Feel free to experiment and change the font of your site - see <a href="https://beautifulwebtype.com/">here </a>for free type faces.</p>
+        
+            <p>You can use generic font-families such as Times or Georgia, which will be on your users computers, or font families such as such as serif and sans-serif. Alternatively you can use online fonts, such as those from<a href="https://fonts.google.com/"> google fonts, </a>which provides you with  code to put in your header that will link to the font, and css which you can apply to individual elements. </p>
+        
+            <p>You can then also specify font-size using either px - pixels - or em - or percentages. em is a measure of the font-size relative to the default font size set on the user's computer - view source on this document to see examples. Using em or percentage is advisable as this will ensure responsivity - more about that later</p>
+        
+            <p>See <a href="https://www.w3schools.com/css/css_font.asp"> here </a>for a demonstration. QUIZ: Can you figure out why this link is styled differently to those in the navigation bar at the top.</p>
+        
+    
+            <p><b>Task</b> - Style your text and links and then download and add an open-source font to your project.</p>
+        
+        
+    
+        </div>
+    
+        <div id="setting" class="sections col-6">
+    
+            <h2>Adding Navigation</h2>
+        
+            <p>Navigation menus are key to conventional website interactivity - there are many ways to do them. You do not need to use a conventional system. Any form of navigation however experimental will count as a key form of interactivity on our site.</p>
+
+            <p>This page uses the <a href="https://www.w3schools.com/css/css_navbar.asp">dropdown nav bar method,</a>which makes use of Lists and ids as links</p>
+            
+            <p><b>Task:</b>Try to understand how the dropdown navigation in this page works - hint# it is currently a little broken - see if you can fix it! </p>
+    
+        </div>
+        
+    </div>
+
+     <div class="row"> <!-- this div contains two columns, as col-6 has a width of 50%, this row will have a width of 100% -->
+    
+        <div id="what" class="sections col-12"> <!--NOTE - you can assign more than one class to an element, separated by a space. If we wanted to style these we could uncomment the .sections css in the stylesheet - this will reveal borders for our divs and show us how the page is layed out.-->
+    
+             <h2>Favicons</h2>
+        
+             <p>Favicons are small images used to represent websites in browser tabs.</p>
+
+             <p>You use another link tag in your header to call them.</p>
+            
+            <p><b>Task</b> - Figure out how to add a favicon to your site that will appear in the browser tab it opens in. You can use any image, but there are online resources where you can get free ones designed for the purpose - such as <a href="https://icons8.com/icons/set/favicon">here.</a></p>
+    
+        </div>
+    
+      
+        
+    </div>
+
+    
+    <div class="row"> <!-- this div contains two columns, as col-6 has a width of 50%, this row will have a width of 100% -->
+    
+        <div id="what" class="sections col-6"> <!--NOTE - you can assign more than one class to an element, separated by a space. If we wanted to style these we could uncomment the .sections css in the stylesheet - this will reveal borders for our divs and show us how the page is layed out.-->
+    
+            <h2>What is Responsive Web Design?</h2>
+    
+            <p>Responsive web design involves using HTML and CSS to automatically resize, and even re-layout, a website so that it looks good on all devices.</p>
+        
+            <p>For many kinds of websites it is smart to design 'mobile first' - this means that you design so the site will work well on a mobile device first - because most people will visit it on a mobile device - and then add responsivity to handle other use cases.</p> 
+        
+            <p> The decisions you make here will depend on your website and your particular idea - for instance, your site may be designed to be unresponsive or to only work in a browser for artistic reasons.</p>
+        
+            <p>Making your page responsice is relatively simple - there are few fail-safe rules to follow.</p>
+    
+        </div>
+    
+        <div id="setting" class="sections col-6">
+    
+            <h2>Setting the Viewport</h2>
+        
+            <p>Make sure you use the following code in your header when making responsive pages (your boilerplate code includes this):</p>
+        
+            <p>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+        
+            <p>This allows the browser to handle the pages dimensions and layout based on device screen size.</p>
+        
+            <p>See<a href="https://www.w3schools.com/css/css_rwd_viewport.asp"> here </a>for an explanation of this property.</p> 
+    
+        </div>
+        
+    </div>
+    
+    
+    
+    
+    
+    
+    <div class="row"><!-- this div contains two columns, as col-6 has a width of 50%, this row will have a width of 100% -->
+    
+        <div id="grids" class="sections col-6">
+
+            <h2>Designing with Grids</h2>
+        
+            <p>Using a <b>grid-view</b> to design your site can help you manage complex layouts and responsivity. You have already created a grid style layout when you copied the code at the beginning of the tutorial.</p>
+        
+            <p>When using a grid-view the page is divided vertically into a series of <b>columns</b> - often twelve - which are then organised into horizontal <b>rows</b>.</p>
+        
+            <p>This gives you a way to measure and proportion segments of your page.</p>
+        
+            <p>As you can see in the CSS we have 12 columns with width percentages that TOGETHER add up to 100%.</p>
+            
+            <p>We then simply use divs to arrange the page - We mark horizontal divs with the 'row' class, and then the divs within it must add up to 100% - we might mark 4 x divs as 'col-3', for example.</p>
+        
+            <p>Refer to the w3schools tutorial <a href="https://www.w3schools.com/css/css_rwd_grid.asp">here</a> and look at the source of this page and its stylesheet to see how to go about it.</p>
+      
+            <p><b>Task</b> - Add a grid to your project and experiment with different layouts - to practice you can just use empty divs with different background colours.</p>
+        
+        </div>
+
+        <div id="queries" class="sections col-6">
+        
+            <h2>Media Queries and Breakpoints</h2>
+        
+            <p>Media queries use the @media rule, as you can see here, to check on screen size and add 'breakpoints' to change the CSS based on the new size:</p>
+        
+            <pre>
+        
+            @media only screen and (max-width: 1080px) {
+                        body {
+                                background-color: blue;
+                                }
+                            }
+        
+            </pre>
+            
+            <p>As you can see in the cource code, when the window size is reduced to 1080px or below (common phone resolution) a series of rules are changed - columns all become 100% width, the position and display of the hamburger changes so it will not be left off the page or overlap with the heading. The DIVS are all simply displayed as a single row, which makes them readable on a small screen. </p>
+        
+            <p><b>Task</b> - Add a media query and breakpoint to your project to redesign for mobile devices.</p>
+        
+        </div>
+        
+    </div>
+        
+    
+    
+    <div class="row"> <!-- this div contains three columns, as col-4 has a width of 33.33%, this row will have a width of 100% -->
+    
+            <div id="content" class="sections col-4">
+        
+                <h2>Responsive Text, Images and Videos</h2>
+        
+                <p>Text, images and videos can all be made to be responsive too.</p>
+        
+                <p>Font-size can be made responsive by using vw - viewport width - instead of em or px - 1vm is 1% of the viewport width (view source for an example and note I've deliberately chosen to use a mix of vw and em).</p>
+        
+                <p>Images can be made responsive by setting the width to 100% and the height to auto like this:</p>
+        
+                <pre>
+        
+                img {
+                      width: 100%;
+                      height: auto;
+                    }
+        
+                </pre>
+                
+            </div>
+                
+            <div id="content" class="sections col-4">
+                
+                <h2>iframes</h2>
+        
+                <p>Videos can be made responsive in the same way, although iframes require some extra code. See below in the source.</p>
+        
+
+                <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe width="560" height="315" src="https://www.youtube.com/embed/qnweKclCLRk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        
+                <p><b>Task</b> - Try out all of these too.</p>
+        
+                
+                
+                
+            </div>
+        
+            <div id="dropdown" class="sections col-4">
+        
+                    <h2>Dropdown Menus</h2>
+        
+                <p>Dropdown navbars like the one on this page are easy to create - just view source and take a look at the CSS code in style.css and check out the w3schools info <a href="https://www.w3schools.com/css/css_dropdowns.asp">here</a>.</p>
+                
+                <p>You can see how all the content is arranged within a series of divs that allow users to move around the page. You will have noticed this before where a link simply scrolls to a certain heading.</p>
+        
+        </div>
+        
+    </div>
+    
+    
+  <div class="row"> <!-- this div contains only 1 columns of 100% -->
+      
+      <div>
+      
+          <h2>Optional: Advanced CSS</h2>
+      
+      </div>
+      
+    </div>
+    
+    
+    
+
+    
+    <div class="row"> <!-- this div contains FOUR columns, as col-4 has a width of 25%, this row will have a width of 100% -->
+        
+        
+        <div  style= "height: 250px" id="gradient" class="sections col-3">
+        
+            <h2>Gradients</h2>
+            
+            <p>You can use colour gradients as a design tool.See the css for the 'gradient' id, which applies this div only.</p>
+        
+              <p>There are numerous generators that allow you to make these. See <a href="https://www.w3schools.com/css/css3_gradients.asp">here</a>, and <a href="https://www.colorzilla.com/gradient-editor/">here</a>.</p>
+        
+        </div>
+        
+  
+        <div  style= "height: 250px"  id="transition" class="sections col-3">
+        
+        <!--<img class="bottom" src="images/12.jpg" />
+        <img class="top" src="images/20.jpg" />-->
+            
+            <h2>Transitions</h2>
+        
+            <p>You can use<a href="https://www.w3schools.com/css/css3_transitions.asp"> transitions</a> to make css properties change over time. See the css for the 'transition' id - which applies to this div only.</p>
+        
+        </div>
+             
+        <div style="height: 700px" id="animations" class="sections col-3">
+        
+      
+            <h2>Animations</h2>
+        
+            <p>You can make your page more interesting with<a href="https://www.w3schools.com/css/css3_animations.asp"> animations.</a></p>
+            
+            <p>All <a href="http://oli.jp/2010/css-animatable-properties/">these</a> properties can be animated.</p>
+        
+        </div>
+             
+           
+        
+        
+         <div style= "height: 300px; background-image:url(images/20.JPG); color: white" id="modals" class="sections col-3">
+        
+      
+            <h2>Modals</h2>
+             
+        
+             <p>You can put information and images inside<a href="https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal"> modals</a> which will pop up when a user clicks or hovers.</p>
+             
+             <p><a href="https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal_img">Image modals</a> work a little differently.</p>
+                
+             
+                <!-- Trigger/Open The Modal -->
+                <button id="myBtn">Open Modal</button>
+
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
+                    
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span> <!--multiplication sign-->
+
+                 
+                
+            <p>You can put information in here and style it seperately. 
+                </p>
+                    
+                            
+                  
+               </div>   
+        
+                </div>
+        
+        
+        </div>
+        
+        
+        
+        
+    </div>
+    
+    <!--below is the javascript for my modal-->
+
+<script>
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+    
+</body>
+
+</html>

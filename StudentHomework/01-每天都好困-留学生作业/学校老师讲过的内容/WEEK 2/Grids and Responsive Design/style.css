@@ -1,0 +1,295 @@
+        @font-face {
+                    font-family: spaceMono;
+                    src: url(fonts/SpaceMono-Regular.ttf);
+        }
+    
+        body {
+          /*  margin-left: 10%; */
+            background-color:#ffffff;
+            font-family:"spaceMono", "Helvetica", sans-serif;
+            color:#012118;
+            
+            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#1e5799+0,2989d8+50,ce2163+62,7db9e8+100 */
+background: rgb(30,87,153); /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover,  rgba(30,87,153,1) 0%, rgba(41,137,216,1) 50%, rgba(206,33,99,1) 62%, rgba(125,185,232,1) 100%); /* FF3.6-15 */
+background: -webkit-radial-gradient(center, ellipse cover,  rgba(30,87,153,1) 0%,rgba(41,137,216,1) 50%,rgba(206,33,99,1) 62%,rgba(125,185,232,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: radial-gradient(ellipse at center,  rgba(30,87,153,1) 0%,rgba(41,137,216,1) 50%,rgba(206,33,99,1) 62%,rgba(125,185,232,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+        }
+
+        
+        .sections {
+            background-color:#fcfdfd;
+            max-width: 100%;
+            height: 50%;
+            display: block; 
+         border-style: solid;
+            border-color: #012118;
+            border-width: 5px;*/
+            padding: 25px;
+            padding-bottom: 50px;
+            margin-bottom: 50px;
+            overflow: auto;  
+        }
+            
+    div a { color: #B481BB;
+
+}  
+
+
+    #gradient {
+        background: -moz-linear-gradient(-45deg, #a90329 0%,  #8f0222 21%, #a6b503 26%, #c10343 46%, #12d604 63%, #0804e0 73%, #6d0019 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(-45deg, #a90329 0%,#8f0222 21%,#a6b503 26%,#c10343 46%,#12d604 63%,#0804e0 73%,#6d0019 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(135deg, #a90329 0%,#8f0222 21%,#a6b503 26%,#c10343 46%,#12d604 63%,#0804e0 73%,#6d0019 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        
+
+}
+
+
+
+        p {
+            font-size: 1em;
+            text-align: left;
+        }
+        
+        h1{
+            font-size: 5vw;
+            margin-bottom: 50px;    
+        }
+        
+        h2{
+            font-size: 1.5em;
+        }
+        
+        h3,
+        h4,
+        h5,
+        h6{
+            font-size: 1.5em;
+        }
+        
+        a {
+            color: #000000;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        a:active{
+            color: #000000;
+        }
+        
+        /*img {
+            float: right;
+        }*/
+        
+        ul {
+            display: block;
+            list-style-type: none;
+            max-width: 67%;
+            border-style: solid;
+            border-color: #012118;
+            border-width: 5px;
+            margin-bottom: 25px;
+            padding: 25px;
+            overflow: hidden;
+            background-color: #000000;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+                display: block;
+                color: #ffffff;
+                font-size: 1.5em;
+                text-align: center;
+                padding: 16px;
+                text-decoration: none;
+        }
+
+        .menu-icon{
+                
+              padding: 16px;
+              border: none;
+              cursor: pointer;
+            
+        }
+
+        .menu-icon-bar1, .menu-icon-bar2, .menu-icon-bar3{
+            width: 40px;
+            height: 6px;
+            background-color: black;
+            margin: 6px 0;
+            transition: 0.4s;           
+        }
+
+        .dropdown {
+            position: fixed;
+            top: 3%;
+            right: 3%;
+        }
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          right: 0;
+          background-color: #ffffff;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+
+        .dropdown-content a {
+          color: #000000;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #000000;
+            color:#ffffff; 
+        }
+
+        /*this makes the links come up on hover*/
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
+        
+        * {
+            box-sizing:border-box;
+        }
+
+        [class*="col-"] {
+            float: left;
+            padding: 15px;
+            background-color:#fcfdfd;
+            overflow: auto;
+        }
+
+        .col-1 {width: 8.33%;}
+        .col-2 {width: 16.66%;}
+        .col-3 {width: 25%;}
+        .col-4 {width: 33.33%;}
+        .col-5 {width: 41.66%;}
+        .col-6 {width: 50%;}
+        .col-7 {width: 58.33%;}
+        .col-8 {width: 66.66%;}
+        .col-9 {width: 75%;}
+        .col-10 {width: 83.33%;}
+        .col-11 {width: 91.66%;}
+        .col-12 {width: 100%;}
+
+        .row::after {
+          content: ""; /* there will be no content after each row - try deleting this property or inserting some text to see what happens*/ 
+          clear: both; /* BOTH sides of the element will be CLEAR - nothing can appear there*/
+          display: table;/*makes the elements appear as a grid - ie the squares in a horizontal row will remain the same height*/
+        }
+
+        @media only screen and (max-width: 1080px) {
+          /* For mobile phones: */
+              [class*="col-"] {
+                width: 100%;
+              }
+            .dropdown {
+            position:static;
+            display: block;
+            }
+            
+            .row {
+                
+                
+                
+            }
+            
+        }
+
+
+/*below is the css for the bottom row*/
+      
+    #transition {
+        height: 200px;
+        transition: transform 2s;
+}
+
+    #transition:hover {
+    transform: rotate(360deg);
+}
+
+
+
+ #animations {
+        
+        position: relative;
+        background-color: #9B90C2;
+        animation-name: example, example2;
+        animation-duration: 20s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+     
+     
+}
+
+        @keyframes example {
+        0%   {background-color: #9B90C2; }
+        50%  {background-color: #F9BF45; }
+        100% {background-color: #9B90C2; }
+}
+
+ @keyframes example2 {
+    
+        0% {transform: rotate(0deg)}
+        100% {transform: rotate(360deg) }
+    
+    
+    
+}
+
+
+
+/* The Modal (background) */
+#myModal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content { 
+  display:block;
+  color: red;
+  position: absolute;
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  max-width: 100%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+

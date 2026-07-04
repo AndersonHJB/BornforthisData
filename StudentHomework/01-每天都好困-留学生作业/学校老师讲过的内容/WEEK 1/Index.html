@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+
+
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WEEK 1</title>
+
+    <script src="java.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exile&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="container" style="font-family: palatino;">
+
+
+
+<div id=maintextindex>
+
+        <h1>WEEK 1 - MDIA2010 - INTRO</h1>
+
+       
+
+        <p>In today's class we will begin learning to hand code websites. Note, we are not building websites in the conventional sense, you are not making an online store or a portfolio site with standard functionality - try to forget what you think you know about websites. You cannot use Wix or Squarespace etc. Think of the browser as your canvas, or as a highly flexible vessel for controlling and presenting media to the viewer in new and experimental ways. 
+
+    <h1>1. DOWNLOAD EXERCISE AND INSTALL VIS CODE</h1>
+
+            <p>1. Download the .Zip file from Moodle/Miro and open the index.html file in your browser. These are your instructions for today. <br><br>First lesson: the first page of your website is always called 'index.html. <br><br>HINT* If you control click and select 'view source' you will be able to see the code for this page! <br><br>
+            2. Download and install Visual Studio Code on your computer via link in Miro or <a href="https://code.visualstudio.com/download" target="_blank">here</a> <br><br>
+            3. Create a folder on your computer for this course, and in it create a folder called 'my first website' or similar.<br><br>
+            4. In VS go to 'open folder' in the file menu and open your new folder. In the 'explorer' on the left click the + icon at the top and create two new files (not folders) named 'index.html' and 'styles.css'. <br><br>
+            5. Open the index.html file you just created in the browser - you will see an empty page - we are going to add content to this page and experiment today as our first introduction to coding.<br><br>
+            6. HTML is the most basic form of web-coding, standing for Hyper Text Markup Language. We use HTML tags to load text, images, video, audio and do basic formatting, not unlike a word processor. You will notice that HTML looks very boring at first because we are not giving the browser any styling information, here we can see the browser's default settings for text. <br><br>
+           
+        
+
+    <h1>2. HTML</h1> 
+
+    <h2>Boilerplate Code</h2>
+
+
+    <img src="images/bp.png"/>
+
+       
+    
+        <p> -The boilerplate code above, which we set up in week 1, creates the basic structure for a web page. Type it out exactly as you see it here in the browser. You will only ever have to do this once if you copy and paste for your records. 'Save as' right now and create a 'boilerplate.html' file and you will always be ready to go in future.</p>
+    
+        <p>-The &lt;!DOCTYPE html&gt; tag tells browsers that our <b>document</b>  contains html code.</p>
+
+        <p>-The &lt;html&gt; tag specifics where our html starts and stops - notice the tag is 'closed' with a &lt;/html&gt; tag at the end of the document - the forward slash indicates a close tag. Almost all html tags work in this way, with an opening and closing tag.</p>
+    
+        <p>-The &lt;head&gt; tag specifics a section of code which is loaded before the rest of the page - remember the browser will load tags in the order you write them, top to bottom, left to right. We can link to other pieces of code such as CSS and Javascript [we will learn about these later] and provide crucial details that will usually affect your entire page.</p>
+    
+        <p>-The &lt;meta&gt; tag includes an attribute 'charset' - or character set - which is set to UTF-8, the standard for contemporary websites, ensuring all text characters are rendered properly. The name and content attributes tell the browser to render the page at the available width of the viewport, which is the default size of the browser window. Later on we will learn to make our sites 'responsive', which means they will respond to the actual size of the broweser window.</p>
+    
+        <p>-The &lt;title&gt; tag specifies the title of the page in the browser tab - for example 'WEEK 1' here, as you can see in the tab name in your browser. </p>
+    
+        <p>-The &lt;body&gt; tag specifies the body or substance of the page itself and is where the rest of your code goes. </p>
+
+    <h2>HTML Elements</h2>
+    
+        <p>-A html element is one piece of an HTML page - defined by a start tag and end tag and everything in between, such as any of the above.</p>
+    
+        <p>-HTML <b>elements</b> can be inside - and therefore included in - other elements - this is called <b>nesting</b>.</p>
+
+    <h2>Formatting</h2>
+    
+        <p>-It is standard practice to use lowercase tags and to indent one tab or space to show the relationship between <b>parent</b> and <b>child</b> elements - as you can see in the boilerplate code above.</p>
+        
+        <p>-People get very passionate aboute using spaces or tabs - just pick one and be consistent. Again if you control click and choose 'view source' you will be able to see how the code in this page is formatted so it is easy to tell which elements are nested without others. It is important that you keep your code well organised and readable - you will thank yourself later.</p>
+
+        <h1>2. LET'S BEGIN BUILDING YOUR FIRST SITE</h1>
+        
+        <p>-Let's go over the process of formatting text with HTML. Thoughout class today we're going to build a simple but interesting website using HTML, very basic CSS, images, sounds, and embedded media. </p>
+
+        <p>1. Inside your 'body' tags create a &lt;div&gt;tag - divs are the fudamental building blocks of your site for formatting purposes. You cannot see them, they hold and organise content.You will notice as you type that VS will create the closing tags for you</p>
+
+        <p>2. Inside your 'div' tag create a 'p' tag. This is a paragraph - you do not need them to type text, but they are useful because they tell the browser to include line breaks</p>
+
+        <p> 3. Grab whatever you wrote in your exercise during the lecture. Expand it to arond 100 words if it is very short and add below inside a div and paragraph tag - check the source if you need to - think harder about your issue if it is very short (f you didn't do it or didn't attend, you should familiarise yourself with the assessment and attendance requirements for this course as soon as possible). My placeholder text below comes from the Wikipedia page for <a href="https://en.wikipedia.org/wiki/Human">'human'</a>, which I find oddly interesting and surreal, as if it were written by aliens or another species. This our first content, we will keep experimenting and adding things - what can you create? </p>
+
+            <blockquote>
+
+                <p> Humans (Homo sapiens) are the only extant members of the subtribe Hominina. Together with chimpanzees, gorillas, and orangutans, they are part of the family Hominidae (the great apes, or hominids). A terrestrial animal, humans are characterized by their erect posture and bipedal locomotion; high manual dexterity and heavy tool use compared to other animals; open-ended and complex language use compared to other animal communications; larger, more complex brains than other animals; and highly advanced and organized societies.<br><br>Early hominins—particularly the australopithecines, whose brains and anatomy are in many ways more similar to ancestral non-human apes—are less often referred to as "human" than hominins of the genus Homo. Several of these hominins used fire, occupied much of Eurasia, and gave rise to anatomically modern Homo sapiens in Africa about 315,000 years ago. </p>
+
+            </blockquote>
+
+    <h2>Basic Tags</h2>
+            
+        <p>4. Let's use these basic tags below to format your text and get the hang of using them. If you put these around a piece of text, save your file in VS, and hit refresh in your browser, you will see the changes. </p>
+
+        <p>This is a very useful resource where you will find information and tutorials on all HTML tags - <a href="https://www.w3schools.com/tags/default.asp" target="_blank">LIST OF HTML TAGS.</a> You will find yourself here often, so bookmark it. Get used to googling and doing your own research/troubleshooting in this course. There has almost <i>always</i> been a person in the same situation as you who has started a thread about your specific problem. Don't give up when you can't figure it out intuitively - you must be persistent!</p>
+
+        <p></p>Here are some more basic tags used for formatting text - we're ready to expand upon our boilerplate and give them a test/ Think of this exercise as a little artwork or sketch pad - we're experimenting!:</p>
+
+        <ul>
+
+            <p>&lt;div&gt;- You will almost always use divs in your projects. They are the most common way to arrange and organise a page.</p> 
+
+            <p>&lt;span&gt;- This is a very useful tag that allows you to format text without creating a new line. It is often used to style individual words or phrases within a paragraph.</p>
+
+            <p>&lt;h1&gt; to &lt;h6&gt; - These are very useful when formatting text, they will give you consistent heading sizes with minimal effort. </p>
+            
+            <p>&lt;br&gt; - This is a line break. VERY HANDY!</p> 
+    
+            <p>&lt;p&gt; - This is a paragraph. Also very handy.</p>
+    
+            <p>&lt;button&gt; - Later on we will get into attaching functions to buttons.</p>
+    
+            <p>&lt;ul&gt; - Useful when you are making lists of information and want to automate the formatting WITH numbers.</p>
+            
+            <p>&lt;ol&gt; - Useful when you are making lists of information and want to automate the formatting WITHOUT numbers.</p>
+    
+            <p>&lt;li&gt;- Place individual list items inside this tag.</p>  
+    
+            <p>&lt;blockquote&gt; - This is a block quote, which is useful for quoting text from elsewhere. It will indent the text and give it a different style.</p>
+       
+            <p>&lt;pre&gt; - useful tag that will retain the formatting of text copied from elsewhere.</p>
+    
+            <p>&lt;b&gt; - <b>BOLD</b></p>  
+    
+            <p>&lt;strong&gt; - also <b>BOLD.</b> You will notice there is some overlap in the function of tags created at different times.</p>
+    
+            <p>&lt;i&gt; - italics </p>  
+    
+            <p>&lt;em&gt; - emphasis</p>
+    
+            <p>&lt;del&gt; - strike through</p>  
+    
+            <p>&lt;u&gt; - underline</p>
+    
+            <p>&lt;sup&gt; - superscript</p>  
+    
+            <p>&lt;sub&gt; - subscript</p>
+            </p>
+        
+        </ul>
+
+         <!--This is some simple Javascript that plays and pauses the audio when you click the image. You will notice I have left out the controls attribute so the file cannot be seen. This is more advanced so don't worry about this yet - this is just a preview-->
+        
+                                 <audio id="Audio" src="sounds/BREEZY.mp3"></audio>
+
+                                                <script>
+                                                
+                                                        function playAudio() {
+                                                    
+                                                            var Audio = document.getElementById("Audio");
+                                                    
+                                                                if (Audio.paused) {
+                                                                Audio.play();
+                                                                } else {
+                                                                Audio.pause();
+                                                                }
+                                                            }
+                                                </script>
+                                                
+                                                
+                                                <img src="images/18.jpg" id="Audio21" onclick="playAudio()" style="transform: rotate(70deg); opacity: 0.40; position: absolute; right: 100px; max-width: 20%; z-index: 3">
+    
+        
+
+     <h2>3. IMAGES</h2>
+    
+        <p>Use the images in the 'images' folder, or images of your own choosing, to augment our information about 'humans'. Try inserting them in interesting places to change and enhance their meaning. </p>
+
+        <p>Let's try using images you have created yourself - get 5-10 images from your phone and insert them into your page. Plug your phone into your computer and import them, or email them to yourself.</p>
+        
+        <p>Here is a basic image tag - you can also use a url instead of a local file for the 'src' [aka source] attribute. </p>
+        
+     <pre> &lt;img src="images/10.jpg"&gt; </pre>
+        
+         <img src="images/13.jpg">
+
+<p>BONUS POINTS!!: Click around inside this section and see if there are an other ways to get sound to play/pause - HINT: This is a preview to how me might use Javascript in the future.</p>
+
+<h2>HTML Attributes</h2>
+    
+        <p>Before we use links, audio and video, it helps to understand what an attribute is. </p>
+            
+        <p>All html elements can have <b>attributes</b> that provide additional information about the element and are contained in the start tag - they tend to look like this name="value".</p>
+    
+        <p>-Links us the 'href=' attribute to define the url</p>
+    
+        <p>-Similarly, 'img', 'audio' and 'video tags use the 'src='attribute to tell the tag which media to load and where it is.
+      
+
+<h2>4. LINKS</h2>
+        
+          
+        <p>You can create links using the &lt;a&gt;&lt;/a&gt; tag. This tag has a number of attributes, the most obvious of which is href="url" - but there are others such as target="_blank" which will open the link in a new tab. </p>
+
+        <p><a href="https://www.w3schools.com/html/html_links.asp" target="_blank">See here for information on links</a></p>
+
+<h2>3. USING MEDIA</h2>
+          
+        <p>URLS to source media on your computer should be given as <b>relative</b> paths - This means they should be inside a folder that inside the same folder that contains your HTML file. They should be nowhere else on your computer, EVER. </p>
+
+          <img src="images/relative.png">  
+
+<h2>AUDIO</h2>
+      
+         <p>Audio and video can be embedded in an HTML page using the &lt;audio&gt; and &lt;video&gt; elements - in both cases a src attribute is needed to link to a media file, the same as for an image.</p>
+        
+    
+        <audio src="sounds/BREEZY.mp3" controls></audio>
+        
+        <p>The controls attribute gives users a set of controls.</p>
+
+         <p><a href="https://www.w3schools.com/html/html5_audio.asp" target="_blank">See here for information on audio</a></p>
+
+<h2>VIDEO</h2>
+        
+      <p>Video can also be embedded in your page</p>
+
+      <p>Let's again grab some video from your phone and insert it into our page. Shoot something fun right now! </p>
+
+    <video controls src="video/choir.mp4" style="max-width: 1000px;"></video>
+
+<h2>IFRAMES</h2>
+        
+        <!--Here is where I will explain iframes-->
+        <p>You can also use iframes, which allow you to embed media hosted on sharing sites like YouTube, Vimeo and Soundcloud. Go to any video and click 'embed' to copy the code. Youtube is a bit funny with this - it sometimes doesn't work until a site is published, or a user might have turned embeds off.. </p>
+        
+       <iframe width="1000px" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1924856180&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/torvs" title="torus" target="_blank" style="color: #cccccc; text-decoration: none;">torus</a> · <a href="https://soundcloud.com/torvs/lose-control" title="lose control" target="_blank" style="color: #cccccc; text-decoration: none;">lose control</a></div>
+    
+        <p><b>Task</b> - embed some media from a streaming service on your website.</p>
+
+    <h2>4. HTML COMMENTS</h2>   <!-- This is not a comment -->
+    
+        <p>You can add comments to your code - text that will be ignored by the browser - using the &lt;!-- and --&gt; tags - see the example below in the source above.</p>
+
+        <p>This is very useful. You can leave notes for yourself and others. You can also comment out pieces of code so the browser will ignore them temporarily as you experiment - in the case you want to edit out some code without deleting it entirely.</p>
+        
+        <p><b>Task</b> - Add some comments to your project. These are important - use them, you wil need to include them in your final submission for various reasons.</p>
+        
+
+<h1 style="background-color: #24936E;">5. INTRODUCTION TO CSS</h1>
+     
+        <p>As a prelude to next week, let's try some very simple CSS. I have applied some styling to the heading immediately above. If you 'view source' you will see some extra code inside the opening h1 tag <b> style="....".. </b> and so on. </p>
+    
+        <p>CSS stands for Cascading Style Sheets and is used to style HTML elements. It allows us to change the appearance of our web pages, including colors, fonts, layouts, and more.</p>
+
+         <p>CSS is a separate language from HTML, but it works closely with it. We can write CSS directly in our HTML files using the style attribute, or we can link to an external CSS file.</p>
+        
+        <p>CSS can be applied in three different ways: inline, internal, and external. Today we will focus on inline styling.</p>
+       
+        <p>To style any element you need to put CSS inside the opening tag. Following the syntax "style="Property: Attribute" - if there are multiple properties, seperate with a semi-colon; Style lets us control how an element will appear - for example style="color:red;" and style="background-color:red;" - see the heading in the source in this section for an example.</p>
+    
+
+        <p>We can also use the style attribute to position elements, change their size, and apply other effects. We will get further into formatting and CSS next week. Today we are just experimenting. </p>
+    
+
+         <p>Here is a list of CSS properties you can try in order to individually style your divs, paragaphs, images, or any HTML element. This is <i>inline</i> styling, next week we will look at <i>internal</i> and <i>external</i> styling.</p>
+
+         <p>See <a href="https://www.w3schools.com/CSSref/index.php" target="_blank">HERE</a> for a list of properties, scroll down to the 'properties' section on the left. Not all of them will be immediately useful.</p>
+        
+       <img src="images/1.jpg" style="transform: rotate(20deg);border-radius: 500px; max-height: 300px;width: 600px; transform: skewY(-20deg); opacity: 0.60; position: absolute; right: 100px; z-index: 2">
+     
+        <p>background-color - Let's being by settig the background color of of one of our divs using HEX codes from <a href="https://nipponcolors.com/#rokusyoh" target="_blank">THIS</a> site. Create a color and then cope the HEX code to use the color. You can also use colors from photoshop or anywhere else. </p>
+        <p>color</p>
+        <p>transform: rotate(20deg)</p>
+        <p>transform: skewY(20deg)</p>
+        <p>opacity</p>
+        <p>font-family</p>
+        <p>font-size</p>
+        <p>font-weight</p>
+        <p>border-style: solid;</p>
+        <p>border-width: 5px;</p>
+        <p>border-radius: 50px;</p>
+        <p>border-color: coral;</p>
+        <p>margin: 35px; </p>
+        <p>position </p>
+        <p>z-index </p>
+        <p>opacity </p>
+        <p>width </p>
+        <p>height </p>
+        <p>max-width </p>
+        <p>max-height </p>
+        <p>left </p>
+        <p>right </p>
+
+
+    <h1 style="background-color: #24936E;">6. FONTS</h1>
+
+    <div style="font-family: Arial, Helvetica, sans-serif; background-color: #24936E;"  > 
+
+    <p>The last thing we wil look at today is Fonts. Font selection is VERY important in terms of defining an aesthetic for your page. Notice how this paragraph is in Helvetica? Let's think about your favourite fonts and apply them to your page. Here we need to think about nesting. A CSS property will apply to EVERYTHING inside a 'parent' element unless overruled by a new property in a 'child' element. Lets add some fonts to various elements on our page. </p>
+
+
+    <p style="font-family: Exile;">For our final challenge today, let's see if you can figure out how to impement a custom font using <a href=" https://fonts.google.com/" target="_blank">Google Fonts. </a>Hint - you will need an extra 'link' tag in the header to load the font, whoch you will then call using 'inline' CSS.</p>
+
+    <p>
+
+        Look at this <a href="www.w3schools.com/css/css_font_google.asp" target="_blank">tutorial</a>or 'view source' on this page and figure it out from there. 
+    </p>
+
+    <p>
+
+        TEST: If you wanted to use a custom font on your whole page, which HTML element would you style and how to achieve such a thing? 
+    </p>
+
+     </div>
+
+       <br><br><br><br><br>
+     
+    </div>
+
+     <br><br><br><br><br>
+    
+  
+    
+
+    
+    <div> 
+    
+
+    
+        <span><img src="images/10.jpg" style="transform: rotate(20deg); opacity: 0.90; position: absolute; right: 100px; z-index: -3">
+        <img src="images/11.jpg" style="transform: rotate(40deg); opacity: 0.80; position: absolute; max-width: 100 left: 200px; z-index: -2">
+        <img src="images/7.jpg" style="transform: rotate(75deg); width: 500px; position: absolute; left: 50px; z-index: -1">
+        </span>
+        
+    </div>
+    
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    
+    <div style= "width: 100%; max-height: 100px; overflow: hidden">
+    
+        <img src="images/7.jpg"  style= "height: 100px; max-width: 10%">
+        <img src="images/14.jpg" style= "height: 100px; max-width: 10%">
+        <img src="images/15.jpg" style= "height: 100px; max-width: 10%">
+        <img src="images/16.jpg" style= "height: 100px; max-width: 10%">
+        <img src="images/17.jpg" style= "height: 100px; max-width: 10%">
+        <img src="images/18.jpg" style= "height: 100px; max-width: 10%">
+        <img src="images/19.jpg" style= "height: 100px; max-width: 10%">
+        <img src="images/20.jpg" style= "height: 100px; max-width: 10%">
+        <img src="images/21.jpg" style= "height: 100px; max-width: 10%">
+        <img src="images/22.jpg" style= "height: 100px; max-width: 10%">
+        <img src="images/4.jpg" style= "height: 100px; max-width: 10%">
+    
+    </div>
+           
+
+    
+
+        
+
+
+</div>
+
+<h2>Continue Experimenting!</h2>
+
+ 13. Let's continue experimenting, writing and imagining for the rest of the class. Let's also start to make use of <a href="https://www.w3schools.com/">W3 resources</a> to understand what various parts of our code is doing - make a habit of regularly Googling "W3 + whatever you're looking for". You will usually find an answer there or on other forums.
+
+
+</body>
+
+
+</html>
