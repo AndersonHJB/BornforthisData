@@ -26,8 +26,22 @@ body {
     background-color: #fff8eb;
     border: solid 2px #86aaa0;
     border-radius: 16px;
+    box-sizing: border-box;
     padding: 25px;
     width: 50%;
+}
+
+.small-boxes {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.box-left {
+    margin-right: 25px;
+}
+
+.box-right {
+    margin-right: 0;
 }
 
 .feature {
