@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>公众号排版-可复制版</title>
+  <style>
+:root {
+  --ink: #243238;
+  --muted: #657579;
+  --teal: #0f8b8d;
+  --teal-soft: #e9f5f4;
+  --gold: #f5a63b;
+  --gold-soft: #fff4df;
+  --line: #ded8cd;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 28px 16px 80px;
+  background: #ece8dd;
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+}
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 9;
+  max-width: 780px;
+  margin: 0 auto 18px;
+  padding: 12px;
+  border: 1px solid rgba(36, 50, 56, 0.12);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 12px 28px rgba(36,50,56,0.08);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+.toolbar span { color: #5d6b70; font-size: 14px; line-height: 1.5; }
+.toolbar button {
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 16px;
+  color: #fff;
+  background: var(--teal);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.wechat-shell {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 24px 0;
+  background: #fff;
+  box-shadow: 0 16px 42px rgba(36,50,56,0.10);
+}
+#wechat-article {
+  max-width: 677px;
+  margin: 0 auto;
+  padding: 0 18px 42px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.95;
+  letter-spacing: 0;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+#wechat-article h1 {
+  margin: 12px 0 24px;
+  padding: 0 0 16px;
+  color: var(--ink);
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.38;
+  text-align: left;
+  border-bottom: 4px solid var(--teal);
+}
+#wechat-article h2 {
+  margin: 34px 0 18px;
+  padding: 10px 14px;
+  border-left: 6px solid var(--teal);
+  border-radius: 0 8px 8px 0;
+  background: var(--teal-soft);
+  color: var(--ink);
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.55;
+}
+#wechat-article h3 {
+  margin: 28px 0 12px;
+  color: var(--teal);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.6;
+}
+#wechat-article p {
+  margin: 14px 0;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.95;
+  text-align: justify;
+}
+#wechat-article p:has(img) { text-align: center; margin: 24px 0; }
+#wechat-article img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 10px 26px rgba(36,50,56,0.12);
+}
+#wechat-article hr {
+  height: 1px;
+  margin: 28px 0;
+  border: 0;
+  background: linear-gradient(90deg, transparent, var(--line), transparent);
+}
+#wechat-article blockquote {
+  margin: 20px 0;
+  padding: 14px 16px;
+  border-left: 5px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  background: var(--gold-soft);
+  color: #5d4b2b;
+}
+#wechat-article blockquote p {
+  margin: 0;
+  color: #5d4b2b;
+  font-size: 15px;
+  line-height: 1.85;
+  text-align: left;
+}
+#wechat-article ul, #wechat-article ol {
+  margin: 14px 0;
+  padding-left: 1.35em;
+  color: var(--ink);
+}
+#wechat-article li {
+  margin: 7px 0;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.85;
+}
+#wechat-article table {
+  width: 100%;
+  margin: 22px 0;
+  border-collapse: collapse;
+  border: 1px solid var(--line);
+  font-size: 14px;
+  line-height: 1.65;
+}
+#wechat-article th {
+  padding: 10px 8px;
+  border: 1px solid var(--line);
+  background: var(--teal);
+  color: #fff;
+  font-weight: 700;
+  text-align: left;
+}
+#wechat-article td {
+  padding: 10px 8px;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  vertical-align: top;
+  background: #fff;
+}
+#wechat-article tr:nth-child(even) td { background: #f8fbfb; }
+#wechat-article code {
+  padding: 2px 6px;
+  border-radius: 5px;
+  background: #f1f4f4;
+  color: #0d6670;
+  font-family: Menlo, Consolas, Monaco, "SFMono-Regular", monospace;
+  font-size: 0.92em;
+  white-space: normal;
+}
+#wechat-article pre {
+  margin: 18px 0;
+  padding: 14px 16px;
+  border-radius: 8px;
+  background: #17242b;
+  color: #eaf2f1;
+  overflow-x: auto;
+  line-height: 1.7;
+}
+#wechat-article pre code {
+  padding: 0;
+  background: transparent;
+  color: #eaf2f1;
+  font-size: 13px;
+  white-space: pre;
+}
+#wechat-article a {
+  color: #0b78c5;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(11,120,197,0.35);
+}
+.copied { color: var(--teal); font-weight: 700; }
+@media (max-width: 720px) {
+  body { padding: 12px 8px 48px; }
+  .toolbar { position: static; flex-direction: column; align-items: stretch; }
+  .toolbar button { width: 100%; }
+  .wechat-shell { box-shadow: none; }
+  #wechat-article { padding: 0 14px 36px; }
+  #wechat-article h1 { font-size: 24px; }
+  #wechat-article h2 { font-size: 20px; }
+}
+</style>
+</head>
+<body>
+  <div class="toolbar">
+    <span id="copy-status">点击右侧按钮复制排版内容，然后粘贴到微信公众号编辑器正文区。</span>
+    <button type="button" onclick="copyWechatArticle()">复制公众号排版</button>
+  </div>
+  <main class="wechat-shell">
+    <article id="wechat-article">
+<p>你好，我是悦创。</p><p>如果你的 Agent 最近开始出现这些症状：</p><ul><li>明明接了十几个工具，却越来越容易选错；</li><li>代码问题聊着聊着，混进了运维或文档上下文；</li><li>为了“更智能”加了多个 Agent，结果延迟和 Token 一起飙升；</li><li>出错后根本说不清，到底是路由、委派，还是上下文传递出了问题。</li></ul><p>先别急着换更大的模型。</p><p><strong>很多时候，真正卡住系统的不是模型能力，而是架构没有跟着任务复杂度一起升级。</strong></p><p>但反过来也一样：多 Agent 不是默认答案。架构一旦选重了，你得到的可能不是更聪明的系统，而是更多模型调用、更长链路和更多失败点。</p><figure><img src="https://raw.githubusercontent.com/AndersonHJB/PicGoImage/main/2026/0713/agent-architecture-guide/inline-chaos-to-order.png" alt="从单体过载到模块化协作" /><figcaption aria-hidden="true">从单体过载到模块化协作</figcaption></figure><p>这篇文章不讲某一个框架的固定写法，只解决一个工程问题：</p><blockquote><p><strong>面对 Skills、Sub-Agent、Handoff 和 Router，究竟该怎么选？</strong></p></blockquote><p>先给结论：</p><blockquote><p>能用单 Agent + Tools 解决，就先别拆 Agent；工具和知识太多时先上 Skills；需要上下文隔离或并行专业分工时再用 Sub-Agent；输入天然跨多个领域时用 Router；流程必须按状态逐步推进时用 Handoff。</p></blockquote><h2 id="一升级前先看两个核心信号">一、升级前先看两个核心信号</h2><p>LangChain 的多 Agent 指南把核心问题归结为“上下文工程”：<strong>每个处理单元应该看到什么，又不应该看到什么。</strong></p><p>当下面两个信号变得明显，多 Agent 才真正开始有价值。</p><h3 id="信号-1上下文已经开始互相污染">信号 1：上下文已经开始互相污染</h3><p>单个 Agent 同时承担代码、测试、安全、文档、运维等职责时，最常见的做法是继续往 System Prompt 里塞规则，再把所有工具一次性暴露给模型。</p><p>问题是：上下文窗口即使还没“满”，注意力也可能已经被稀释。</p><p>典型表现包括：</p><ul><li>工具选择错误率上升；</li><li>回答开始“串味”；</li><li>不相关历史进入当前推理；</li><li>Prompt 改动牵一发而动全身。</li></ul><p>这时你需要的不是更多文字，而是<strong>策略性地分发上下文</strong>。</p><h3 id="信号-2能力需要被不同团队独立维护">信号 2：能力需要被不同团队独立维护</h3><p>安全团队希望独立迭代审计能力，运维团队要维护日志与监控工具，研发团队又在持续更新代码检索规则。</p><p>如果所有能力都绑在同一个 Agent 里，每次升级都要一起测试、一起发布，组织边界会逐渐变成系统耦合。</p><p>当不同团队需要独立拥有 Prompt、工具和评测集时，拆分 Agent 才能把责任边界真正落到工程结构里。</p><p>此外，还有一个常见的加速信号：<strong>任务能否被拆成相互独立、可以并行完成的子问题。</strong> 如果答案是否定的，多 Agent 通常也很难带来明显收益。</p><h2 id="二四种模式一眼分清">二、四种模式，一眼分清</h2><figure><img src="https://raw.githubusercontent.com/AndersonHJB/PicGoImage/main/2026/0713/agent-architecture-guide/architecture-map.png" alt="四种 Agent 架构模式对比" /><figcaption aria-hidden="true">四种 Agent 架构模式对比</figcaption></figure><h3 id="skills先给单-agent-一个按需加载的能力柜">1. Skills：先给单 Agent 一个“按需加载”的能力柜</h3><p>Skills 仍然是单 Agent。区别在于，Agent 启动时只知道技能名称和用途，真正需要时才加载对应的知识、步骤和约束。</p><p>它解决的是：<strong>能力很多，但一次任务只会用到少数几种。</strong></p><p>例如，一个编码助手拥有部署、代码审查、数据库迁移、测试和文档等十几项能力。与其把全部说明写进 System Prompt，不如让它根据任务按需加载 <code>SKILL.md</code>。</p><p>适合：</p><ul><li>工具多、知识多，但任务仍属于同一主领域；</li><li>对话连续性很重要；</li><li>希望以最低复杂度实现渐进式能力扩展。</li></ul><p>代价：所有技能最终仍共享同一个对话上下文。连续加载多个大技能后，Token 还是会累积，隔离能力也有限。</p><p>一句话记忆：</p><blockquote><p><strong>Skill 是给同一个人按需发操作手册。</strong></p></blockquote><h3 id="sub-agent让主-agent-把专业任务委派出去">2. Sub-Agent：让主 Agent 把专业任务委派出去</h3><p>Sub-Agent 模式通常由一个 Supervisor 负责理解目标、拆分任务、委派专家并汇总结果。每个 Sub-Agent 拥有独立上下文，只接收完成当前子任务所需的信息。</p><p>它真正的价值首先是<strong>上下文隔离</strong>，其次才是并行。</p><p>适合：</p><ul><li>任务可以拆成多个相对独立的专业子任务；</li><li>每个领域需要大量专属资料或工具；</li><li>主 Agent 只需要接收压缩后的结论；</li><li>多个子任务可以并行执行。</li></ul><p>代价：多一层委派与汇总，就多一层调用、延迟和失败点。Supervisor 如果不会拆任务，再强的 Sub-Agent 也只会高效地跑偏。</p><p>一句话记忆：</p><blockquote><p><strong>Sub-Agent 是老板把研究、分析、写作分别交给不同专家，再统一验收。</strong></p></blockquote><p>Anthropic 的 Research 系统就是典型案例：Lead Agent 制定研究策略，多个 Sub-Agent 并行搜索，最后再聚合结果和引用。它适合“广度优先”、可以沿多条独立路径同时探索的任务。</p><h3 id="router先判断这是什么问题再决定交给谁">3. Router：先判断“这是什么问题”，再决定交给谁</h3><p>Router 的职责不是完成任务，而是分类、拆分和分发。</p><p>例如用户问：“公司的退货政策是什么？最近销售数据怎么样？”Router 可以把政策问题交给文档 Agent，把销售问题交给数据 Agent，再把两部分结果合成一个回答。</p><p>适合：</p><ul><li>一个请求天然跨多个知识域或数据源；</li><li>子问题之间依赖很少，可以并行；</li><li>专家边界清晰，路由规则可评测。</li></ul><p>代价：Router 通常是无状态的，每轮都要重新判断；一旦分类错了，后面的专家越强，结果可能离目标越远。</p><p>一句话记忆：</p><blockquote><p><strong>Router 是总机：先分流，再并行，最后合并。</strong></p></blockquote><h3 id="handoff让控制权随着状态逐步交接">4. Handoff：让控制权随着状态逐步交接</h3><p>Handoff 的核心不是并行，而是状态切换。</p><p>客服工单就是最直观的例子：前台 Agent 负责收集信息；条件满足后交给技术支持；仍未解决时再交给高级工程师。每一阶段拥有不同 Prompt、工具和退出条件。</p><p>适合：</p><ul><li>流程有明确阶段；</li><li>后续能力必须在满足前置条件后才能解锁；</li><li>用户需要保持连续、自然的多轮对话体验。</li></ul><p>代价：它天然偏顺序执行，不适合需要广泛并行检索的任务。工程上最容易出问题的地方，是阶段没有清晰的完成条件，导致流程卡住或错误跳转。</p><p>一句话记忆：</p><blockquote><p><strong>Handoff 是接力赛：当前角色完成自己的阶段，再把状态和控制权交给下一棒。</strong></p></blockquote><h2 id="三别只看概念三组数据告诉你真实代价">三、别只看概念：三组数据告诉你真实代价</h2><p>LangChain 在官方多 Agent 文档中，对四种模式做了三类对比。这里最值得记住的不是某一个绝对数字，而是不同结构的成本趋势。</p><figure><img src="https://raw.githubusercontent.com/AndersonHJB/PicGoImage/main/2026/0713/agent-architecture-guide/benchmark-comparison.png" alt="四种模式的调用与 Token 对比" /><figcaption aria-hidden="true">四种模式的调用与 Token 对比</figcaption></figure><h3 id="场景-1一次简单请求">场景 1：一次简单请求</h3><p>完成一个单一任务时，Sub-Agent 需要 4 次模型调用；Skills、Handoff、Router 都是 3 次。多出来的一次，来自结果回到主 Agent 再统一输出。</p><p>这说明：<strong>简单任务里，中心化编排通常只有开销，没有收益。</strong></p><h3 id="场景-2同类请求连续出现">场景 2：同类请求连续出现</h3><p>第二轮相同请求中，Skills 和 Handoff 可以复用已经加载的技能或当前状态，两轮合计 5 次调用；Router 为 6 次；Sub-Agent 因为子代理通常从新上下文启动，两轮共 8 次。</p><p>这说明：<strong>连续对话里，有状态模式更省调用。</strong></p><h3 id="场景-3跨多个专业领域">场景 3：跨多个专业领域</h3><p>当任务要求对比 Python、JavaScript 和 Rust，并假设每个领域有约 2,000 Token 的资料时：</p><ul><li>Sub-Agent：约 9K Token；</li><li>Router：约 9K Token；</li><li>Handoff：约 14K+ Token；</li><li>Skills：约 15K Token。</li></ul><p>原因很直观：Sub-Agent 和 Router 能让每个专家只看到与自己相关的上下文；Skills 虽然模型调用少，但加载后的多份资料会在后续调用中反复进入上下文。</p><p>这说明：<strong>多领域任务里，上下文隔离往往比少一次模型调用更值钱。</strong></p><h2 id="四90.2-的提升为什么不能被误读">四、90.2% 的提升，为什么不能被误读</h2><p>Anthropic 在 2025 年发布的多 Agent Research 工程复盘中提到：在其内部研究评测上，以 Claude Opus 4 作为 Lead Agent、Claude Sonnet 4 作为 Sub-Agent 的系统，比单 Agent Claude Opus 4 高出 90.2%。</p><p>这个数字很亮眼，但必须同时读完后半句：</p><ul><li>这是<strong>内部研究评测</strong>，不是所有 Agent 任务的通用结论；</li><li>Agent 通常消耗普通聊天约 4 倍 Token；</li><li>多 Agent 系统通常消耗普通聊天约 15 倍 Token；</li><li>在 BrowseComp 分析中，Token 用量、工具调用次数和模型选择解释了 95% 的性能差异，其中 Token 用量单独解释了约 80%。</li></ul><p>换句话说，多 Agent 的能力提升并不是“免费协作”，而是在用更多独立上下文、更高并行度和更多模型调用换取更大的搜索覆盖面。</p><p>它尤其适合：高价值、重检索、可并行、信息量超过单上下文承载能力的任务。</p><p>它不适合：所有 Agent 必须共享完整上下文、任务强依赖且高度顺序化、子任务很难独立验收的场景。Anthropic 也明确指出，大多数编码任务的可并行部分通常少于研究任务。</p><p>所以，90.2% 不是“赶快上多 Agent”的广告，而是一条更严格的工程提醒：</p><blockquote><p><strong>只有当任务价值足以覆盖约 15 倍 Token 成本，并且问题真的能被并行拆解时，这笔账才可能成立。</strong></p></blockquote><h2 id="五从单-agent-到混合架构正确的升级顺序">五、从单 Agent 到混合架构：正确的升级顺序</h2><figure><img src="https://raw.githubusercontent.com/AndersonHJB/PicGoImage/main/2026/0713/agent-architecture-guide/decision-tree.png" alt="Agent 架构升级决策树" /><figcaption aria-hidden="true">Agent 架构升级决策树</figcaption></figure><p>一个更稳妥的演进路径通常是：</p><h3 id="第一步单-agent-tools">第一步：单 Agent + Tools</h3><p>先验证需求和任务闭环。工具少、上下文短、职责单一时，不需要额外设计模式。</p><h3 id="第二步单-agent-skills">第二步：单 Agent + Skills</h3><p>当工具与说明越来越多，但任务仍在同一领域，先用 Skills 做渐进式加载。它通常是成本最低、风险最小的一次升级。</p><h3 id="第三步引入-sub-agent-或-router">第三步：引入 Sub-Agent 或 Router</h3><p>如果问题已经变成多个专业领域的组合：</p><ul><li>需要主 Agent 持续拆解、追问和验收，用 Sub-Agent；</li><li>输入可以先分类或拆成独立查询，用 Router。</li></ul><h3 id="第四步为顺序流程加入-handoff">第四步：为顺序流程加入 Handoff</h3><p>当不同阶段拥有不同权限、工具和完成条件时，再把 Handoff 引入流程。</p><h3 id="第五步只在必要时组合模式">第五步：只在必要时组合模式</h3><p>成熟系统往往不是“四选一”，而是组合使用：Router 负责分类，Supervisor 调度 Sub-Agent，某些业务流程再通过 Handoff 推进；每个 Agent 内部还可以继续用 Skills 按需加载知识。</p><p>但组合架构应该是需求长出来的结果，不是项目第一天画出来的愿望清单。</p><h2 id="六真正落地时守住这-6-条工程规则">六、真正落地时，守住这 6 条工程规则</h2><h3 id="先找错误类型再选架构">1. 先找错误类型，再选架构</h3><p>“工具太多”不等于必须多 Agent。先区分问题来自工具选择、上下文污染、流程状态，还是跨域并行。不同错误对应不同结构。</p><h3 id="给每个边界写清输入和输出">2. 给每个边界写清输入和输出</h3><p>Sub-Agent 接收什么？必须返回什么？Router 的分类标签有哪些？Handoff 的触发条件是什么？边界如果不能被结构化描述，就很难被测试。</p><h3 id="在每次交接前设置检查点">3. 在每次交接前设置检查点</h3><p>不要让错误结果直接进入下一阶段。至少检查完整性、事实依据、格式和失败状态，再允许路由、汇总或交接。</p><h3 id="记录完整调用链">4. 记录完整调用链</h3><p>多 Agent 的失败往往不是一个错误，而是一串小偏差。日志里应该能看到每个 Agent 的输入、工具调用、关键输出、耗时和 Token，而不只是最终答案。</p><h3 id="按任务价值分配努力程度">5. 按任务价值分配“努力程度”</h3><p>简单问题只调用一个 Agent；中等任务再并行少量专家；复杂研究才扩大搜索宽度。不要让所有请求默认走最昂贵的路径。</p><h3 id="把-token-当作架构指标">6. 把 Token 当作架构指标</h3><p>模型调用数、总 Token、P95 延迟、路由正确率、交接失败率，都应该进入评测。没有这些数据，多 Agent 很容易变成“看起来更专业”的昂贵黑盒。</p><h2 id="七最后做一个真实选择题">七、最后做一个真实选择题</h2><p>假设你正在搭建企业内部技术助手，它已经接入 15+ 个工具，能查代码、文档、日志和监控。用户开始反馈回答跑偏、上下文串味，调试一次问题还要反复重放对话。</p><p>下一步应该直接上 Supervisor + Sub-Agent 吗？</p><p>我的答案是：<strong>先看错误分布。</strong></p><ul><li>如果问题主要来自工具和说明太多，但多数请求仍是单领域，先用 Skills；</li><li>如果代码、文档、运维的上下文确实互相污染，再拆 Sub-Agent；</li><li>如果用户经常一次提出跨领域问题，并且各子问题可并行，加入 Router；</li><li>如果排障必须经过“收集信息 → 初步诊断 → 高级处理”，再用 Handoff 管理状态。</li></ul><p>架构升级的触发信号，不应该只是“工具数量到了 15 个”，而应该是：<strong>错误类型已经稳定地指向某种结构性瓶颈。</strong></p><h2 id="写在最后">写在最后</h2><p>从 Sub-Agent 到 Multi-Agent，不是一条“越复杂越高级”的升级路线，而是一组用来解决不同工程问题的结构工具。</p><p>你真正需要记住的只有五句话：</p><ol type="1"><li>能单 Agent 解决，就别急着拆；</li><li>能用 Tools 解决，就先别加 Agent；</li><li>能用 Skills 延迟加载，就别把所有知识塞进 Prompt；</li><li>多 Agent 的第一价值是上下文隔离，第二才是并行；</li><li>最好的架构，不是最复杂的架构，而是恰好消化当前复杂度的架构。</li></ol><p>2026 年，Agent 的竞争已经从“会不会写 Prompt”，进入“能不能把复杂度组织好”的阶段。</p><p>模型决定能力上限，结构决定你能不能稳定地接近它。</p><p>你现在的项目，最接近哪一种瓶颈：上下文污染、工具过多、跨域并行，还是状态流转？欢迎把你的场景写在评论区。</p><hr /><p>参考资料：</p><ul><li><a href="https://langchain-ai.github.io/langgraph/tutorials/multi_agent/multi-agent-collaboration/">LangChain：Multi-agent patterns and performance comparison</a></li><li><a href="https://www.anthropic.com/engineering/multi-agent-research-system">Anthropic：How we built our multi-agent research system</a></li></ul>
+
+    </article>
+  </main>
+  <script>
+const COPY_PROPS = [
+  'display','box-sizing','max-width','min-width','height','margin-top','margin-right','margin-bottom','margin-left',
+  'padding-top','padding-right','padding-bottom','padding-left','border-top','border-right','border-bottom','border-left',
+  'border-radius','background','background-color','color','font-family','font-size','font-weight','font-style',
+  'line-height','letter-spacing','text-align','text-decoration','vertical-align','white-space','overflow-wrap',
+  'word-break','border-collapse','box-shadow'
+];
+
+function inlineComputedStyles(root) {
+  const nodes = [root, ...root.querySelectorAll('*')];
+  nodes.forEach((node) => {
+    const cs = window.getComputedStyle(node);
+    let styleText = '';
+    COPY_PROPS.forEach((prop) => {
+      const value = cs.getPropertyValue(prop);
+      if (value && value !== 'normal' && value !== 'none') styleText += prop + ':' + value + ';';
+    });
+    if (node.tagName === 'IMG') {
+      styleText += 'width:100%;max-width:100%;height:auto;display:block;margin-left:auto;margin-right:auto;';
+    }
+    node.setAttribute('style', styleText);
+  });
+}
+
+async function copyWechatArticle() {
+  const status = document.getElementById('copy-status');
+  const source = document.getElementById('wechat-article');
+  const clone = source.cloneNode(true);
+  clone.querySelectorAll('script,style').forEach((el) => el.remove());
+  clone.querySelectorAll('a[aria-hidden="true"][tabindex="-1"]').forEach((el) => el.remove());
+  document.body.appendChild(clone);
+  clone.style.position = 'fixed';
+  clone.style.left = '-99999px';
+  inlineComputedStyles(clone);
+  const html = clone.innerHTML;
+  clone.remove();
+
+  try {
+    if (navigator.clipboard && window.ClipboardItem) {
+      await navigator.clipboard.write([
+        new ClipboardItem({
+          'text/html': new Blob([html], {type: 'text/html'}),
+          'text/plain': new Blob([source.innerText], {type: 'text/plain'})
+        })
+      ]);
+    } else {
+      const box = document.createElement('div');
+      box.contentEditable = 'true';
+      box.style.position = 'fixed';
+      box.style.left = '-99999px';
+      box.innerHTML = html;
+      document.body.appendChild(box);
+      const range = document.createRange();
+      range.selectNodeContents(box);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      document.execCommand('copy');
+      sel.removeAllRanges();
+      box.remove();
+    }
+    status.innerHTML = '<span class="copied">已复制。</span>现在可以粘贴到微信公众号编辑器正文区。';
+  } catch (err) {
+    status.textContent = '自动复制失败：请手动选中文章白色区域内容复制。';
+    console.error(err);
+  }
+}
+</script>
+</body>
+</html>

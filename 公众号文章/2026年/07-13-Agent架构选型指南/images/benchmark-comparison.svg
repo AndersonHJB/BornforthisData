@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="840" viewBox="0 0 1280 840">
+  <defs><linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7fbff"/><stop offset="1" stop-color="#e9f3fb"/></linearGradient><style>.cn{font-family:'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif}.t{font-size:52px;font-weight:700;fill:#10243b}.s{font-size:22px;fill:#5d7288}.h{font-size:28px;font-weight:700;fill:#153149}.c{font-size:24px;fill:#24445f}.n{font-size:30px;font-weight:700;fill:#0969a7}.note{font-size:20px;fill:#63788d}</style></defs>
+  <rect width="1280" height="840" fill="url(#bg2)"/>
+  <text x="640" y="80" text-anchor="middle" class="cn t">调用少，不一定 Token 更省</text>
+  <text x="640" y="120" text-anchor="middle" class="cn s">LangChain 官方多 Agent 示例的三类成本对比</text>
+  <rect x="60" y="170" width="1160" height="510" rx="24" fill="#fff" stroke="#c8d9e8" stroke-width="2"/>
+  <rect x="60" y="170" width="1160" height="90" rx="24" fill="#173a57"/>
+  <rect x="60" y="230" width="1160" height="30" fill="#173a57"/>
+  <g class="cn h" fill="#fff"><text x="180" y="225" text-anchor="middle" fill="#fff">模式</text><text x="470" y="225" text-anchor="middle" fill="#fff">一次简单请求</text><text x="765" y="225" text-anchor="middle" fill="#fff">两轮同类请求</text><text x="1065" y="225" text-anchor="middle" fill="#fff">跨三领域</text></g>
+  <g stroke="#d7e4ef" stroke-width="2"><path d="M310 170V680M620 170V680M910 170V680"/><path d="M60 365H1220M60 470H1220M60 575H1220"/></g>
+  <g class="cn c"><text x="180" y="323" text-anchor="middle">Sub-Agent</text><text x="180" y="428" text-anchor="middle">Skills</text><text x="180" y="533" text-anchor="middle">Handoff</text><text x="180" y="638" text-anchor="middle">Router</text></g>
+  <g class="cn n"><text x="470" y="323" text-anchor="middle">4 次</text><text x="470" y="428" text-anchor="middle">3 次</text><text x="470" y="533" text-anchor="middle">3 次</text><text x="470" y="638" text-anchor="middle">3 次</text><text x="765" y="323" text-anchor="middle">8 次</text><text x="765" y="428" text-anchor="middle">5 次</text><text x="765" y="533" text-anchor="middle">5 次</text><text x="765" y="638" text-anchor="middle">6 次</text><text x="1065" y="323" text-anchor="middle">约 9K</text><text x="1065" y="428" text-anchor="middle">约 15K</text><text x="1065" y="533" text-anchor="middle">约 14K+</text><text x="1065" y="638" text-anchor="middle">约 9K</text></g>
+  <rect x="92" y="714" width="1096" height="72" rx="18" fill="#dceefa"/>
+  <text x="640" y="758" text-anchor="middle" class="cn c">关键：简单任务看调用次数；连续对话看状态复用；跨领域任务看上下文隔离</text>
+  <text x="1200" y="818" text-anchor="end" class="cn note">来源：LangChain Multi-agent docs</text>
+</svg>
+
