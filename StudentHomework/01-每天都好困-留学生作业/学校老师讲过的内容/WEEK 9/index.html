@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WEEK 9</title>
+
+    <script src="java.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body>
+
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="column" >
+
+            <span> 
+        
+                <p id="newText1" onclick="changeText()">Let's reveal more of our story...</p>
+
+               </span>
+
+
+            </div>    
+
+        </div>
+
+
+    <div class="row">
+
+        <div class="column"> 
+
+             <span id="text4" onclick="playAudio(), playAudio2(), playVid()">
+
+                <h1>#3 Triggering audio + video</h1>
+    
+
+                <video loop id="myVideo" style="cursor: help;">
+                <source src="video/choir.mp4" type="video/mp4">
+                </video>
+                <br><br>
+            - Here we have another series of functions that trigger audio and video - 3 files in total. Have a look in the code and see where the files are loaded in HTML. <br><br>
+
+            - Remember that if write the word 'controls' in the opening tag of our 'audio' and 'video' elements, we will get a play/pause button and a volume control. You can also add 'autoplay' to the opening tag to have video start playing as soon as the page loads (this doesnt work with any kind of audio, but you will see how I have used 'loop' so that the atmos loops but not the dialigue). Generally when we use audio in our sites we will want to use Javascript, so we won't be able to see the audio elements in the browser.<br><br>
+
+            - I have used these functions because a. The default controls are ugly, and b. I want to trigger 3 files simultaneously with one click event. 
+
+             </span>
+
+                <audio id="Audio" src="sound/Justin.mp3">
+                </audio>
+
+                <audio loop id="Audio2" src="sound/ambience.mp3">
+                </audio>
+
+        </div>
+    </div>
+
+
+    <div class="row">
+
+            <div class="column" >
+
+             <button onclick="mypopup()">TRIGGER A POPUP</button>
+
+            </div>    
+
+        </div>
+
+
+
+
+        <div class="row" onclick="createVideo()" id="createElement" style="cursor: url(images/icon.png),auto;">
+
+            <div class="column" id="text5">
+
+             <span id="VideoContainer">
+
+            <h1 >#5 Create new elements.</h1>
+
+            </span>
+
+            </div>
+
+        </div>
+
+        
+
+       
+
+
+
+
+
+                <div class="row">
+
+            <div class="column" >
+
+                <span id="text1" >CHAPTER 1
+
+                </span>
+                <img id="slide1" src="images/01.png">
+                <img id="playButton" src="images/play-button.png" onclick="changeImg(), words(), disappear(), playAudioSlide1()" id="begin">
+                 <p id="message">Keep on scrolling...</p>
+                 <audio id="AudioSlide1" src="sound/audio.mp3">
+
+            </div>
+
+        </div>
+
+            
+
+
+        <div class="row">
+
+
+            <div class="column">
+
+                <span id="text2">CHAPTER 2
+
+                    </span>
+                    <img style="cursor: url(images/play-button.png),auto;" id="slide2" onclick="nextslide2(), nextsubtitle2(), playAudioSlide2()" src="images/01.png">
+                    <p id="message2">Looks like we're done here...</p>
+                    <audio id="AudioSlide2" src="sound/strings.mp3"></audio>
+                
+
+
+            </div>
+
+        </div>
+
+
+
+
+        <div class="row">
+
+            <video id="video1" onended="videoload()">
+
+                <source src="video/mountains.mp4" type="video/mp4">
+            </video>
+
+            <div id="scrollingtextbox">
+
+        <audio id="Audio" src="sounds/degreeskelvin.mp3">
+                </audio>
+
+        
+            
+
+                   <p> HERE IS SOME SCROLLING TEXT. YOU MAY USE TEXT LIKE THIS IN YOUR WORK. PERHAPS IT COULD BE USED TO ANNOTATE OR CONTEXTUALISE THE VIDEO. HOW COULD YOU USE THIS IMAGINATIVELY? </p>
+
+                
+            
+
+    </div>
+
+
+            <p onclick="playVid(), playAudio(), disappear2(), playAudio2()" id="playButton2">(PLAY)
+
+            </p>
+
+            <audio loop id="Audio" src="sound/thunder.mp3">
+            </audio>
+
+            <audio id="Audio2" src="sound/ambient.mp3">
+            </audio>
+
+        </div>
+
+
+<div class="container">
+
+        <div class="row">
+
+            <div id="star-wars-text" class="column" >
+
+               <span id="text3">
+
+               Ideologies and utopia are closely related. There is a utopia at the heart of every ideology, a positive picture – some vague, some quite  detailed – of what the world would look like if the hopes of the  ideology were realized. And it is possible for a utopia to become an ideology. The process by which utopia can become ideology is not  entirely clear and undoubtedly varies from case to case, but it is  likely that if a utopia is sufficiently attractive and powerful, it can  transform hope and desire into belief and action to bring the utopia into being through a political or social movement. Most utopias do not go through this process and most that do fail. But if a utopia becomes a  belief system that succeeds in coming to power in  a small community, a country, or even a number of countries, it will almost certainly have become an ideology in the process. At that point, it will be challenged by one or more utopias, which may, but probably will not, succeed in overthrowing the ideology, but, as both Mannheim and Ricoeur argue, utopias are the way in which ideologies are  challenged.
+
+                <br>
+                <br>
+                Utopianism is a philosophy of hope, and it is characterized by the transformation of generalized hope into a description of a non-existent society. Of course, hope can often be nothing more than a rather naive wish-fulfilment, such as in some fairy tales (albeit most fairy tales  turn into dystopias if carefully analysed). On the other hand, hope is  essential to any attempt to change society for the better. But this  raises the possibility of someone attempting to impose their idea of what constitutes a desirable future on others who reject it. Utopians are always faced with this dilemma when they attempt to move their dream to reality – is their dream compatible with the imposition of their  dream; can freedom be achieved through unfreedom, or equality through inequality?
+
+
+               </span>
+
+            </div>
+
+           
+
+        </div>
+
+
+
+    </div>
+
+
+</body>
+
+
+</html>

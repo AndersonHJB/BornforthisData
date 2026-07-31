@@ -1,0 +1,151 @@
+@font-face {
+    font-family: Roboto;
+    src: url(fonts/RobotoMono-Regular.ttf);
+}
+
+
+html,
+body,
+.container {
+
+    /*    This is the gradient that we have set as the background for our containe. You can generate them here https://www.colorzilla.com/gradient-editor/ */
+
+
+    background: linear-gradient(to bottom, #2c2fe0 0%, #ea7e9d 100%);
+    color: lightgoldenrodyellow;
+
+}
+
+
+.container {
+
+    font-family: Roboto;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -0px -8px -0px -8px;
+    /* this last line removes the default margin from around the div  */
+
+}
+
+span {
+
+    font-size: 0.9vw;
+    transform: translate(0%, 0%);
+    max-width: 50%;
+
+}
+
+
+#text2 {
+    position: absolute;
+    font-size: 1vw;
+    z-index: 2;
+    transform: translate(-80%, -500%);
+    max-width: 30%;
+    font-size: 0.7em;
+    border-style: groove;
+    color: white;
+    opacity: 0.4;
+
+    /*    top: 10%;*/
+    /*    left: 5%; - note that 'top' and 'left' will also allow you to postion your items - translate values are percentages of the element itself not the parent element, hence the huge numbers for translateY*/
+}
+
+
+
+#text3 {
+    position: absolute;
+    font-size: 1vw;
+    z-index: 2;
+    transform: translate(50%, 200%);
+    max-width: 30%;
+    font-size: 0.7em;
+    background-image: url(images/11.jpg);
+    color: white;
+    opacity: 0.4;
+
+    /*    top: 10%;*/
+    /*    left: 5%; - note that 'top' and 'left' will also allow you to postion your items - translate values are percentages of the element itself not the parent element, hence the huge numbers for translateY*/
+}
+
+
+
+
+video {
+
+    width: 100%;
+}
+
+
+.highlight {
+    /*    background-color: white;*/
+
+}
+
+#text {
+
+    font-size: 0.9vw;
+
+
+
+}
+
+
+#scrollingtextbox {
+           position: absolute;
+           display: inline;
+           width: 400vw;
+           z-index: 1;
+           font-family: "Helvetica";
+           font-size: 3em;
+           top: 35%;
+           left: 120%;
+           animation-name: scroll;
+           animation-duration: 35s;
+           animation-timing-function: linear;
+           animation-iteration-count: infinite;
+       }
+
+
+       @keyframes scroll {
+
+           0% {
+               transform: translate();
+
+           }
+
+           100% {
+               transform: translate(-400vw);
+
+           }
+
+       }
+
+
+
+
+@media only screen and (max-width: 1080px) {
+
+
+    span {
+
+        max-width: 100%;
+        font-size: 2vw;
+
+    }
+
+
+    #text {
+
+        font-size: 2vw;
+    }
+
+
+
+}
+
+ 
+

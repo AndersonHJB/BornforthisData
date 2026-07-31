@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WEEK 8</title>
+
+    <script src="java.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body>
+
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="column">
+
+                <span id="text1">CHAPTER 1
+
+                </span>
+                <img id="slide" onclick="nextslide(), nextsubtitle()" src="images/01.png">
+
+
+            </div>
+
+        </div>
+
+
+
+
+        <div class="row">
+
+            <video muted id="video1" onended="videoload()">
+
+                <source src="video/mountains.mp4" type="video/mp4">
+            </video>
+
+            <p onclick="playVid(), playAudio(), disappear(), playAudio2()" id="text2">(PLAY)
+
+            </p>
+
+            <audio loop muted id="Audio" src="sound/thunder.mp3">
+            </audio>
+
+            <audio id="Audio2" src="sound/ambient.mp3">
+            </audio>
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <!--
+
+    <div style="opacity: 0.6" id=maintext>
+
+       <audio id="Audio" src="sounds/flutes.mp3">
+        </audio>
+
+        <audio id="Audio1" src="sounds/limits_to_growth_harp.mp3">
+        </audio>
+
+        <audio id="Audio2" src="sounds/limits_to_growth.mp3">
+        </audio>
+
+
+        <button type="button" onclick="mypopup()">Let's open a popup</button>
+        <br>
+        <button type="button" onclick="playAudio2()">Let's play some dialogue with nice music</button>
+        <br>
+        <button type="button" onclick="playAudio3()">Let's play some dialogue without music</button>
+        <br>
+        <button type="button" onclick="playAudio()">Let's play some unsettling music</button>
+    </div>
+
+ -->
+
+
+</body>
+
+
+</html>

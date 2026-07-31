@@ -1,0 +1,385 @@
+body {
+
+    overflow-x: hidden;
+    font-family: Helvetica;
+    padding: 0%;
+    height: 800vh;
+     margin: -0px -opx -0px -0px;
+
+}
+
+
+
+#slide1 {
+
+    width: 40%;
+    height: 40%;
+    opacity: 100%;
+    transform: translate(-0%, -0%);
+    z-index: 1;
+    
+}
+
+#slide2 {
+
+    width: 40%;
+    height: 40%;
+    opacity: 100%;
+    transform: translate(-0%, -0%);
+    z-index: 1;
+    
+}
+
+
+
+#video1 {
+
+    width: 50%;
+    height: 45%;
+    z-index: 0;
+
+}
+
+#myVideo {
+  width: 100%;
+    opacity: 100%;
+    transform: translate(-0%, -0%);
+    z-index: 1;
+
+}
+
+#text4 {
+
+    position: absolute;
+    font-size: 1vw;
+  width: 50%;
+  height: 100%;
+  color: rgb(28, 50, 253);
+    letter-spacing: 0.05em;
+    line-height: 0.9;
+     top: 70%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+}
+
+#VideoContainer {
+    
+  position: absolute;
+    font-size: 1vw;
+  width: 40%;
+  height: 100%;
+  color: rgb(28, 50, 253);
+    letter-spacing: 0.05em;
+    line-height: 0.9;
+     top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    
+
+
+}
+
+
+
+
+
+#videopopup {
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+
+}
+
+#popupcontainer {
+
+    font-size: 2em;
+    width: 800px;
+    height: 500px;
+    position: relative;
+    display: block;
+
+}
+
+
+.container {
+
+    font-size: 2em;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    display: block;
+
+}
+
+.row {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+   background: #f79292;
+background: #ff7b61;
+background: linear-gradient(90deg, rgba(255, 123, 97, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 123, 97, 0.59) 100%);
+
+}
+
+.column {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    scrollbar-width: none;
+    align-items: center;
+    justify-content: center;
+ 
+
+}
+
+#newText1 {
+
+    position: absolute;
+    font-size: 1.8vw;  
+   color: rgb(241, 238, 141);
+    text-shadow: 2px 2px #000000;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+   top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+  
+
+}
+
+
+#text1 {
+
+    position: absolute;
+    font-size: 1.8vw;
+   color: rgb(241, 238, 141);
+    text-shadow: 2px 2px #000000;
+    text-align: center;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;;
+    top: 75%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+}
+
+#text2 {
+
+    position: absolute;
+    font-size: 1.8vw;
+   color: rgb(241, 238, 141);
+    text-shadow: 2px 2px #000000;
+    text-align: center;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    z-index:2;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+}
+
+
+
+#message {
+
+    position: absolute;
+    font-size: 1.8vw;
+    color: rgb(241, 238, 141);
+    text-shadow: 2px 2px #000000;
+    text-align: center;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    z-index:0;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+}
+
+#message2 {
+
+    position: absolute;
+    font-size: 1.8vw;
+    color: rgb(241, 238, 141);
+    text-shadow: 2px 2px #000000;
+    text-align: center;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    z-index:0;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+}
+
+#playButton {
+
+    position: absolute;
+    font-size: 1.8vw;
+    color: rgb(241, 238, 141);
+    text-shadow: 2px 2px #000000;
+    text-align: center;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    z-index:1;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#playButton2 {
+
+    position: absolute;
+    font-size: 1.8vw;
+   color: rgb(241, 238, 141);
+    text-shadow: 2px 2px #000000;
+    text-align: center;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    z-index:1;
+   
+
+}
+
+
+
+#begin {
+
+    position: absolute;
+    font-size: 0.8vw;
+    color: rgb(241, 238, 141);
+    text-shadow: 2px 2px #000000;
+    text-align: center;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    z-index:2;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+}
+
+#button {
+
+    position: absolute;
+    font-size: 1.8vw;
+   color: rgb(241, 238, 141);
+    text-shadow: 2px 2px #000000;
+    text-align: center;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+}
+
+
+
+
+a {
+    text-decoration: none;
+    color: blue;
+
+}
+
+#scrollingtextbox {
+           position: absolute;
+           display: inline;
+           width: 400vw;
+           z-index: 1.5;
+           color: rgb(241, 238, 141);
+         text-shadow: 2px 2px #000000;
+        text-align: center;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: black;
+           font-size: 1em;
+           top: 15%;
+           left: 120%;
+           animation-name: scroll;
+           animation-duration: 35s;
+           animation-timing-function: linear;
+           animation-iteration-count: infinite;
+       }
+
+
+       @keyframes scroll {
+
+           0% {
+               transform: translate();
+
+           }
+
+           100% {
+               transform: translate(-400vw);
+
+           }
+
+       }
+
+   #star-wars-text {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    color: yellow;
+    font-size: 1.5em;
+    letter-spacing: 0.05em;
+    line-height: 0.9;
+    text-align: justify;
+    overflow: visible;
+    transform-origin: center bottom;
+    cursor: pointer; /* Make it clear it's clickable */
+}
+
+#star-wars-text.animate {
+    animation: starWarsText 350s linear forwards; /* Animation on click */
+}
+
+@keyframes starWarsText {
+    0% {
+        transform: perspective(500px) rotateX(20deg) translateY(100%);
+        opacity: 1;
+    }
+    100% {
+        transform: perspective(500px) rotateX(25deg) translateY(-2500%);
+        opacity: 0;
+    }
+}
+
+#text3 {
+
+
+    font-size: 1.7vw;
+    max-width: 80%;
+    position: relative; /* Required for zIndex to work */
+    transition: all 0.3s ease; /* Smooth transition for the effect */
+    z-index: 1; /* Ensure the text is above other elements */
+    
+
+}
+
+
+#text3:hover {
+    transform: scale(1.1); /* Slightly enlarge the text on hover */
+    color: rgb(28, 50, 253); /* Change the color on hover */
+    cursor: pointer; /* Change the cursor to a pointer */
+    z-index: 2; /* Bring the hovered text to the front */
+}

@@ -1,0 +1,190 @@
+<html>
+
+<head>
+
+
+    <meta charset="UTF-8" http-equiv="refresh" name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- content="10; url=file:///Users/tomsmith/Documents/_websites/hiroshima/index_scroll.html" -->
+
+
+
+    <title>WEEK 4</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="java.js"></script>
+
+</head>
+
+<body>
+
+
+    <div class="container">
+
+
+        <span class="highlight" id="text">
+
+            <h1 id="heading2" onclick="changeHeading2()">#1 Layout</h1>
+
+            This simple layout makes use of the 'div' and 'span' elements, combined with the 'flex', 'align-items' and 'justify-content' CSS properties to centre elements on the page. Each 'div' element assigned to the '.container' class will be a full page in the browser, and any 'span' element within it will be centred. We can move the 'span' elements around using the 'translate' css pproperties. Let's explore the code and try to understand exactly what is going on. You may use and adapt these templates in your own work.<br><br>
+
+            Quiz: <br><br>
+
+            1. What is the difference between a 'span' and a 'div' element?<br><br>
+
+
+            2. If we were to add another page (so that if we scroll down there is another full screen) how would we do that?<br><br>
+
+            3. What happens when we make our window less than 1080px (i.e. phone screen)? And why?<br><br>
+
+            4. Our second 'span' element, with id='text2' can be moved independently of the first - what is the 'position' CSS property doing here? Add another 'span' element and position it where you want it.
+
+        </span>
+
+
+        <span class="highlight" id="text2">
+
+            HERE IS AN OVERLAY - IN CASE YOU WANT TO ADD ANOTHER ELEMENT AND MOVE IT AROUND INDEPENDENTLY. HAVE A LOOK AT THE CS FOR #TEXT2 AND EXPERIMENT WITH THE TRANSLATION/TOP/LEFT PARAMATERS TO POSITION IT WHERE YOU WANT IT.
+        </span>
+
+
+
+
+    </div>
+
+    <div id="background" class="container">
+
+        <span class="highlight" id="text">
+
+            <h1 id="heading1" onclick="changeHeading()">#2 Javascript Fundamentals</h1>
+
+            - Today we will be having our first go at Javascript - if you can master these functions and implement them yourself you will have the elementary skills needed for your assignments. We will go into more detail next week - so don't panic if it feels a bit too in-depth.<br> <br>
+            The simplest way to understand Javascript is as a means of changing elements and CSS properties in your page following an 'event' - most commonly when a user clicks, but there are others - see <a href="https://www.w3schools.com/js/js_events.asp">link</a>. You can change the attributes, parameters and variables of any HTML element or CSS property. You can also create and remove elements. Javascript is the primary method for making our pages dynamic and interactive!<br> <br>
+
+
+            - Click on the heading above and see what happens. When we click the 'h1' element, we run the function 'changeHeading' to replace the original text with new text. Most of the functions you will use in your site will work in this way. Let's have a look at our code and get a sense of how #id, 'onclick' and the function are all linked - you will need to remember this hierarchy to implement your own functions. This is the MOST important part of this lesson - understand how these pieces of code are linked.<br> <br>
+
+           - This terminology isn't super important right away but it helps to understand how functions work:<br> <br>
+
+            1. 'document' - this tells the browser we're going to retrieve something from within our code. <br> <br>
+
+            2. 'getElementById' - This is the most common 'method' for retrieving an element.<br> <br>
+
+            <span onclick="changeBackground()" style="cursor: help;">
+                3. 'innerHTML' - this part of the function directs Javascript to the HTML page. We could also use 'style.property = value;' if we want to change a CSS property. ** Click this list item to see an example of a function that changes the 'background' property of this .container div and another below. You will notice the cursor changes here - check the 'inline' styling and see <a href="https://www.w3schools.com/cssref/tryit.php?filename=trycss_cursor">this page</a> - you will want to signal to your viewer that an element is interactive. You can download some cursors <a href="https://icons8.com/icons/set/mouse-cursor">here. </a>
+
+
+
+            </span>
+
+
+        </span>
+
+    </div>
+
+    
+
+
+
+
+    <div class="container" id="background2">
+
+
+        <span onclick="playAudio(), playAudio2(), playVid()">
+
+            <h1>#3 Triggering audio + video</h1>
+
+            <video loop id="myVideo" style="cursor: help;">
+                <source src="video/choir.mp4" type="video/mp4">
+            </video>
+            <br><br>
+            - Here we have another series of functions that trigger audio and video - 3 files in total. Have a look in the code and see where the files are loaded in HTML. <br><br>
+
+            - Remember that if write the word 'controls' in the opening tag of our 'audio' and 'video' elements, we will get a play/pause button and a volume control. You can also add 'autoplay' to the opening tag to have video start playing as soon as the page loads (this doesnt work with any kind of audio, but you will see how I have used 'loop' so that the atmos loops but not the dialigue). Generally when we use audio in our sites we will want to use Javascript, so we won't be able to see the audio elements in the browser.<br><br>
+
+            - I have used these functions because a. The default controls are ugly, and b. I want to triger 3 files simultaneously with one click event. 
+
+        </span>
+
+        <audio id="Audio" src="sound/Justin.mp3">
+        </audio>
+
+        <audio loop id="Audio2" src="sound/ambience.mp3">
+        </audio>
+
+
+    </div>
+
+    <div class="container" >
+
+        <button onclick="mypopup()">TRIGGER A POPUP</button>
+
+
+    </div>
+
+
+ 
+    
+
+
+    <div  onclick="createVideo()" class="container" id="createElement" style="cursor: url(images/icon.png),auto;">
+
+        <span id="VideoContainer">
+
+           
+
+            <h1 >#5 Create new elements.</h1>
+
+
+        </span>
+
+
+    </div>
+
+      <div class="container"> 
+            
+         <span> 
+        <h1>Trigger Sounds With Keyboard</h1> 
+         
+           <!--sounds are hidden because there is no control attribute-->
+         
+             
+        <audio id="audio" >  
+        <source src="sound/3.mp3" type="audio/mpeg"> 
+         </audio>
+         
+        <audio id="audio1" >
+        <source src="sound/6.mp3" type="audio/mpeg"> 
+        </audio>
+         
+        <audio id="audio2" >
+        <source src="sound/7.mp3" type="audio/mpeg"> 
+        </audio>
+         
+        <audio id="audio3" >
+        <source src="sound/8.mp3" type="audio/mpeg"> 
+         </audio>
+         
+        <audio id="audio4" >
+        <source src="sound/9.mp3" type="audio/mpeg"> 
+         </audio>
+    
+        <div class="functionExample">
+        <p id="word">Press Space Bar, return, Q, W, or E</p>
+       
+
+        </span> 
+     
+     </div>
+
+  
+
+    
+
+
+
+
+
+</body>
+
+
+</html>
