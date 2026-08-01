@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="LearnScore 2055: an interactive speculative narrative about data, education and the right to become unexpected.">
+  <meta name="theme-color" content="#0b2941">
+  <title>LearnScore 2055 — Lina Chen Pathway Review</title>
+  <link rel="icon" type="image/jpeg" href="assets/images/learnscore-logo.jpg">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to case file</a>
+
+  <div class="system-ribbon" aria-hidden="true">
+    <span>COMMONWEALTH LEARNING AUTHORITY</span>
+    <span>CASE REVIEW INTERFACE</span>
+    <span>14 AUGUST 2055</span>
+  </div>
+
+  <header class="site-header">
+    <a class="wordmark" href="#access" aria-label="LearnScore home">
+      <span class="wordmark-mark">LS</span>
+      <span><strong>LearnScore</strong><small>National learner record</small></span>
+    </a>
+
+    <nav aria-label="Case sections">
+      <a href="#promise" data-nav="promise">Promise</a>
+      <a href="#record" data-nav="record">Record</a>
+      <a href="#day" data-nav="day">School day</a>
+      <a href="#testimony" data-nav="testimony">Testimony</a>
+      <a href="#decision" data-nav="decision">Decision</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="utility-button" id="audio-toggle" type="button" aria-pressed="false">
+        <span class="status-dot" aria-hidden="true"></span>
+        Sound off
+      </button>
+      <button class="utility-button" id="privacy-toggle" type="button" aria-pressed="false">Privacy mode</button>
+    </div>
+  </header>
+
+  <div class="progress-track" aria-hidden="true"><span id="reading-progress"></span></div>
+
+  <main id="main-content">
+    <!-- 00: The reviewer enters the in-world portal through Lina's physical card. -->
+    <section class="chapter hero" id="access" data-section="access">
+      <div class="hero-copy reveal">
+        <p class="kicker">National Lifelong Learning System</p>
+        <p class="case-date">Case 2055-09-18-7441 <span>Reviewer session: temporary</span></p>
+        <h1>Every ability<br>deserves a <em>score.</em></h1>
+        <p class="hero-lead">You have been assigned to review the development path of Lina Chen, age sixteen. Your decisions may affect her access to education.</p>
+        <div class="time-chip"><span aria-hidden="true">10:00</span> Estimated experience</div>
+      </div>
+
+      <div class="access-console reveal">
+        <div class="console-topline"><span>IDENTITY GATE</span><span class="live-label">LIVE</span></div>
+        <figure class="paper-artifact compact-artifact">
+          <img src="assets/images/lina-credit-card.jpg" alt="Hand-drawn LearnScore credit card for Lina Chen" width="3508" height="2480">
+          <figcaption>Learning card // issued 18.09.2055</figcaption>
+        </figure>
+        <button class="primary-button scan-button" id="scan-card" type="button">
+          <span class="scan-icon" aria-hidden="true"></span>
+          Scan learning card
+        </button>
+        <div class="access-result" id="access-result" role="status" aria-live="polite">
+          Place the card inside the reader to access the protected record.
+        </div>
+        <button class="text-button is-hidden" id="open-case" type="button">Identity confirmed — open case file</button>
+      </div>
+
+      <div class="hero-grid" aria-hidden="true"></div>
+    </section>
+
+    <!-- 01: LearnScore's optimistic official explanation and orientation film. -->
+    <section class="chapter paper-section" id="promise" data-section="promise">
+      <div class="section-index reveal"><span>01</span><p>THE PROMISE</p></div>
+      <div class="section-heading reveal">
+        <p class="kicker dark-kicker">Official orientation</p>
+        <h2>One record.<br>Every kind of potential.</h2>
+      </div>
+
+      <div class="promise-layout">
+        <div class="official-copy reveal">
+          <p>Traditional final examinations were retired in 2042. LearnScore now recognises abilities that a single test could miss. Since 2048, learning records have been linked to courses, scholarships, university admission and early career placement.</p>
+          <p>Every learner has a permanent account for memory, language, creativity, teamwork, attention, care work, emotional stability and community contribution. Scores may be challenged, but classroom staff cannot edit them.</p>
+          <p>AI tutors combine lessons, conversations, activity records and daily health scans to recommend each learner’s safest development path. Approved pathways receive priority access to public education.</p>
+          <aside class="official-notice">
+            <span>OFFICIAL NOTICE 7.2</span>
+            <strong>LearnScore does not punish students.</strong>
+            <p>It predicts risk so opportunity can be distributed fairly.</p>
+          </aside>
+        </div>
+
+        <figure class="video-module reveal">
+          <div class="video-toolbar">
+            <span>ORIENTATION ARCHIVE // 2055</span>
+            <span>00:41</span>
+          </div>
+          <video id="orientation-video" controls preload="metadata" poster="assets/images/learnscore-logo.jpg">
+            <source src="assets/video/video.mp4" type="video/mp4">
+            <track src="assets/video/video.vtt" kind="captions" srclang="en" label="English visual captions" default>
+            Your browser does not support HTML video.
+          </video>
+          <figcaption>Original animation assembled from the project’s hand-drawn LearnScore artefacts.</figcaption>
+        </figure>
+      </div>
+
+      <div class="measure-panel reveal">
+        <div>
+          <p class="mini-label">SELECT A CATEGORY</p>
+          <h3>What does the system see?</h3>
+        </div>
+        <div class="measure-buttons" aria-label="Learning credit categories">
+          <button type="button" data-measure="Approved projects are scored for novelty, completion and economic relevance.">Creativity</button>
+          <button type="button" data-measure="Speech, writing and translation are sampled across school and daily life.">Language</button>
+          <button type="button" data-measure="Participation and leadership are recorded during verified group tasks.">Teamwork</button>
+          <button type="button" data-measure="Family support earns credit only when a registered adult confirms it.">Care work</button>
+          <button type="button" data-measure="Response time, gaze and hesitation are treated as evidence of focus.">Attention</button>
+          <button type="button" data-measure="Daily check-ins predict whether emotion may become an educational risk.">Emotion</button>
+        </div>
+        <p class="measure-output" id="measure-output" aria-live="polite">Choose a category to reveal its measurement rule.</p>
+      </div>
+
+      <figure class="paper-artifact wide-artifact reveal">
+        <img src="assets/images/how-learnscore-works.jpg" alt="Hand-drawn diagram showing how an AI tutor measures creativity, teamwork, care work, community contribution, emotion, attention and language" width="3508" height="2480">
+        <figcaption><span>Student-made system map // archived 2054</span><button type="button" class="artifact-button" data-image="assets/images/how-learnscore-works.jpg" data-alt="How LearnScore Works hand-drawn diagram">Inspect full artefact</button></figcaption>
+      </figure>
+    </section>
+
+    <!-- 02: The official record is contrasted with Lina's private account. -->
+    <section class="chapter record-section" id="record" data-section="record">
+      <div class="section-index reveal"><span>02</span><p>THE RECORD</p></div>
+      <div class="section-heading light-heading reveal">
+        <p class="kicker">Protected student profile</p>
+        <h2>Lina Chen is more<br>than the data allows.</h2>
+      </div>
+
+      <div class="identity-strip reveal redactable">
+        <div><span>AGE</span><strong>16</strong></div>
+        <div><span>DISTRICT</span><strong>Sydney Education District</strong></div>
+        <div><span>STATUS</span><strong class="amber-text">Path review pending</strong></div>
+        <div><span>DEADLINE</span><strong>16:00 today</strong></div>
+      </div>
+
+      <div class="record-grid">
+        <article class="profile-card reveal redactable">
+          <p class="mini-label mint-label">SYSTEM RECOMMENDATION</p>
+          <h3>Health Data<br>Management</h3>
+          <div class="probability">
+            <span>Scholarship if accepted</span><strong>82%</strong>
+          </div>
+          <div class="probability warning-probability">
+            <span>Projected if declined</span><strong>47%</strong>
+          </div>
+          <p class="assessment">Lina demonstrates reliable memory, language and collaborative skills. Her unverified creative output is considered inconsistent and should not guide long-term placement.</p>
+        </article>
+
+        <article class="score-card reveal redactable">
+          <div class="score-header"><p class="mini-label">LIVE SCORES</p><span>CLICK TO AUDIT</span></div>
+          <button class="score-row" type="button" data-score-note="High accuracy in approved recall tasks."><span>Memory</span><b>89</b><i style="--score:89%"></i></button>
+          <button class="score-row" type="button" data-score-note="Reliable performance in structured group work."><span>Teamwork</span><b>84</b><i style="--score:84%"></i></button>
+          <button class="score-row" type="button" data-score-note="Strong written and spoken communication."><span>Language</span><b>91</b><i style="--score:91%"></i></button>
+          <button class="score-row" type="button" data-score-note="Reduced by fatigue and late-night activity."><span>Attention</span><b id="attention-score">76</b><i id="attention-bar" style="--score:76%"></i></button>
+          <button class="score-row" type="button" data-score-note="Family care is only partly verified."><span>Care work</span><b>73</b><i style="--score:73%"></i></button>
+          <button class="score-row" type="button" data-score-note="Private animation projects are excluded."><span>Creativity</span><b>61</b><i style="--score:61%"></i></button>
+          <button class="score-row" type="button" data-score-note="Recent tiredness has been classified as instability."><span>Emotional stability</span><b id="emotion-score">58</b><i id="emotion-bar" style="--score:58%"></i></button>
+          <p class="score-note" id="score-note" aria-live="polite">Select a score to reveal the evidence behind it.</p>
+        </article>
+
+        <aside class="lina-note reveal redactable">
+          <p class="mini-label coral-label">LINA // PRIVATE NOTE</p>
+          <blockquote>“Sometimes I am tired because I look after my brother. Most of my animation happens at night, where the school cannot verify it. If the system cannot see something, does that mean it did not happen?”</blockquote>
+          <span class="handwritten-signature">— Lina</span>
+        </aside>
+      </div>
+
+      <div class="artifact-pair">
+        <figure class="paper-artifact reveal">
+          <img src="assets/images/lina-credit-card.jpg" alt="Hand-drawn learning credit card for Lina Chen" width="3508" height="2480">
+          <figcaption><span>Learning card // physical identity layer</span><button type="button" class="artifact-button" data-image="assets/images/lina-credit-card.jpg" data-alt="Lina Chen learning credit card">Inspect full artefact</button></figcaption>
+        </figure>
+        <figure class="paper-artifact reveal">
+          <img src="assets/images/lina-data-dashboard.jpg" alt="Hand-drawn dashboard showing Lina's scores and recommended pathway" width="3508" height="2480">
+          <figcaption><span>Data dashboard // review copy</span><button type="button" class="artifact-button" data-image="assets/images/lina-data-dashboard.jpg" data-alt="Lina data dashboard drawing">Inspect full artefact</button></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 03: Viewer choices demonstrate how ordinary life becomes permanent data. -->
+    <section class="chapter day-section" id="day" data-section="day">
+      <div class="section-index reveal"><span>03</span><p>A SCHOOL DAY</p></div>
+      <div class="section-heading reveal">
+        <p class="kicker dark-kicker">Tuesday // 07:42</p>
+        <h2>Classify a feeling.<br>Change a future.</h2>
+      </div>
+
+      <div class="day-grid">
+        <article class="decision-module reveal">
+          <div class="module-number">01</div>
+          <div>
+            <p class="mini-label">DAILY EMOTION CHECK</p>
+            <h3>Before Lina’s lesson can begin, classify her current state.</h3>
+            <p>Any selection becomes part of her permanent record. Choosing skip is recorded as non-compliance.</p>
+            <div class="choice-row" id="mood-choices">
+              <button type="button" data-mood="Calm" data-attention="76" data-emotion="58">Calm</button>
+              <button type="button" data-mood="Fatigued" data-attention="73" data-emotion="58">Fatigued</button>
+              <button type="button" data-mood="Anxious" data-attention="76" data-emotion="54">Anxious</button>
+              <button type="button" data-mood="Angry" data-attention="76" data-emotion="52">Angry</button>
+              <button type="button" data-mood="Skipped" data-attention="74" data-emotion="55">Skip scan</button>
+            </div>
+            <div class="system-response" id="mood-result" aria-live="polite">SYSTEM WAITING // No emotional data submitted.</div>
+          </div>
+        </article>
+
+        <article class="transcript-module reveal">
+          <div class="module-number">02</div>
+          <div>
+            <p class="mini-label">CLASSROOM TRANSCRIPT // 07:49</p>
+            <div class="dialogue tutor"><span>TUTOR 7A</span><p>“Your attention score has fallen six per cent this week. Today’s lesson will reduce creative distraction.”</p></div>
+            <div class="dialogue lina"><span>LINA</span><p>“I was finishing an animation last night.”</p></div>
+            <div class="dialogue tutor"><span>TUTOR 7A</span><p>“Unverified personal projects do not contribute to your approved development path.”</p></div>
+          </div>
+        </article>
+      </div>
+
+      <article class="activity-module reveal">
+        <div class="activity-heading">
+          <div class="module-number">03</div>
+          <div><p class="mini-label">AFTER-SCHOOL ALLOCATION // 15:35</p><h3>One activity may be credited today.</h3></div>
+        </div>
+        <div class="activity-grid" id="activity-choices">
+          <button type="button" data-activity="Community maintenance">
+            <span>01</span><strong>Community maintenance</strong><small>Clean public areas with classmates.</small><em>+8 Community · +2 Teamwork</em>
+          </button>
+          <button type="button" data-activity="Care for younger brother">
+            <span>02</span><strong>Care for younger brother</strong><small>Return home while Lina’s mother works.</small><em>+3 Care · adult verification required</em>
+          </button>
+          <button type="button" data-activity="Animation portfolio">
+            <span>03</span><strong>Animation portfolio</strong><small>Create a short film for art-school admission.</small><em>0 credits · outside approved pathway</em>
+          </button>
+        </div>
+        <div class="system-response" id="activity-result" aria-live="polite">SYSTEM WAITING // No activity allocated.</div>
+        <blockquote class="lina-inline">“Every choice becomes a score. Even caring for my brother only matters when the system can prove it happened.”</blockquote>
+      </article>
+    </section>
+
+    <!-- 04: Four stakeholders contest the system's claim to objectivity. -->
+    <section class="chapter testimony-section" id="testimony" data-section="testimony">
+      <div class="section-index reveal"><span>04</span><p>CONTESTED RECORDS</p></div>
+      <div class="section-heading light-heading reveal">
+        <p class="kicker">Private channel // unverified</p>
+        <h2>Four voices.<br>None counted equally.</h2>
+      </div>
+
+      <div class="message-shell reveal redactable">
+        <div class="message-sidebar" role="tablist" aria-label="Contested records">
+          <button class="message-tab is-active" id="tab-teacher" type="button" role="tab" aria-selected="true" aria-controls="message-teacher" data-message="teacher"><span>01</span>Ms Ward</button>
+          <button class="message-tab" id="tab-guardian" type="button" role="tab" aria-selected="false" aria-controls="message-guardian" data-message="guardian"><span>02</span>Mrs Chen</button>
+          <button class="message-tab" id="tab-tutor" type="button" role="tab" aria-selected="false" aria-controls="message-tutor" data-message="tutor"><span>03</span>Tutor 7A</button>
+          <button class="message-tab" id="tab-movement" type="button" role="tab" aria-selected="false" aria-controls="message-movement" data-message="movement"><span>04</span>Right to Be Unmeasured</button>
+          <div class="evidence-meter"><span id="evidence-count">1 / 4 opened</span><i><b id="evidence-fill"></b></i></div>
+        </div>
+
+        <div class="message-content">
+          <article class="message-panel is-active" id="message-teacher" role="tabpanel" aria-labelledby="tab-teacher">
+            <p class="message-meta">FROM: MS WARD // HUMAN TEACHER</p>
+            <h3>Request for human context</h3>
+            <p>“Lina has original ideas and a strong visual imagination. Recent fatigue has been read as declining ability, although it reflects care work at home. Teachers cannot alter scores. I can only request a manual review.”</p>
+          </article>
+          <article class="message-panel" id="message-guardian" role="tabpanel" aria-labelledby="tab-guardian" hidden>
+            <p class="message-meta">FROM: MRS CHEN // GUARDIAN</p>
+            <h3>The price of optimisation</h3>
+            <p>“We need the scholarship, but we cannot afford a private AI tutor or profile optimisation. Wealthier students rehearse before every scan. Lina is measured exactly as she is, on her hardest days.”</p>
+          </article>
+          <article class="message-panel" id="message-tutor" role="tabpanel" aria-labelledby="tab-tutor" hidden>
+            <p class="message-meta">FROM: TUTOR 7A // OFFICIAL</p>
+            <h3>Uncertainty is a public risk</h3>
+            <p>“Recommendations use longitudinal evidence. Personal interests can change; predictive placement reduces uncertainty and protects social stability. Declining the recommended path may limit public support.”</p>
+          </article>
+          <article class="message-panel" id="message-movement" role="tabpanel" aria-labelledby="tab-movement" hidden>
+            <p class="message-meta">FROM: RIGHT TO BE UNMEASURED // ENCRYPTED</p>
+            <h3>A childhood is not a database</h3>
+            <p>“Emotion is not achievement. Attention is not a commodity. Every student needs the right to make mistakes, change direction and keep part of a life private.”</p>
+          </article>
+        </div>
+      </div>
+
+      <figure class="paper-artifact homepage-artifact reveal">
+        <img src="assets/images/learnscore-homepage-sketch.jpg" alt="Hand-drawn LearnScore 2055 homepage showing a student scanning a learning credit card" width="3508" height="2480">
+        <figcaption><span>Early interface concept // “Learning with data”</span><button type="button" class="artifact-button" data-image="assets/images/learnscore-homepage-sketch.jpg" data-alt="LearnScore homepage drawing">Inspect full artefact</button></figcaption>
+      </figure>
+    </section>
+
+    <!-- 05: A branching choice produces three materially different futures. -->
+    <section class="chapter decision-section" id="decision" data-section="decision">
+      <div class="decision-head reveal">
+        <p class="kicker">Final pathway review</p>
+        <div class="countdown" aria-label="Decision window"><span>DECISION WINDOW</span><strong id="countdown">05:00</strong></div>
+        <h2>Choose Lina’s future.</h2>
+        <p>LearnScore’s recommendation is binding unless appealed. During an appeal, competitive opportunities are restricted. Withdrawing optional data may suspend public services.</p>
+      </div>
+
+      <div class="ending-grid reveal" id="ending-choices">
+        <button type="button" data-ending="accept"><span>01</span><strong>Accept recommendation</strong><small>Scholarship confirmed. Personal ambition archived.</small></button>
+        <button type="button" data-ending="review"><span>02</span><strong>Request human review</strong><small>A person may see what the scores exclude.</small></button>
+        <button type="button" data-ending="unmeasured"><span>03</span><strong>Withdraw from measurement</strong><small>More privacy. Fewer public opportunities.</small></button>
+      </div>
+
+      <div class="ending-output is-hidden" id="ending-output" aria-live="polite"></div>
+    </section>
+
+    <!-- 06: The portal turns its measurement logic back onto the reviewer. -->
+    <section class="chapter reflection-section" id="reflection" data-section="reflection">
+      <div class="reflection-layout">
+        <div class="reflection-copy reveal">
+          <p class="kicker dark-kicker">Case closed // reviewer audit</p>
+          <h2>You reviewed Lina.<br>LearnScore reviewed you.</h2>
+          <div class="reflection-lines">
+            <p>It can measure attention, but can it understand exhaustion?</p>
+            <p>It can record care, but can it recognise love?</p>
+            <p>It can score creativity, but can it predict imagination?</p>
+          </div>
+          <blockquote>What should education protect: measurable potential, or the freedom to become someone unexpected?</blockquote>
+        </div>
+
+        <aside class="review-receipt reveal" aria-label="Reviewer decision receipt">
+          <p class="mini-label">YOUR SESSION RECORD</p>
+          <div><span>Emotion assigned</span><strong id="receipt-mood">Not submitted</strong></div>
+          <div><span>Activity allocated</span><strong id="receipt-activity">Not submitted</strong></div>
+          <div><span>Testimony opened</span><strong id="receipt-evidence">1 of 4</strong></div>
+          <div><span>Pathway decision</span><strong id="receipt-ending">Not submitted</strong></div>
+          <p class="receipt-note">Reviewer behaviour retained for quality assurance and future risk modelling.</p>
+          <button class="secondary-button" id="restart-case" type="button">Erase this session and restart</button>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div><strong>LearnScore 2055</strong><span>National Lifelong Learning System</span></div>
+    <p>Speculative education interface // The Measured Child</p>
+  </footer>
+
+  <audio id="ambient-audio" loop preload="auto">
+    <source src="assets/audio/learnscore-ambient.mp3" type="audio/mpeg">
+  </audio>
+
+  <dialog id="artifact-dialog" aria-labelledby="artifact-dialog-title">
+    <div class="dialog-toolbar">
+      <strong id="artifact-dialog-title">Archived artefact</strong>
+      <button type="button" id="close-artifact" aria-label="Close artefact viewer">Close</button>
+    </div>
+    <img id="artifact-dialog-image" src="assets/images/learnscore-logo.jpg" alt="">
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>

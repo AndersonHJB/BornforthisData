@@ -1,0 +1,32 @@
+LEARNSCORE VIDEO — SUGGESTED ORIGINAL REPLACEMENT
+==================================================
+
+Purpose: replace assets/video/video.mp4 with a 60–90 second original classroom clip that deepens Lina's story. Use self-shot footage, self-made animation or a mixture of both. Do not use generative AI or stock footage.
+
+00:00–00:08 — ACCESS
+Close-up of Lina's hand placing the learning card beside a school desk. A screen confirms her identity.
+
+00:08–00:22 — THE SCAN
+Lina sits at the AI tutor desk. The camera notices her sketchbook just outside the scanner's marked area. The interface labels it UNVERIFIED.
+
+00:22–00:38 — TUTOR 7A
+System voice or on-screen text: “Your attention score has fallen six per cent this week. Today's lesson will reduce creative distraction.”
+
+00:38–00:51 — LINA
+Lina replies: “I was finishing an animation last night.” Show her drawings or an animation process created by the student.
+
+00:51–01:03 — THE RULE
+System voice or on-screen text: “Unverified personal projects do not contribute to your approved development path.” The screen closes or hides the sketchbook image.
+
+01:03–01:18 — HUMAN CONTEXT
+Reveal a human teacher behind glass or occupied with several students. Lina looks back at the sketchbook.
+
+01:18–01:25 — FINAL FRAME
+Display: WHAT THE SYSTEM CANNOT SEE RECEIVES NO SCORE.
+
+Production checklist:
+- Film or animate every visual yourself.
+- Record clean dialogue or provide readable on-screen text.
+- Export H.264/AAC MP4, 16:9, 1280x720 or 1920x1080.
+- Update assets/video/video.vtt with accurate English captions.
+- Replace the file under the same name and retest in index.html.

@@ -1,0 +1,34 @@
+LEARNSCORE 2055 — MATERIALS AND PROVENANCE
+===========================================
+
+CONCEPT AND NARRATIVE
+---------------------
+The project extends the student's first assignment, “The Measured Child 2055”. LearnScore is presented as the national portal for that assignment's Learning Credit System. The interactive narrative was edited and structured from the supplied manuscript “文稿.md”.
+
+SUPPLIED VISUAL MATERIALS USED
+------------------------------
+1. logo.jpg
+   Used as the LearnScore orientation-film poster and first film sequence.
+
+2. 微信图片_20260729221613_637_852.jpg
+   Renamed lina-credit-card.jpg. Used in the access scanner and student record.
+
+3. 微信图片_20260729221614_638_852.jpg
+   Renamed how-learnscore-works.jpg. Used as the system map and in the film.
+
+4. 微信图片_20260729221616_639_852.jpg
+   Renamed lina-data-dashboard.jpg. Used as Lina's archived dashboard and in the film.
+
+5. 微信图片_20260729221621_641_852.jpg
+   Renamed learnscore-homepage-sketch.jpg. Used as an early interface concept and in the film.
+
+ORIGINAL MEDIA CREATED FOR THIS SITE
+------------------------------------
+- video.mp4: assembled locally from the five supplied drawings using deterministic pan, zoom and crossfade animation. No generative AI and no stock footage were used.
+- learnscore-ambient.mp3: built from procedural sine tones and filtered noise. No third-party recording or music was used.
+- Interface notification tones: synthesised at runtime with the Web Audio API.
+
+EXTERNAL MATERIALS
+------------------
+None. The website has no external fonts, libraries, images, APIs, analytics or network dependencies.
+

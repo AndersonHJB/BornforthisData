@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="The Measured Child 2055 — an interactive speculative education narrative." />
+  <title>The Measured Child 2055</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">L</span><span>LearnScore 2055</span></div>
+    <nav>
+      <button class="nav-link" data-target="login">Login</button>
+      <button class="nav-link" data-target="system">System</button>
+      <button class="nav-link" data-target="profile">Profile</button>
+      <button class="nav-link" data-target="day">School Day</button>
+      <button class="nav-link" data-target="decision">Decision</button>
+    </nav>
+    <div class="top-actions">
+      <button id="audioToggle" class="icon-btn" aria-label="Toggle audio">🔊</button>
+      <button id="privacyToggle" class="privacy-btn">Privacy Mode</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="login" class="panel hero active-section">
+      <div class="hero-copy">
+        <p class="eyebrow">NATIONAL LIFELONG LEARNING SYSTEM</p>
+        <h1>THE MEASURED<br />CHILD <span>2055</span></h1>
+        <p class="lead">Every ability matters. Every moment counts.</p>
+        <p>For centuries, students were judged by a small number of examinations. LearnScore changed that. In 2055, every learner has a permanent account recording academic progress, creativity, teamwork, language ability, care work, attention, emotional wellbeing and community contribution.</p>
+        <p>No single test can define your future. Every action can show your potential.</p>
+        <button id="scanCard" class="primary-btn">Scan Learning Credit Card</button>
+        <div id="identityCard" class="identity-card hidden">
+          <div><span>Student</span><strong>Lina Chen</strong></div>
+          <div><span>Age</span><strong>16</strong></div>
+          <div><span>District</span><strong>Sydney Education District</strong></div>
+          <div><span>Status</span><strong class="warning">Pathway Review Required</strong></div>
+          <button class="secondary-btn" data-target="system">Access Student Profile</button>
+        </div>
+      </div>
+      <div class="hero-media">
+        <div class="video-frame">
+          <video controls poster="assets/poster.png">
+            <source src="assets/learnscore_promo.mp4" type="video/mp4" />
+            Your browser does not support video playback.
+          </video>
+          <div class="video-label">OFFICIAL SYSTEM PROMOTION // 2055</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="system" class="panel">
+      <div class="section-heading">
+        <p class="eyebrow">HOW LEARNSCORE WORKS</p>
+        <h2>A fairer education, measured continuously.</h2>
+      </div>
+      <div class="two-column">
+        <div class="copy-block">
+          <p>LearnScore was introduced to make education more personal, flexible and fair. Instead of preparing for final examinations, students build learning credits throughout their lives.</p>
+          <p>Credits can be earned in many ways. A student may receive creativity credits for designing a project, care credits for supporting a family member, teamwork credits for helping a group complete a task, or community credits for volunteering.</p>
+          <p>AI tutors collect information from lessons, conversations, classroom activities and daily check-ins. The system then recommends courses, scholarships and career pathways for each learner.</p>
+          <p>LearnScore promises that every talent can be recognised. Students who are not successful in traditional academic subjects can still receive recognition for practical work, communication, leadership or care.</p>
+          <div class="system-alert">LearnScore does not punish students. It only predicts risk.</div>
+        </div>
+        <div class="credit-grid">
+          <button class="credit-card" data-detail="Ideas, experiments and original problem-solving are monitored through approved projects."><span>✦</span>Creativity</button>
+          <button class="credit-card" data-detail="Speech, writing, translation and communication are measured across classes and daily life."><span>◈</span>Language</button>
+          <button class="credit-card" data-detail="Group participation, conflict resolution and leadership are continuously recorded."><span>●●</span>Teamwork</button>
+          <button class="credit-card" data-detail="Family support and care may receive credits only when verified by an approved adult."><span>♡</span>Care Work</button>
+          <button class="credit-card" data-detail="Response speed, focus and hesitation are analysed by classroom sensors."><span>◎</span>Attention</button>
+          <button class="credit-card" data-detail="Daily scans estimate mood stability and possible future risk."><span>≈</span>Emotional Stability</button>
+          <div id="creditDetail" class="credit-detail">Select a category to see how it is measured.</div>
+          <div class="micro-warning">Verified emotional data cannot normally be deleted.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="profile" class="panel dark-panel">
+      <div class="section-heading">
+        <p class="eyebrow">STUDENT PROFILE // PRIVATE RECORD</p>
+        <h2>Lina Chen</h2>
+      </div>
+      <div class="dashboard">
+        <div class="profile-summary">
+          <div class="avatar">LC</div>
+          <p>Lina is a sixteen-year-old student with strong memory, reliable teamwork and high language performance. She enjoys drawing, animation and visual storytelling.</p>
+          <div class="recommendation">
+            <span>Recommended pathway</span>
+            <strong>Health Data Management</strong>
+          </div>
+          <div class="probability-row"><span>Scholarship if accepted</span><strong>82%</strong></div>
+          <div class="probability-row"><span>Scholarship if rejected</span><strong>47%</strong></div>
+        </div>
+        <div class="scores">
+          <button class="score-row" data-note="High accuracy in recall tasks."><span>Memory</span><b>89</b><i style="--score:89%"></i></button>
+          <button class="score-row" data-note="Reliable in structured group tasks."><span>Teamwork</span><b>84</b><i style="--score:84%"></i></button>
+          <button class="score-row" data-note="Strong written and spoken communication."><span>Language</span><b>81</b><i style="--score:81%"></i></button>
+          <button class="score-row" data-note="Fell six percent this week."><span>Attention</span><b>76</b><i style="--score:76%"></i></button>
+          <button class="score-row" data-note="Family care is only partially verified."><span>Care Work</span><b>73</b><i style="--score:73%"></i></button>
+          <button class="score-row" data-note="Creative performance is marked as inconsistent."><span>Creativity</span><b>61</b><i style="--score:61%"></i></button>
+          <button class="score-row" data-note="Recent tiredness has been interpreted as instability."><span>Emotional Stability</span><b>58</b><i style="--score:58%"></i></button>
+          <div id="scoreNote" class="score-note">Click a score to reveal the system note.</div>
+        </div>
+        <aside class="private-note redactable">
+          <p class="tag">LINA // PRIVATE NOTE</p>
+          <blockquote>“The system says I am not creative enough. I do not think creativity can stay the same every day. Sometimes I am tired. Sometimes I have to look after my brother. Sometimes I make things that the system does not understand.”</blockquote>
+          <p class="official-comment">Official comment: Lina’s creative performance is inconsistent and should not be used as the main basis for career planning.</p>
+        </aside>
+      </div>
+      <button class="primary-btn next-btn" data-target="day">Begin Lina’s School Day</button>
+    </section>
+
+    <section id="day" class="panel">
+      <div class="section-heading">
+        <p class="eyebrow">A DAY AT SCHOOL</p>
+        <h2>Every choice becomes a score.</h2>
+      </div>
+
+      <div class="story-step">
+        <div class="step-number">01</div>
+        <div>
+          <h3>Morning Wellbeing Scan</h3>
+          <p>Every morning begins with a wellbeing scan. Students must report their emotional and physical condition before entering the classroom. The system uses this information to adjust lessons and update each student’s emotional stability score.</p>
+          <div class="choice-row" id="moodChoices">
+            <button data-value="Calm">Calm</button>
+            <button data-value="Tired">Tired</button>
+            <button data-value="Anxious">Anxious</button>
+            <button data-value="Angry">Angry</button>
+          </div>
+          <div id="moodResult" class="result-box">Choose Lina’s current condition.</div>
+        </div>
+      </div>
+
+      <div class="story-step">
+        <div class="step-number">02</div>
+        <div>
+          <h3>AI Lesson</h3>
+          <div class="dialogue ai"><b>AI Tutor:</b> “Good morning, Lina. Your attention score has fallen by six percent this week. Today’s lesson has been adjusted to improve focus and reduce creative distraction.”</div>
+          <div class="dialogue lina"><b>Lina:</b> “I was finishing an animation last night.”</div>
+          <div class="dialogue ai"><b>AI Tutor:</b> “Unverified personal projects do not contribute to your official pathway.”</div>
+          <button id="focusTest" class="secondary-btn">Complete 5-second Focus Test</button>
+          <div id="focusResult" class="result-box">The system is waiting.</div>
+        </div>
+      </div>
+
+      <div class="story-step">
+        <div class="step-number">03</div>
+        <div>
+          <h3>After-School Activity</h3>
+          <p>Each activity will affect Lina’s profile differently.</p>
+          <div class="activity-grid" id="activityChoices">
+            <button data-value="Community Service"><strong>Community Service</strong><span>+8 community credits</span><small>Improves scholarship ranking.</small></button>
+            <button data-value="Care for Brother"><strong>Care for Her Brother</strong><span>+3 care credits</span><small>Only if verified by an adult.</small></button>
+            <button data-value="Animation"><strong>Work on Her Animation</strong><span>No guaranteed credits</span><small>Not part of her approved pathway.</small></button>
+          </div>
+          <div id="activityResult" class="result-box">No activity selected.</div>
+          <blockquote class="lina-quote">“Every choice becomes a score. Even helping my family only matters when the system can prove it happened.”</blockquote>
+        </div>
+      </div>
+
+      <button id="openMessages" class="primary-btn">Open Private Messages</button>
+    </section>
+
+    <section id="messages" class="panel message-panel">
+      <div class="section-heading">
+        <p class="eyebrow">PRIVATE CHANNEL // UNVERIFIED</p>
+        <h2>Who should Lina trust?</h2>
+      </div>
+      <div class="message-tabs">
+        <button class="message-tab active" data-message="teacher">Human Teacher</button>
+        <button class="message-tab" data-message="parent">Lina’s Mother</button>
+        <button class="message-tab" data-message="ai">AI Tutor 7A</button>
+        <button class="message-tab" data-message="movement">Right to Be Unmeasured</button>
+      </div>
+      <div class="message-window redactable">
+        <article id="teacher" class="message-content active">
+          <h3>Ms Ward, Human Teacher</h3>
+          <p>“Lina has original ideas and a strong visual imagination. The system reads her recent tiredness as declining ability. I believe her profile should be reviewed by a person, not only by an algorithm. However, teachers can no longer change a score directly. We can only submit a request.”</p>
+        </article>
+        <article id="parent" class="message-content">
+          <h3>Lina’s Mother</h3>
+          <p>“We want Lina to be happy, but we also need her scholarship. A safe career could protect her future. Private AI tutors are too expensive for us. Wealthier students can train their profiles before important reviews. We cannot.”</p>
+        </article>
+        <article id="ai" class="message-content">
+          <h3>AI Tutor 7A</h3>
+          <p>“Career recommendations are based on verified evidence. Personal interests may change over time. System predictions reduce uncertainty and improve social stability. Refusing a recommended pathway may limit access to funding.”</p>
+        </article>
+        <article id="movement" class="message-content">
+          <h3>Right to Be Unmeasured</h3>
+          <p>“Your childhood is not a public database. Your emotions are not grades. Your attention is not a product. Students should have the right to make mistakes, change direction and keep parts of their lives private.”</p>
+        </article>
+      </div>
+      <button class="primary-btn next-btn" data-target="decision">Make the Final Decision</button>
+    </section>
+
+    <section id="decision" class="panel decision-panel">
+      <div class="section-heading center">
+        <p class="eyebrow">PATHWAY REVIEW CLOSES IN <span id="countdown">05:00</span></p>
+        <h2>Choose Lina’s future.</h2>
+        <p>The system is waiting for a final answer.</p>
+      </div>
+      <div class="ending-grid">
+        <button class="ending-choice" data-ending="accept"><span>01</span><strong>Accept the System</strong><small>Scholarship secured. Personal ambition removed from the main profile.</small></button>
+        <button class="ending-choice" data-ending="review"><span>02</span><strong>Request Human Review</strong><small>A person may understand what the numbers missed.</small></button>
+        <button class="ending-choice" data-ending="unmeasured"><span>03</span><strong>Become Unmeasured</strong><small>More privacy, fewer official opportunities.</small></button>
+      </div>
+      <div id="endingOutput" class="ending-output hidden"></div>
+    </section>
+
+    <section id="reflection" class="panel reflection-panel">
+      <div class="reflection-card">
+        <p class="eyebrow">FINAL REFLECTION</p>
+        <h2>When every action becomes data, learning may turn into performance.</h2>
+        <p>LearnScore was created to make education fairer. It recognises abilities that traditional examinations ignored, and it can support students in personalised ways.</p>
+        <p>But students may help others only to receive credits. They may hide difficult emotions to protect their scores. They may avoid creative risks because every failure will remain permanently recorded.</p>
+        <div class="reflection-lines">
+          <p>A system can measure attention without understanding exhaustion.</p>
+          <p>It can measure care without understanding love.</p>
+          <p>It can measure creativity without understanding imagination.</p>
+        </div>
+        <p>The question is not whether technology belongs in education. The question is how much power it should have over a child’s future.</p>
+        <blockquote>What should education protect: measurable potential, or the freedom to become someone unexpected?</blockquote>
+        <button id="restart" class="secondary-btn">Restart Experience</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>THE MEASURED CHILD 2055</span>
+    <span>Interactive speculative education project</span>
+  </footer>
+
+  <audio id="ambientAudio" loop preload="auto">
+    <source src="assets/ambient.wav" type="audio/wav" />
+  </audio>
+  <script src="script.js"></script>
+</body>
+</html>
