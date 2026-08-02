@@ -1,0 +1,203 @@
+        @font-face {
+                    font-family: spaceMono;
+                    src: url(fonts/SpaceMono-Regular.ttf);
+        }
+    
+        body {
+            margin-left: 10%;
+            background-color:#ffffff;
+            font-family:"spaceMono", "Helvetica", sans-serif;
+            color:#012118;
+        }
+
+        
+        .sections {
+            background-color:#fcfdfd;
+            max-width: 67%;
+            height: 50%;
+            display: block;
+            border-style: solid;
+            border-color: #012118;
+            border-width: 5px;
+            padding: 25px;
+            padding-bottom: 50px;
+            margin-bottom: 50px;
+            overflow: auto;
+        }
+
+#automation {
+    
+    height: 100px
+}
+        
+        p {
+            font-size: 1em;
+            text-align: left;
+        }
+        
+        p.highlights {
+            background-color:#eb0080;
+        }
+        
+        h1{
+            font-size: 3em;
+            margin-bottom: 50px;    
+        }
+        
+        h2{
+            font-size: 2em;
+            border-style: solid;
+            border-color: #012118;
+            border-width: 0 0 3px 0;
+        }
+        
+        h3,
+        h4,
+        h5,
+        h6{
+            font-size: 1.5em;
+        }
+        
+        a {
+            color: #ff008b;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        a:active{
+            color: #fe71be;
+        }
+        
+        img {
+            float: right;
+        }
+        
+        ul {
+            display: block;
+            list-style-type: none;
+            max-width: 67%;
+            border-style: solid;
+            border-color: #012118;
+            border-width: 5px;
+            margin-bottom: 25px;
+            padding: 25px;
+            overflow: hidden;
+            background-color: #fcfdfd;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+                display: block;
+                color: black;
+                font-size: 1.5em;
+                text-align: center;
+                padding: 16px;
+                text-decoration: none;
+        }
+
+        .menu-icon{
+                
+              padding: 16px;
+              border: none;
+              cursor: pointer;
+            
+        }
+
+        .menu-icon-bar1, .menu-icon-bar2, .menu-icon-bar3{
+            width: 35px;
+            height: 5px;
+            background-color: black;
+            margin: 6px 0;
+            transition: 0.4s;           
+        }
+
+        .dropdown {
+            position: fixed;
+            top: 3%;
+            right: 3%;
+        }
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          right: 0;
+          background-color: #f9f9f9;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1; 
+        }
+
+        .dropdown-content a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #012118;
+            color:#fcfdfd; 
+        }
+
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
+
+   
+#bg { 
+      
+      width: 90px; 
+      height: 45px;    
+          
+}
+
+
+  
+/*Modal*/
+
+#modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+#modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+#close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#close:hover,
+#close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*popup window*/
+

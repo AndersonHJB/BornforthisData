@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    
+    <meta charset="UTF-8">
+    
+    <title>JavaScript</title>
+    
+    <link rel="icon" type="image/png" href="favicons/favicon-32x32.png">
+    
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+    <script src="buttondemo.js"></script>
+    
+    
+    
+</head>
+    
+<body>
+    
+    <h1>JavaScript</h1>
+    
+        
+    <div class="dropdown" style="float:right;">
+    
+    <div class="menu-icon" onclick="navFunction(this)">
+    <div class="menu-icon-bar1"></div>
+    <div class="menu-icon-bar2"></div>
+    <div class="menu-icon-bar3"></div>
+    </div>
+    
+    <div class="dropdown-content">
+    <a href="#dom">The HTML DOM</a>
+    <a href="#keyterms">Key Terms for Programming</a>
+    <a href="#where">Where does my JavaScript go?</a>
+    <a href="#events">DOM Events</a>
+    <a href="#statements">JavaScript Statements</a>
+    <a href="#functions">JavaScript Functions</a>
+    
+    </div>
+        
+    </div>
+    
+    
+    <div id="dom" class="sections">
+    
+        <h2>The HTML DOM</h2>
+    
+        <p>The HTML DOM (Document Object Model) is a model of a web document that is created by a web browser when a page is loaded - it takes the form of a tree of objects, as you can see in the image here.</p>
+        
+        <img src="images/htmltree.gif">
+        
+        <p>JavaScript is used to manipulate the DOM, allowing the dynamic manipulation of web pages.</p>
+        
+        <p>For example:</p>
+        
+        <p>JavaScript can change all the HTML elements in the page</p>
+        <p>JavaScript can change all the HTML attributes in the page</p>
+        <p>JavaScript can change all the CSS styles in the page</p>
+        <p>JavaScript can remove existing HTML elements and attributes</p>
+        <p>JavaScript can add new HTML elements and attributes</p>
+        <p>JavaScript can react to all existing HTML events in the page</p>
+        <p>JavaScript can create new HTML events in the page</p>
+        
+        <p><b>Task</b> - Try out the examples <a href="https://www.w3schools.com/js/js_intro.asp">here</a> on w3schools.</p>
+    
+    </div>
+    
+    <div id="keyterms" class="sections">
+    
+        <h2>Key Terms for Programming</h2>
+        
+        <p>JavaScript is an object oriented scripting language and as such employs a number of the below standard programming features.</p>
+        
+        <h3>Functions</h3>
+        
+        <p>Functions execute specific actions – some accept parameters, others don’t.</p>
+        
+        <h3>Parameters</h3>
+        
+        <p>Comma separated elements between parentheses are called parameters and they affect how a function works.</p>
+        
+        <h3>Statements</h3>
+        
+        <p>The coding equivalent of a sentence – a complete unit of code terminated with a semicolon.</p>
+        
+        <h3>Block</h3>
+        
+        <p>A section of code that is run together – delimited using curly brackets.</p>
+        
+        <h3>Variables</h3>
+        
+        <p>Variables are used to store and retrieve values. </p>
+        
+        <h3>Methods</h3>
+        
+        <p>Methods are things objects can do – they are used by typing them following an object name with a dot in between.</p>
+    
+    </div>
+    
+     <div id="where" class="sections">
+
+        <h2>Where Does My Javascript Go?</h2>
+        
+        <p>Much like CSS, JavaScript can be used 'inline' inside of HTML tags, in internal scripts denoted by &lt;script&gt; tags and in external script files with the extension .js.</p>
+        
+        <p>Here is an example of each, try them out and view source to see the differences:</p>
+         
+         
+         
+        
+        <h3>Inline</h3>
+        
+        <p id="demo1">Here is some text.</p>
+        
+        <button type="button" onclick="document.getElementById('demo1').innerHTML = 'Here is some different text!'">Try it</button>
+         
+         
+         
+         
+        
+        <h3>Internal Scripts</h3>
+        
+        <p id="demo2">What do you call a clock on a persons belt?</p>
+        
+        <script>
+            
+            function myFunction() {
+            document.getElementById("demo2").innerHTML = "A waste of time.";
+                }
+            
+            
+        </script>
+         
+         
+        
+        <p>Note internal script can be included in the 'head' or 'body' of the document but will be loaded at different times as a result - choose deliberately.</p>
+        
+        <button type="button" onclick="myFunction()">Try it</button>
+         
+         
+         
+         
+        
+        <h3>External scripts</h3>
+        
+        <p id="demo3">Is everyone still awake?</p>
+        
+   
+        
+        <button type="button" onclick="myExternalFunction()">Try it</button>
+    
+        <p>It is often convenient to include Javascript inline or internally but remember that along with making things easier to read and maintain, external scripts that can be cached on their own can speed up page loads.</p>
+         
+         
+         <button onclick="document.getElementById('myImage').src='images/pic.jpg'">SELFIE TIME</button>
+         
+         <img id="myImage" src="images/htmltree.gif" style="width:100px">
+
+         <button onclick="document.getElementById('myImage').src='images/htmltree.gif'">THE DOM</button>
+    
+    </div>
+    
+    
+    
+    
+
+    <div id="events" class="sections" onmouseover="change()" onmouseout="changeback()">
+        
+        <h2>DOM Events</h2>
+        
+        <p>JavaScript can be run - executed - when an HTML events occurs - like a user clicking on a button, such as in the examples above.</p>
+        
+        <p>This is enabled by adding JavaScript code to an HTML event attribute such as 'onlick'.</p>
+        
+        <p><b>Task</b> - Give setting up 'onclick' in your project a shot and then if you like look up other events on w3schools and give them a try.</p>
+        
+        Click<a href="https://www.w3schools.com/js/js_events.asp"> here</a> for a list of common events.
+        
+        
+        <p>Quiz: Why does this div return to white and not the one below? </p>
+        
+        
+    </div>
+    
+    <div id="statements" class="sections">
+        
+        <h2>JavaScript Statements</h2>
+        
+        <p>JavaScript statements can include values, operators, expressions, keywords and comments, and they always end with a semi-colon.</p>
+        
+        <p>It is common for statements used on standard web documents to look something like this:</p>
+        
+        <p>document.getElementById("statement").innerHTML = "Hello World";</p>
+        
+        <p>The above example is using the 'document.getElementById' <b>method</b> to access the DOM and find an element in the web document with the id 'statement', before using the '.innerHTML' method to change the text in that element.</p>
+        
+        <p><a href="https://www.w3schools.com/js/js_htmldom_document.asp">Here</a> is a list of common methods</p>
+        
+        <p><b>Task</b> - Try out some different methods.</p>
+        
+    </div>
+    
+    <div id="functions" class="sections">
+    
+        <h2>JavaScript Functions</h2>
+        
+        <p>Along with adding JavaScript directly to an HTML event attribute it is also possible to use an event to 'call' - load and run - a JavaScript function.</p>
+        
+        <p>JavaScript functions are blocks of code that 'do' something - once <b>defined</b> functions can be <b>called</b> as often as you like.</p>
+        
+        <p>Functions are defined using the 'function' <b>keyword</b> followed by a unique name of your choosing for the function and a set of brackets and then curly brackets containing the code to be executed in the function.
+        
+        <p><b>Task</b> - Now try out using functions in your project.</p>
+        
+        <p>Function <b>parameters</b> are listed inside the brackets next to the name you give a function - functions often don't have any parameters, such as in the cases above, but if they do those parameters set what <b>arguments</b> the function can receive in the form of <b>values</b>, which are then stored as local <b>variables</b>.</p>
+        
+        <p>Functions can also include a <b>return</b> statement - in such cases the function will stop when it reaches the return statement and 'return' a 'return statement' to the 'caller'</p>
+        
+        <p>For example, this function that calculates the result of adding three numbers using the <b>expression</b> a+b+c:</p>
+        
+        <pre>
+        function myCalculator(a, b, c) {
+                        return a + b + c;
+                    }
+        </pre>
+        
+        <p>Functions like the one above that return a result can be called by declaring a <b>variable</b>, which stores the results and can be used to represent it using a name of your choice.</p>
+        
+        <p>For the above that looks like this:</p>
+    
+        <pre>
+        
+        var result = myCalculator(3, 2, 1);
+        
+        </pre>
+        
+        <p>JavaScript is very flexible and will let you store most data types as variables using 'var' - numbers and more.</p>
+        
+        <p>Remember the <b>operator</b> () invokes a function and the word 'function' defines one - refer back to the examples above.</p>
+        
+        <p><b>Task</b>- Get this example working and then turn it into something you can use in your own project.</p>
+        
+        <br>
+        <p>Note - <b>comments</b> in JavaScript are marked using // for a single line and /* with */ for multiple lines.</p>
+        
+    
+        
+        <button onclick="calculate()">10+20+100</button>
+        
+        <button onclick="calculate2()">5000+10000+1000</button>
+        
+        <p id="calculator"></p>
+         <p id="calculator2"></p>
+        
+    </div>
+    
+    
+        <div class="sections">
+            
+            <h2>Further exercises/examples</h2>
+            
+            
+            <div>
+           
+        
+            <p><b>Random Colour Generator</b></p>
+    
+    
+            <p id="name"></p>
+            <br>
+                
+        <div id="bg"></div>
+            <br><br>
+                
+            <button id="button" onclick="changeColor()">Random Colours</button>
+   
+        </div>
+            
+           
+    
+     </div>
+    
+    <div id=addwords class="sections">
+            
+            
+            
+        
+           
+        
+        <p><b>Random Word Generator</b></p>
+    
+    
+ 
+   
+        <button id="button" onclick="randomWord()">Let's Get A Word</button>
+        <p id="word"></p>
+  
+            
+           
+    
+     </div>
+    
+     <div class="sections"> 
+            
+          
+        <p><b>Trigger Sounds With Keyboard</b></p> 
+         
+           <!--sounds are hidden because there is no control attribute-->
+         
+             
+        <audio id="audio" >  
+        <source src="sound/3.mp3" type="audio/mpeg"> Your browser does not support the audio element.
+         </audio>
+         
+        <audio id="audio1" >
+        <source src="sound/6.mp3" type="audio/mpeg"> Your browser does not support the audio element.
+        </audio>
+         
+        <audio id="audio2" >
+        <source src="sound/7.mp3" type="audio/mpeg"> Your browser does not support the audio element.
+        </audio>
+         
+        <audio id="audio3" >
+        <source src="sound/8.mp3" type="audio/mpeg"> Your browser does not support the audio element.
+         </audio>
+         
+        <audio id="audio4" >
+        <source src="sound/9.mp3" type="audio/mpeg"> Your browser does not support the audio element.
+         </audio>
+    
+        <div class="functionExample">
+        <p id="word">Press Space Bar, return, Q, W, or E</p>
+        <br>
+     
+        </div>
+            
+            <p>See <a href="https://keycode.info/">here</a> for a list of keycodes.</p>
+              
+    </div>
+    
+    <div class=sections id="timecolour" onmouseover="colourTime()">
+        
+        <p><b>Change style properties using time.</b></p> 
+        
+        <p id="time"></p>
+        <p>0-20 = #9B90C2</p>
+        <p>21-40 = #D0104C</p> 
+        <p>41-60 = #FC9F4D</p>
+   
+    
+    </div>
+    
+    
+    <div id="automation" class="sections"> 
+        <p><b>More random colours</b></p> 
+        
+        <button onclick="StopColour()">STOP</button>
+
+        <p>Here we can see the "setInterval" method used to trigger a function at given intervals. </p>
+
+        
+    </div>
+
+    
+    <div class="sections">
+ 
+        <p><b>Modals</b></p> 
+
+            <!-- Trigger/Open The Modal -->
+            <button onclick="openModal()" id="myBtn">Open Modal</button>
+
+        <!-- The Modal -->
+        <div id="modal" class="modal">
+
+        <!-- Modal content -->
+        <div id="modal-content">
+            
+        <span onclick="closeModal()" id="close">&times;
+        </span>
+        
+        <p>Here is some information.</p>
+            
+        </div>
+
+        </div>
+            
+ 
+</div>
+    
+    <div class="sections"> 
+        
+        
+        <p><b>Pop Window</b></p> 
+    
+        
+        <button onclick="popUps()">Try it</button>
+        
+       
+    
+    
+    </div>
+    
+     <div class="sections" id="randomHeight">
+        <p><b>Random Height</b></p> 
+    
+        <p> Here we can see the height of this div is randomised. </p>
+        
+        <button onclick="StopHeight()">STOP</button>
+    
+    
+    </div>
+
+  
+    
+</body>
+    
+    
+
+</html>
