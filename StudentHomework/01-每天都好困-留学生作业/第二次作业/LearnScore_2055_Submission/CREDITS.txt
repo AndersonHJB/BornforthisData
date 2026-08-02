@@ -8,7 +8,7 @@ The project extends the student's first assignment, “The Measured Child 2055�
 SUPPLIED VISUAL MATERIALS USED
 ------------------------------
 1. logo.jpg
-   Used as the LearnScore orientation-film poster and first film sequence.
+   Used in the top-left site wordmark, as the orientation-film poster and in the first film sequence.
 
 2. 微信图片_20260729221613_637_852.jpg
    Renamed lina-credit-card.jpg. Used in the access scanner and student record.
@@ -22,6 +22,10 @@ SUPPLIED VISUAL MATERIALS USED
 5. 微信图片_20260729221621_641_852.jpg
    Renamed learnscore-homepage-sketch.jpg. Used as an early interface concept and in the film.
 
+DISPLAY COPIES
+--------------
+The five files ending in -display.jpg are mechanically cropped copies of the supplied drawings. Only excess white space was removed; no content was generated or altered. The uncropped originals remain in this folder and open through each “Inspect full artefact” control.
+
 ORIGINAL MEDIA CREATED FOR THIS SITE
 ------------------------------------
 - video.mp4: assembled locally from the five supplied drawings using deterministic pan, zoom and crossfade animation. No generative AI and no stock footage were used.
@@ -31,4 +35,3 @@ ORIGINAL MEDIA CREATED FOR THIS SITE
 EXTERNAL MATERIALS
 ------------------
 None. The website has no external fonts, libraries, images, APIs, analytics or network dependencies.
-

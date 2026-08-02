@@ -129,20 +129,26 @@ a:focus-visible {
   text-decoration: none;
 }
 
-.wordmark-mark {
-  display: grid;
-  width: 42px;
-  height: 42px;
-  place-items: center;
-  border-radius: 13px 13px 13px 4px;
-  background: var(--mint);
-  color: var(--navy-deep);
-  font-weight: 950;
-  letter-spacing: -0.06em;
-  transform: rotate(-2deg);
+.wordmark-logo {
+  width: 74px;
+  height: 48px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.78);
+  border-radius: 12px 12px 12px 4px;
+  background: white;
+  box-shadow: 0 7px 18px rgba(0, 0, 0, 0.16);
+  transform: rotate(-1deg);
 }
 
-.wordmark > span:last-child {
+.wordmark-logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.1);
+}
+
+.wordmark-copy {
   display: flex;
   flex-direction: column;
   line-height: 1.15;
@@ -244,7 +250,7 @@ a:focus-visible {
 
 .chapter {
   position: relative;
-  padding: 120px max(6vw, 34px);
+  padding: clamp(76px, 7.5vw, 104px) max(6vw, 34px);
 }
 
 .hero {
@@ -423,9 +429,8 @@ h1 em {
 .paper-artifact img {
   display: block;
   width: 100%;
-  aspect-ratio: 1.414 / 1;
+  height: auto;
   background: white;
-  object-fit: contain;
 }
 
 .paper-artifact figcaption {
@@ -448,8 +453,7 @@ h1 em {
 }
 
 .compact-artifact img {
-  max-height: 240px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .compact-artifact figcaption {
@@ -555,7 +559,7 @@ h1 em {
   display: flex;
   align-items: baseline;
   gap: 12px;
-  margin-bottom: 54px;
+  margin-bottom: 38px;
   color: var(--muted);
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
@@ -574,7 +578,7 @@ h1 em {
 
 .section-heading {
   max-width: 1050px;
-  margin-bottom: clamp(48px, 7vw, 90px);
+  margin-bottom: clamp(38px, 5vw, 66px);
 }
 
 .section-heading h2,
@@ -660,7 +664,7 @@ h1 em {
   grid-template-columns: 0.62fr 1.38fr;
   gap: 30px 50px;
   align-items: start;
-  margin: 84px 0 38px;
+  margin: 58px 0 28px;
   padding: clamp(24px, 4vw, 46px);
   border: 1px solid #bcc9ca;
   border-radius: var(--radius-large);
@@ -717,7 +721,7 @@ h1 em {
 }
 
 .wide-artifact {
-  max-width: 1120px;
+  max-width: 980px;
   margin: 0 auto;
 }
 
@@ -973,7 +977,8 @@ h1 em {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 26px;
-  margin-top: 64px;
+  max-width: 1180px;
+  margin: 42px auto 0;
 }
 
 .artifact-pair .paper-artifact:nth-child(2) {
@@ -1291,8 +1296,8 @@ h1 em {
 }
 
 .homepage-artifact {
-  max-width: 950px;
-  margin: 72px 0 0 auto;
+  max-width: 820px;
+  margin: 48px auto 0;
   transform: rotate(0.6deg);
 }
 
@@ -1467,26 +1472,133 @@ h1 em {
   content: "";
 }
 
-.review-receipt > div {
+.receipt-header,
+.receipt-row {
   display: flex;
   justify-content: space-between;
   gap: 22px;
-  padding: 15px 0;
+  align-items: center;
+}
+
+.receipt-header {
+  gap: 10px;
+  padding: 0 0 12px;
+}
+
+.receipt-header p {
+  margin: 0;
+}
+
+.receipt-header strong {
+  color: #317d72;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.66rem;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.receipt-progress {
+  height: 7px;
+  margin-bottom: 5px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #dfe6e4;
+}
+
+.receipt-progress span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--mint), var(--blue));
+  transition: width 300ms ease;
+}
+
+.receipt-row {
+  padding: 13px 0;
   border-bottom: 1px dashed #ccd3d1;
 }
 
-.review-receipt > div span {
+.receipt-row > span {
   color: #697984;
   font-size: 0.77rem;
 }
 
-.review-receipt > div strong {
+.receipt-value {
+  max-width: 62%;
+  padding: 4px 0;
+  border: 0;
+  background: transparent;
+  color: var(--navy);
+  cursor: pointer;
   font-size: 0.8rem;
+  font-weight: 850;
   text-align: right;
 }
 
+.receipt-value:hover,
+.receipt-value:focus-visible {
+  color: #146f65;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.receipt-value.is-pending {
+  color: #a04d42;
+}
+
+.generated-result {
+  display: block;
+  margin: 20px 0 13px;
+  padding: 18px;
+  border: 1px solid #9bcfc5;
+  border-radius: 15px 15px 5px 15px;
+  background: #e5f7f3;
+}
+
+.generated-result > span,
+.generated-result > strong {
+  display: block;
+}
+
+.generated-result > span {
+  margin-bottom: 8px;
+  color: #29776c;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+}
+
+.generated-result > strong {
+  color: var(--navy);
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+
+.generated-result > p {
+  margin: 8px 0 0;
+  color: #45646d;
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.generated-result.is-incomplete {
+  border-color: #e0b3aa;
+  background: #fbefeb;
+}
+
+.generated-result.is-incomplete > span {
+  color: #9a4e44;
+}
+
+.receipt-generate {
+  width: 100%;
+  margin-top: 2px;
+  padding: 13px 17px;
+}
+
 .receipt-note {
-  margin: 22px 0;
+  margin: 18px 0;
   color: #9a4e44;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 0.68rem;
@@ -1744,9 +1856,9 @@ dialog img {
     padding: 10px 15px;
   }
 
-  .wordmark-mark {
-    width: 38px;
-    height: 38px;
+  .wordmark-logo {
+    width: 62px;
+    height: 40px;
   }
 
   .wordmark > span:last-child {
@@ -1758,7 +1870,7 @@ dialog img {
   }
 
   .chapter {
-    padding: 90px 20px;
+    padding: 72px 20px;
   }
 
   .hero {

@@ -14,7 +14,7 @@ Extends The Measured Child 2055, its Learning Credit System, AI tutors, lifelong
 Includes a relevant 41-second H.264/AAC MP4 made from the student's original drawings. No generative AI and no stock footage. English visual captions are included.
 
 [PASS] TEXT
-The complete experienced path contains approximately 950–990 English words, depending on selected interactions and ending. The core static page contains approximately 880 words.
+The page stays around the requested 800–1,000-word target: approximately 970 visible English words including interface labels, and approximately 970–1,040 words in an experienced path depending on the selected ending and generated audit.
 
 [PASS] AUDIO
 Includes an original 76-second procedural ambient track plus interaction tones. Audio is user-triggered, can be muted and does not carry unique information.
@@ -23,7 +23,7 @@ Includes an original 76-second procedural ambient track plus interaction tones. 
 Lina Chen is the central character. Her identity, interests, family obligations, private voice, conflict and three possible futures are presented throughout the experience.
 
 [PASS] AT LEAST THREE INTERACTIVE ELEMENTS
-Nine authored systems are listed in README.txt. Six core narrative interactions remain even when navigation, image enlargement and media controls are excluded.
+Ten authored systems are listed in README.txt. Seven core narrative interactions remain even when navigation, image enlargement and media controls are excluded.
 
 [PASS] EXPERIENCE TIME
 Designed for approximately 9–11 minutes: around 5–6 minutes of reading, 41 seconds of video, image inspection, four-message exploration, data choices and a branching ending.
@@ -44,10 +44,13 @@ FUNCTIONAL TEST RECORD
 [PASS] Mood selection changed live score data and final receipt.
 [PASS] Activity allocation changed system feedback and final receipt.
 [PASS] All four message tabs and evidence progress tested.
-[PASS] All three endings rendered and updated the final receipt.
+[PASS] Missing review steps produced a clear result warning and returned focus to the first missing choice.
+[PASS] Completing all four steps automatically generated a reviewer profile; subsequent choices refreshed the analysis.
+[PASS] All three endings rendered and map to distinct stability-, context- or autonomy-first audit results.
 [PASS] Artefact modal opened and closed.
 [PASS] Sound control started audio; video paused and then resumed the ambient track correctly.
-[PASS] Desktop layout visually inspected at 1440x900.
+[PASS] Supplied logo and all five hand-drawn artefacts loaded through whitespace-trimmed display copies; complete originals remain inspectable.
+[PASS] Desktop layout visually inspected at 1440x1000.
 [PASS] Mobile layout visually inspected at 390x844 with no horizontal overflow.
+[PASS] Automated desktop and mobile browser paths completed with no JavaScript or console errors.
 [PASS] JavaScript syntax check completed without errors.
-

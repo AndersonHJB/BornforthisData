@@ -12,7 +12,7 @@ EXPERIENCE
 The viewer acts as a temporary LearnScore pathway reviewer in 2055. The experience moves from an official promise of fairer education into Lina Chen's protected record, daily emotional assessment, after-school allocation, contested testimony and final pathway decision.
 
 Estimated complete experience: approximately 9–11 minutes.
-Typical experienced word count: approximately 950–990 words, including one selected ending and the system responses encountered along the way.
+Typical experienced word count: approximately 970–1,040 words, including interface language, one selected ending and the generated reviewer audit. The exact total varies with the chosen path.
 
 AUTHORED INTERACTIONS
 ---------------------
@@ -25,6 +25,7 @@ AUTHORED INTERACTIONS
 7. Choose one of three pathway outcomes.
 8. Inspect the original hand-drawn artefacts at full size.
 9. Use privacy mode to obscure protected information.
+10. Complete the four-step review and generate a reviewer profile that updates when choices change.
 
 MEDIA
 -----
@@ -51,12 +52,11 @@ PROJECT FILES
 -------------
 - index.html — complete page structure and English narrative
 - styles.css — visual design, responsive layout and motion
-- script.js — all choices, score changes, messages, sound and endings
-- assets/images — five supplied LearnScore drawings
+- script.js — all choices, score changes, messages, sound, endings and the generated reviewer audit
+- assets/images — five supplied LearnScore drawings, plus tightly cropped display copies; full originals remain available in the artefact viewer
 - assets/video — original animation and captions
 - assets/audio — original ambient audio
 - CREDITS.txt — source and media provenance
 - REQUIREMENTS_CHECKLIST.txt — assignment compliance record
 
 The project uses only local relative paths. It can run directly from file:// after extraction.
-

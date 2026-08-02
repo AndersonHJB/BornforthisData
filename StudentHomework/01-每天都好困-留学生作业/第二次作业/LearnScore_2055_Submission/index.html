@@ -21,8 +21,8 @@
 
   <header class="site-header">
     <a class="wordmark" href="#access" aria-label="LearnScore home">
-      <span class="wordmark-mark">LS</span>
-      <span><strong>LearnScore</strong><small>National learner record</small></span>
+      <span class="wordmark-logo" aria-hidden="true"><img src="assets/images/learnscore-logo-display.jpg" alt="" width="1527" height="980"></span>
+      <span class="wordmark-copy"><strong>LearnScore</strong><small>National learner record</small></span>
     </a>
 
     <nav aria-label="Case sections">
@@ -58,7 +58,7 @@
       <div class="access-console reveal">
         <div class="console-topline"><span>IDENTITY GATE</span><span class="live-label">LIVE</span></div>
         <figure class="paper-artifact compact-artifact">
-          <img src="assets/images/lina-credit-card.jpg" alt="Hand-drawn LearnScore credit card for Lina Chen" width="3508" height="2480">
+          <img src="assets/images/lina-credit-card-display.jpg" alt="Hand-drawn LearnScore credit card for Lina Chen" width="3508" height="2300">
           <figcaption>Learning card // issued 18.09.2055</figcaption>
         </figure>
         <button class="primary-button scan-button" id="scan-card" type="button">
@@ -125,7 +125,7 @@
       </div>
 
       <figure class="paper-artifact wide-artifact reveal">
-        <img src="assets/images/how-learnscore-works.jpg" alt="Hand-drawn diagram showing how an AI tutor measures creativity, teamwork, care work, community contribution, emotion, attention and language" width="3508" height="2480">
+        <img src="assets/images/how-learnscore-works-display.jpg" alt="Hand-drawn diagram showing how an AI tutor measures creativity, teamwork, care work, community contribution, emotion, attention and language" width="3508" height="2440">
         <figcaption><span>Student-made system map // archived 2054</span><button type="button" class="artifact-button" data-image="assets/images/how-learnscore-works.jpg" data-alt="How LearnScore Works hand-drawn diagram">Inspect full artefact</button></figcaption>
       </figure>
     </section>
@@ -179,11 +179,11 @@
 
       <div class="artifact-pair">
         <figure class="paper-artifact reveal">
-          <img src="assets/images/lina-credit-card.jpg" alt="Hand-drawn learning credit card for Lina Chen" width="3508" height="2480">
+          <img src="assets/images/lina-credit-card-display.jpg" alt="Hand-drawn learning credit card for Lina Chen" width="3508" height="2300">
           <figcaption><span>Learning card // physical identity layer</span><button type="button" class="artifact-button" data-image="assets/images/lina-credit-card.jpg" data-alt="Lina Chen learning credit card">Inspect full artefact</button></figcaption>
         </figure>
         <figure class="paper-artifact reveal">
-          <img src="assets/images/lina-data-dashboard.jpg" alt="Hand-drawn dashboard showing Lina's scores and recommended pathway" width="3508" height="2480">
+          <img src="assets/images/lina-data-dashboard-display.jpg" alt="Hand-drawn dashboard showing Lina's scores and recommended pathway" width="3508" height="2350">
           <figcaption><span>Data dashboard // review copy</span><button type="button" class="artifact-button" data-image="assets/images/lina-data-dashboard.jpg" data-alt="Lina data dashboard drawing">Inspect full artefact</button></figcaption>
         </figure>
       </div>
@@ -289,7 +289,7 @@
       </div>
 
       <figure class="paper-artifact homepage-artifact reveal">
-        <img src="assets/images/learnscore-homepage-sketch.jpg" alt="Hand-drawn LearnScore 2055 homepage showing a student scanning a learning credit card" width="3508" height="2480">
+        <img src="assets/images/learnscore-homepage-sketch-display.jpg" alt="Hand-drawn LearnScore 2055 homepage showing a student scanning a learning credit card" width="3508" height="2350">
         <figcaption><span>Early interface concept // “Learning with data”</span><button type="button" class="artifact-button" data-image="assets/images/learnscore-homepage-sketch.jpg" data-alt="LearnScore homepage drawing">Inspect full artefact</button></figcaption>
       </figure>
     </section>
@@ -316,7 +316,7 @@
     <section class="chapter reflection-section" id="reflection" data-section="reflection">
       <div class="reflection-layout">
         <div class="reflection-copy reveal">
-          <p class="kicker dark-kicker">Case closed // reviewer audit</p>
+          <p class="kicker dark-kicker" id="reflection-status">Review in progress // reviewer audit</p>
           <h2>You reviewed Lina.<br>LearnScore reviewed you.</h2>
           <div class="reflection-lines">
             <p>It can measure attention, but can it understand exhaustion?</p>
@@ -327,11 +327,21 @@
         </div>
 
         <aside class="review-receipt reveal" aria-label="Reviewer decision receipt">
-          <p class="mini-label">YOUR SESSION RECORD</p>
-          <div><span>Emotion assigned</span><strong id="receipt-mood">Not submitted</strong></div>
-          <div><span>Activity allocated</span><strong id="receipt-activity">Not submitted</strong></div>
-          <div><span>Testimony opened</span><strong id="receipt-evidence">1 of 4</strong></div>
-          <div><span>Pathway decision</span><strong id="receipt-ending">Not submitted</strong></div>
+          <div class="receipt-header">
+            <p class="mini-label">YOUR SESSION RECORD</p>
+            <strong id="receipt-status">0 / 4 steps complete</strong>
+          </div>
+          <div class="receipt-progress" role="progressbar" aria-label="Review completion" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0"><span id="receipt-progress"></span></div>
+          <div class="receipt-row"><span>Emotion assigned</span><button class="receipt-value is-pending" id="receipt-mood" type="button" data-jump="#day">Choose emotion ↗</button></div>
+          <div class="receipt-row"><span>Activity allocated</span><button class="receipt-value is-pending" id="receipt-activity" type="button" data-jump="#day">Allocate activity ↗</button></div>
+          <div class="receipt-row"><span>Testimony opened</span><button class="receipt-value is-pending" id="receipt-evidence" type="button" data-jump="#testimony">1 of 4 · open records ↗</button></div>
+          <div class="receipt-row"><span>Pathway decision</span><button class="receipt-value is-pending" id="receipt-ending" type="button" data-jump="#decision">Choose pathway ↗</button></div>
+          <div class="generated-result is-incomplete" id="generated-result" role="status" aria-live="polite">
+            <span id="result-code">RESULT WAITING</span>
+            <strong id="result-title">Complete the review to generate your audit.</strong>
+            <p id="result-copy">Your choices will reveal what you trusted, counted and excluded.</p>
+          </div>
+          <button class="primary-button receipt-generate" id="generate-result" type="button">Check missing steps</button>
           <p class="receipt-note">Reviewer behaviour retained for quality assurance and future risk modelling.</p>
           <button class="secondary-button" id="restart-case" type="button">Erase this session and restart</button>
         </aside>

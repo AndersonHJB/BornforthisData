@@ -14,6 +14,8 @@ const state = {
   mood: null,
   activity: null,
   ending: null,
+  resultGenerated: false,
+  resultRequested: false,
   openedMessages: new Set(['teacher'])
 };
 
@@ -185,7 +187,7 @@ selectAll('#mood-choices button').forEach((button) => {
     emotionBar.style.setProperty('--score', `${newEmotion}%`);
     moodResult.textContent = `SYSTEM RECORDED // ${moodImpacts[state.mood]}`;
     moodResult.classList.toggle('is-risk', !['Calm', 'Fatigued'].includes(state.mood));
-    select('#receipt-mood').textContent = state.mood;
+    handleReviewChange();
     playTone(['Anxious', 'Angry', 'Skipped'].includes(state.mood) ? 'risk' : 'data');
   });
 });
@@ -202,7 +204,7 @@ selectAll('#activity-choices button').forEach((button) => {
     button.classList.add('is-selected');
     state.activity = button.dataset.activity;
     select('#activity-result').textContent = `ACTIVITY ALLOCATED // ${activityImpacts[state.activity]}`;
-    select('#receipt-activity').textContent = state.activity;
+    handleReviewChange();
     playTone(state.activity === 'Animation portfolio' ? 'risk' : 'confirm');
   });
 });
@@ -228,7 +230,7 @@ function openMessage(tab) {
   const count = state.openedMessages.size;
   select('#evidence-count').textContent = `${count} / 4 opened`;
   select('#evidence-fill').style.width = `${count * 25}%`;
-  select('#receipt-evidence').textContent = `${count} of 4`;
+  handleReviewChange();
   playTone('message');
   if (count === 4) showToast('Contested record complete. Four incompatible truths retained.');
 }
@@ -271,6 +273,139 @@ const endings = {
 
 const endingOutput = select('#ending-output');
 
+const reviewerProfiles = {
+  accept: {
+    code: 'AUDIT RESULT // COMPLIANCE PRIORITISED',
+    title: 'Stability-first reviewer',
+    summary: 'You protected Lina’s scholarship by accepting the system’s safest forecast.'
+  },
+  review: {
+    code: 'AUDIT RESULT // MODEL CHALLENGED',
+    title: 'Context-first reviewer',
+    summary: 'You delayed certainty to make space for testimony the score excluded.'
+  },
+  unmeasured: {
+    code: 'AUDIT RESULT // AUTONOMY PRIORITISED',
+    title: 'Autonomy-first reviewer',
+    summary: 'You valued privacy and uncertainty over guaranteed institutional access.'
+  }
+};
+
+const moodAudit = {
+  Calm: 'treated one calm check-in as reliable evidence',
+  Fatigued: 'converted exhaustion into reduced attention',
+  Anxious: 'translated anxiety into scholarship risk',
+  Angry: 'turned anger into a permanent red flag',
+  Skipped: 'recorded refusal as non-compliance'
+};
+
+const activityAudit = {
+  'Community maintenance': 'rewarded a visible public contribution',
+  'Care for younger brother': 'recognised care only after demanding adult proof',
+  'Animation portfolio': 'preserved an ambition the official pathway does not credit'
+};
+
+const receiptStatus = select('#receipt-status');
+const receiptProgress = select('#receipt-progress');
+const receiptProgressTrack = select('.receipt-progress');
+const generatedResult = select('#generated-result');
+const resultCode = select('#result-code');
+const resultTitle = select('#result-title');
+const resultCopy = select('#result-copy');
+const generateResult = select('#generate-result');
+
+function reviewCompletion() {
+  const missing = [];
+  if (!state.mood) missing.push({ label: 'choose an emotion', target: '#mood-choices button' });
+  if (!state.activity) missing.push({ label: 'allocate an activity', target: '#activity-choices button' });
+  if (state.openedMessages.size < 4) {
+    const unopened = messageTabs.find((tab) => !state.openedMessages.has(tab.dataset.message));
+    missing.push({ label: `open ${4 - state.openedMessages.size} more testimony record${state.openedMessages.size === 3 ? '' : 's'}`, target: unopened ? `#${unopened.id}` : '#testimony' });
+  }
+  if (!state.ending) missing.push({ label: 'choose a pathway', target: '#ending-choices button' });
+
+  return { missing, completed: 4 - missing.length, complete: missing.length === 0 };
+}
+
+function setReceiptValue(selector, text, pending) {
+  const button = select(selector);
+  button.textContent = text;
+  button.classList.toggle('is-pending', pending);
+}
+
+function updateReviewProgress() {
+  const review = reviewCompletion();
+  const percentage = review.completed * 25;
+
+  receiptStatus.textContent = `${review.completed} / 4 steps complete`;
+  receiptProgress.style.width = `${percentage}%`;
+  receiptProgressTrack.setAttribute('aria-valuenow', String(review.completed));
+  setReceiptValue('#receipt-mood', state.mood ? `${state.mood} ↗` : 'Choose emotion ↗', !state.mood);
+  setReceiptValue('#receipt-activity', state.activity ? `${state.activity} ↗` : 'Allocate activity ↗', !state.activity);
+  setReceiptValue('#receipt-evidence', state.openedMessages.size === 4 ? '4 of 4 · complete ↗' : `${state.openedMessages.size} of 4 · open records ↗`, state.openedMessages.size < 4);
+  setReceiptValue('#receipt-ending', state.ending ? `${endings[state.ending].label} ↗` : 'Choose pathway ↗', !state.ending);
+
+  select('#reflection-status').textContent = review.complete
+    ? 'Case closed // reviewer audit generated'
+    : 'Review in progress // reviewer audit';
+  generateResult.textContent = review.complete ? 'Reviewer result generated · refresh' : 'Check missing steps';
+
+  const continueButton = select('#continue-reflection');
+  if (continueButton) {
+    continueButton.textContent = review.complete
+      ? 'Close case and view generated audit'
+      : 'Complete review and generate audit';
+  }
+
+  return review;
+}
+
+function showIncompleteResult(review, guide = false) {
+  state.resultGenerated = false;
+  state.resultRequested = true;
+  generatedResult.classList.add('is-incomplete');
+  resultCode.textContent = 'RESULT INCOMPLETE';
+  resultTitle.textContent = `${review.missing.length} review step${review.missing.length === 1 ? '' : 's'} still required.`;
+  resultCopy.textContent = `To generate the audit, ${review.missing.map((item) => item.label).join('; ')}.`;
+
+  if (!guide || review.missing.length === 0) return;
+  showToast(`Audit incomplete: ${review.missing[0].label}.`);
+  const target = select(review.missing[0].target);
+  if (target) {
+    window.setTimeout(() => {
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      window.setTimeout(() => target.focus?.({ preventScroll: true }), 550);
+    }, 180);
+  }
+}
+
+function renderReviewerResult({ announce = false, guide = false } = {}) {
+  const review = updateReviewProgress();
+  if (!review.complete) {
+    showIncompleteResult(review, guide);
+    return false;
+  }
+
+  const profile = reviewerProfiles[state.ending];
+  generatedResult.classList.remove('is-incomplete');
+  resultCode.textContent = profile.code;
+  resultTitle.textContent = profile.title;
+  resultCopy.textContent = `${profile.summary} Your audit ${moodAudit[state.mood]} and ${activityAudit[state.activity]}.`;
+  state.resultGenerated = true;
+  state.resultRequested = true;
+  if (announce) showToast('Reviewer audit generated from all four steps.');
+  return true;
+}
+
+function handleReviewChange() {
+  const review = updateReviewProgress();
+  if (review.complete) {
+    renderReviewerResult({ announce: !state.resultGenerated });
+  } else if (state.resultGenerated || state.resultRequested) {
+    showIncompleteResult(review);
+  }
+}
+
 function contextualConsequence() {
   const mood = state.mood
     ? `You classified Lina as ${state.mood.toLowerCase()}.`
@@ -297,8 +432,9 @@ selectAll('#ending-choices button').forEach((button) => {
       <button class="secondary-button" id="continue-reflection" type="button">Close case and view reviewer audit</button>
     `;
     endingOutput.classList.remove('is-hidden');
-    select('#receipt-ending').textContent = ending.label;
+    handleReviewChange();
     select('#continue-reflection').addEventListener('click', () => {
+      if (!renderReviewerResult({ announce: true, guide: true })) return;
       select('#reflection').scrollIntoView({ behavior: 'smooth' });
     });
     playTone(state.ending === 'accept' ? 'confirm' : state.ending === 'review' ? 'decision' : 'risk');
@@ -380,8 +516,31 @@ const sectionObserver = new IntersectionObserver((entries) => {
 
 selectAll('[data-section]').forEach((section) => sectionObserver.observe(section));
 
+const receiptFocusTargets = {
+  'receipt-mood': '#mood-choices button',
+  'receipt-activity': '#activity-choices button',
+  'receipt-evidence': '.message-tab',
+  'receipt-ending': '#ending-choices button'
+};
+
+selectAll('[data-jump]').forEach((button) => {
+  button.addEventListener('click', () => {
+    const target = select(button.dataset.jump);
+    if (!target) return;
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const focusTarget = select(receiptFocusTargets[button.id]);
+    window.setTimeout(() => focusTarget?.focus({ preventScroll: true }), 550);
+  });
+});
+
+generateResult.addEventListener('click', () => {
+  const generated = renderReviewerResult({ announce: true, guide: true });
+  if (generated) generatedResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
+});
+
+updateReviewProgress();
+
 select('#restart-case').addEventListener('click', () => {
   ambientAudio.pause();
   window.location.reload();
 });
-
