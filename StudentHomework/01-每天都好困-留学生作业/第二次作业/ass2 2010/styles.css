@@ -1607,6 +1607,54 @@ h1 em {
   color: var(--navy);
 }
 
+/* Final Key Takeaway page. */
+.takeaway-section {
+  display: grid;
+  min-height: calc(100vh - 76px);
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(66, 207, 186, 0.14), transparent 30%),
+    radial-gradient(circle at 82% 78%, rgba(243, 201, 54, 0.1), transparent 28%),
+    var(--navy-deep);
+  color: var(--white);
+}
+
+.takeaway-inner {
+  width: min(980px, 100%);
+  padding: clamp(40px, 6vw, 72px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-large);
+  background: rgba(11, 41, 65, 0.72);
+  box-shadow: var(--shadow-dark);
+  backdrop-filter: blur(12px);
+}
+
+.takeaway-index {
+  margin-bottom: clamp(42px, 6vw, 70px);
+  color: #9fb8c9;
+}
+
+.takeaway-index span {
+  color: var(--mint);
+}
+
+.takeaway-section h2 {
+  margin: 12px 0 30px;
+  color: var(--white);
+  font-size: clamp(3.6rem, 8vw, 7.6rem);
+  line-height: 0.9;
+  letter-spacing: -0.067em;
+}
+
+.takeaway-copy {
+  max-width: 850px;
+  margin: 0;
+  color: #d5e0e7;
+  font-size: clamp(1.12rem, 1.8vw, 1.42rem);
+  line-height: 1.75;
+}
+
 footer {
   display: flex;
   justify-content: space-between;
