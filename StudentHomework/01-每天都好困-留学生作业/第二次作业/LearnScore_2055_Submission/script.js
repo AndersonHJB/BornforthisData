@@ -73,7 +73,10 @@ function playTone(type = 'confirm') {
 async function setSound(enabled) {
   state.soundOn = enabled;
   audioToggle.setAttribute('aria-pressed', String(enabled));
-  audioToggle.lastChild.textContent = enabled ? ' Sound on' : ' Sound off';
+  select('span', audioToggle).textContent = enabled ? 'Sound on' : 'Sound off';
+  select('img', audioToggle).src = enabled
+    ? 'assets/icons/speaker-simple-high.svg'
+    : 'assets/icons/speaker-simple-slash.svg';
 
   if (enabled) {
     try {
@@ -82,7 +85,8 @@ async function setSound(enabled) {
     } catch (error) {
       state.soundOn = false;
       audioToggle.setAttribute('aria-pressed', 'false');
-      audioToggle.lastChild.textContent = ' Sound off';
+      select('span', audioToggle).textContent = 'Sound off';
+      select('img', audioToggle).src = 'assets/icons/speaker-simple-slash.svg';
       showToast('Your browser blocked audio. Press Sound on once more.');
     }
   } else {
@@ -95,7 +99,10 @@ audioToggle.addEventListener('click', () => setSound(!state.soundOn));
 privacyToggle.addEventListener('click', () => {
   const isPrivate = document.body.classList.toggle('privacy-active');
   privacyToggle.setAttribute('aria-pressed', String(isPrivate));
-  privacyToggle.textContent = isPrivate ? 'Exit privacy mode' : 'Privacy mode';
+  select('span', privacyToggle).textContent = isPrivate ? 'Exit privacy mode' : 'Privacy mode';
+  select('img', privacyToggle).src = isPrivate
+    ? 'assets/icons/eye-slash.svg'
+    : 'assets/icons/eye.svg';
   showToast(isPrivate ? 'Protected records obscured.' : 'Protected records restored.');
 });
 
@@ -116,29 +123,40 @@ orientationVideo.addEventListener('ended', resumeAmbient);
 /* Access-card reveal: the first authored interaction in the narrative. */
 const scanCard = select('#scan-card');
 const accessResult = select('#access-result');
-const openCase = select('#open-case');
+const accessMessage = select('#access-message');
+const scanLabel = select('.scan-label', scanCard);
+const cardStatus = select('#card-status');
 
 scanCard.addEventListener('click', () => {
-  if (state.accessed) return;
+  if (state.accessed) {
+    const record = select('#record');
+    record.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(() => select('[data-score-note]', record)?.focus({ preventScroll: true }), 550);
+    return;
+  }
+
   scanCard.disabled = true;
+  scanCard.setAttribute('aria-busy', 'true');
   scanCard.classList.add('is-scanning');
-  scanCard.lastChild.textContent = ' Reading identity…';
-  accessResult.textContent = 'SCANNING // Matching permanent learner record…';
+  scanLabel.textContent = 'Reading identity…';
+  accessMessage.textContent = 'Matching the card to the permanent learner record…';
+  cardStatus.innerHTML = 'Scanning<br>identity';
   playTone('data');
 
   window.setTimeout(() => {
     state.accessed = true;
+    scanCard.disabled = false;
+    scanCard.removeAttribute('aria-busy');
     scanCard.classList.remove('is-scanning');
-    scanCard.lastChild.textContent = ' Identity confirmed';
-    accessResult.textContent = 'MATCH FOUND // Lina Chen // Development Path Review Pending';
+    scanCard.classList.add('is-confirmed');
+    scanLabel.textContent = 'Identity confirmed';
+    accessMessage.textContent = 'Match found. Click again to open Lina\u2019s ability record.';
+    cardStatus.innerHTML = 'Identity<br>matched';
     accessResult.classList.add('is-confirmed');
-    openCase.classList.remove('is-hidden');
-    openCase.focus();
+    scanCard.focus({ preventScroll: true });
     playTone('confirm');
   }, 1050);
 });
-
-openCase.addEventListener('click', () => select('#promise').scrollIntoView({ behavior: 'smooth' }));
 
 /* Explain how the official system translates behaviour into a score. */
 const measureOutput = select('#measure-output');

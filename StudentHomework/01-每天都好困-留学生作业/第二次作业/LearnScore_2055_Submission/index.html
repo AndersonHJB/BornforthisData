@@ -4,20 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="LearnScore 2055: an interactive speculative narrative about data, education and the right to become unexpected.">
-  <meta name="theme-color" content="#0b2941">
+  <meta name="theme-color" content="#f4eedd">
   <title>LearnScore 2055 — Lina Chen Pathway Review</title>
   <link rel="icon" type="image/jpeg" href="assets/images/learnscore-logo.jpg">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=student-studio-3">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to case file</a>
-
-  <div class="system-ribbon" aria-hidden="true">
-    <span>COMMONWEALTH LEARNING AUTHORITY</span>
-    <span>CASE REVIEW INTERFACE</span>
-    <span>14 AUGUST 2055</span>
-  </div>
 
   <header class="site-header">
     <a class="wordmark" href="#access" aria-label="LearnScore home">
@@ -33,12 +27,17 @@
       <a href="#decision" data-nav="decision">Decision</a>
     </nav>
 
+    <time class="header-date" datetime="2055-08-14">14 August 2055</time>
+
     <div class="header-actions">
       <button class="utility-button" id="audio-toggle" type="button" aria-pressed="false">
-        <span class="status-dot" aria-hidden="true"></span>
-        Sound off
+        <img class="utility-icon" src="assets/icons/speaker-simple-slash.svg" alt="" width="18" height="18">
+        <span>Sound off</span>
       </button>
-      <button class="utility-button" id="privacy-toggle" type="button" aria-pressed="false">Privacy mode</button>
+      <button class="utility-button" id="privacy-toggle" type="button" aria-pressed="false">
+        <img class="utility-icon" src="assets/icons/eye.svg" alt="" width="18" height="18">
+        <span>Privacy mode</span>
+      </button>
     </div>
   </header>
 
@@ -47,31 +46,46 @@
   <main id="main-content">
     <!-- 00: The reviewer enters the in-world portal through Lina's physical card. -->
     <section class="chapter hero" id="access" data-section="access">
+      <p class="authority-rail" aria-hidden="true">Commonwealth Learning Authority</p>
+
       <div class="hero-copy reveal">
         <p class="kicker">National Lifelong Learning System</p>
-        <p class="case-date">Case 2055-09-18-7441 <span>Reviewer session: temporary</span></p>
-        <h1>Every ability<br>deserves a <em>score.</em></h1>
-        <p class="hero-lead">You have been assigned to review the development path of Lina Chen, age sixteen. Your decisions may affect her access to education.</p>
-        <div class="time-chip"><span aria-hidden="true">10:00</span> Estimated experience</div>
+        <h1><span>Case</span>2055-09-18-7441</h1>
+        <p class="case-date"><span>Reviewer session:<br>temporary</span></p>
+        <div class="hero-lead">
+          <p>You have been assigned to review the development path of <strong>Lina Chen, age sixteen.</strong></p>
+          <p>Your decisions may affect her access to education.</p>
+        </div>
+        <p class="education-mark">Australian public education</p>
       </div>
 
       <div class="access-console reveal">
-        <div class="console-topline"><span>IDENTITY GATE</span><span class="live-label">LIVE</span></div>
-        <figure class="paper-artifact compact-artifact">
-          <img src="assets/images/lina-credit-card-display.jpg" alt="Hand-drawn LearnScore credit card for Lina Chen" width="3508" height="2300">
-          <figcaption>Learning card // issued 18.09.2055</figcaption>
-        </figure>
-        <button class="primary-button scan-button" id="scan-card" type="button">
-          <span class="scan-icon" aria-hidden="true"></span>
-          Scan learning card
-        </button>
-        <div class="access-result" id="access-result" role="status" aria-live="polite">
-          Place the card inside the reader to access the protected record.
+        <div class="card-stage redactable">
+          <img class="card-stage-paper" src="assets/generated/student-studio-paper-stage.png" alt="" width="1600" height="1000">
+          <figure class="paper-artifact compact-artifact">
+            <img src="assets/images/lina-credit-card-display.jpg" alt="Hand-drawn LearnScore credit card for Lina Chen" width="3508" height="2300">
+          </figure>
+          <dl class="artifact-meta">
+            <div><dt>Issued</dt><dd>18.09.2055</dd></div>
+            <div><dt>Source</dt><dd>Student<br>submission</dd></div>
+            <div><dt>Status</dt><dd id="card-status">Awaiting<br>review</dd></div>
+          </dl>
         </div>
-        <button class="text-button is-hidden" id="open-case" type="button">Identity confirmed — open case file</button>
-      </div>
 
-      <div class="hero-grid" aria-hidden="true"></div>
+        <div class="scan-row">
+          <div class="access-result" id="access-result" role="status" aria-live="polite">
+            <span id="access-message">Place the card inside the reader to access the protected record.</span>
+            <img class="note-arrow" src="assets/icons/arrow-right.svg" alt="" width="24" height="24">
+          </div>
+          <button class="primary-button scan-button" id="scan-card" type="button">
+            <img class="scan-icon" src="assets/icons/scan.svg" alt="" width="34" height="34">
+            <span class="scan-label">Scan learning card</span>
+            <img class="scan-arrow" src="assets/icons/arrow-right.svg" alt="" width="34" height="34">
+          </button>
+        </div>
+
+        <p class="privacy-principles">This system is operated in accordance with the Australian Student Privacy Principles.</p>
+      </div>
     </section>
 
     <!-- 01: LearnScore's optimistic official explanation and orientation film. -->
@@ -367,6 +381,6 @@
   </dialog>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="script.js"></script>
+  <script src="script.js?v=student-studio-2"></script>
 </body>
 </html>

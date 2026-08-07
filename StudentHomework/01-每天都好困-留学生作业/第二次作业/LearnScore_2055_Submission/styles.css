@@ -1746,6 +1746,483 @@ dialog img {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/*
+  2055 STUDENT STUDIO ENTRY
+  The opening screen uses Lina's paper artefact as the visual authority.
+  The remaining chapters intentionally retain their existing archive system.
+*/
+body::before {
+  display: none;
+}
+
+.system-ribbon {
+  display: none;
+}
+
+.site-header {
+  top: 0;
+  grid-template-columns: 240px minmax(500px, 1fr) auto;
+  grid-template-areas:
+    "brand nav date"
+    "brand nav actions";
+  min-height: 142px;
+  gap: 2px 32px;
+  padding: 10px 44px 14px;
+  border-bottom: 1px solid rgba(34, 31, 29, 0.12);
+  background: #f4eedd;
+  color: #221f1d;
+  backdrop-filter: none;
+}
+
+.wordmark {
+  grid-area: brand;
+  align-self: center;
+  gap: 0;
+}
+
+.wordmark-logo {
+  width: 226px;
+  height: 118px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.wordmark-logo img {
+  width: 226px;
+  height: auto;
+  object-fit: contain;
+  object-position: top left;
+  mix-blend-mode: multiply;
+  transform: none;
+}
+
+.wordmark-copy {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.site-header nav {
+  grid-area: nav;
+  align-self: center;
+  justify-self: center;
+  gap: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+}
+
+.site-header nav a {
+  position: relative;
+  padding: 8px 28px 6px;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  color: #221f1d;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.74rem;
+  font-weight: 760;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.site-header nav a + a {
+  border-left: 1px solid rgba(34, 31, 29, 0.7);
+}
+
+.site-header nav a:hover,
+.site-header nav a.is-current {
+  border-bottom-color: #ef3f2c;
+  background: transparent;
+  color: #ef3f2c;
+}
+
+.header-date {
+  grid-area: date;
+  align-self: end;
+  justify-self: end;
+  color: #e83224;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.header-actions {
+  grid-area: actions;
+  align-self: start;
+  gap: 0;
+}
+
+.utility-button {
+  min-height: 42px;
+  gap: 9px;
+  padding: 8px 18px;
+  border: 0;
+  border-left: 1px solid rgba(34, 31, 29, 0.65);
+  border-radius: 0;
+  background: transparent;
+  color: #221f1d;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.7rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.utility-button:hover,
+.utility-button[aria-pressed="true"] {
+  border-color: #221f1d;
+  background: #efe4ce;
+  color: #e83224;
+}
+
+.utility-icon {
+  width: 19px;
+  height: 19px;
+}
+
+.status-dot {
+  display: none;
+}
+
+.progress-track {
+  background: transparent;
+}
+
+.progress-track span {
+  background: #ef3f2c;
+}
+
+.hero {
+  display: grid;
+  min-height: calc(100svh - 142px);
+  grid-template-columns: minmax(300px, 0.36fr) minmax(640px, 1fr);
+  align-items: stretch;
+  gap: clamp(28px, 3.5vw, 58px);
+  padding: clamp(48px, 5vw, 72px) clamp(34px, 3.6vw, 58px) 30px clamp(76px, 6.8vw, 108px);
+  overflow: hidden;
+  background: #f4eedd;
+  color: #221f1d;
+}
+
+.hero::after,
+.hero-grid {
+  display: none;
+}
+
+.authority-rail {
+  position: absolute;
+  top: 55%;
+  left: 20px;
+  z-index: 2;
+  margin: 0;
+  padding: 0 17px;
+  border-right: 1px solid #221f1d;
+  border-left: 1px solid #221f1d;
+  color: #221f1d;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transform: rotate(-90deg) translateX(-50%);
+  transform-origin: left top;
+}
+
+.hero-copy,
+.access-console {
+  z-index: 2;
+}
+
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding-top: clamp(36px, 5vh, 68px);
+}
+
+.hero .kicker {
+  color: #ef3f2c;
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+}
+
+.hero h1 {
+  max-width: none;
+  margin: 32px 0 0;
+  color: #171513;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.2rem, 3.15vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  padding-bottom: 9px;
+  border-bottom: 3px solid #ef3f2c;
+  white-space: nowrap;
+}
+
+.hero h1 span {
+  display: block;
+  margin-bottom: 7px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.68rem;
+  font-weight: 760;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.case-date {
+  display: block;
+  align-self: center;
+  margin: 26px 10px 0 0;
+  color: #7658a8;
+}
+
+.case-date span {
+  display: inline-block;
+  padding: 9px 13px;
+  border: 2px solid #a889d2;
+  border-radius: 5px;
+  font-size: 0.74rem;
+  font-weight: 760;
+  letter-spacing: 0.09em;
+  line-height: 1.55;
+  text-transform: uppercase;
+  transform: rotate(-1.5deg);
+}
+
+.hero-lead {
+  max-width: 340px;
+  margin: 42px 0 0;
+  padding-top: 31px;
+  border-top: 1px solid #221f1d;
+  color: #221f1d;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.25rem, 1.55vw, 1.56rem);
+  line-height: 1.35;
+}
+
+.hero-lead p {
+  margin: 0 0 28px;
+}
+
+.hero-lead strong {
+  color: #ef3f2c;
+  font-weight: 400;
+}
+
+.education-mark {
+  margin: auto 0 7px 65px;
+  color: #221f1d;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.63rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.access-console {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.card-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.6;
+  min-height: 470px;
+}
+
+.card-stage-paper {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+}
+
+.hero .compact-artifact {
+  position: absolute;
+  z-index: 2;
+  top: 5.5%;
+  left: 10%;
+  width: 76%;
+  margin: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 28px 28px 28px 10px;
+  background: #fffdfa;
+  box-shadow: 0 12px 24px rgba(72, 55, 31, 0.2);
+  transform: rotate(0.3deg);
+}
+
+.hero .compact-artifact img {
+  width: 100%;
+  aspect-ratio: 1.525;
+  object-fit: cover;
+}
+
+.artifact-meta {
+  position: absolute;
+  z-index: 3;
+  top: 43%;
+  right: 1.4%;
+  width: 92px;
+  margin: 0;
+  color: #221f1d;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.artifact-meta div {
+  padding: 0 0 14px;
+  border-bottom: 1px solid rgba(239, 63, 44, 0.55);
+  margin-bottom: 14px;
+}
+
+.artifact-meta dt {
+  margin-bottom: 4px;
+  color: #6f665c;
+}
+
+.artifact-meta dd {
+  margin: 0;
+}
+
+.scan-row {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.35fr) minmax(430px, 1fr);
+  align-items: center;
+  gap: 18px;
+  margin-top: -2px;
+}
+
+.hero .access-result {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 0;
+  margin: 0;
+  padding: 6px 28px 6px 0;
+  border: 0;
+  background: transparent;
+  color: #8b66c5;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.45;
+  transform: rotate(-1.5deg);
+}
+
+.note-arrow {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  opacity: 0.72;
+}
+
+.hero .access-result.is-confirmed {
+  color: #2c6e62;
+}
+
+.hero .primary-button {
+  min-height: 140px;
+  padding: 0 34px;
+  border-radius: 5px;
+  background: #ef3f2c;
+  color: #171513;
+  box-shadow: 0 5px 0 #b62b21, 0 12px 24px rgba(107, 45, 31, 0.14);
+}
+
+.hero .primary-button:hover {
+  background: #f3523f;
+  box-shadow: 0 3px 0 #b62b21, 0 10px 20px rgba(107, 45, 31, 0.18);
+}
+
+.hero .scan-button {
+  display: grid;
+  grid-template-columns: 42px 1fr 42px;
+  justify-content: stretch;
+  gap: 24px;
+  overflow: visible;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: clamp(1.15rem, 1.85vw, 1.75rem);
+  letter-spacing: -0.035em;
+}
+
+.hero .scan-button::after {
+  display: none;
+}
+
+.hero .scan-icon,
+.hero .scan-arrow {
+  width: 36px;
+  height: 36px;
+  border: 0;
+}
+
+.hero .scan-icon {
+  padding-right: 16px;
+  border-right: 1px solid #171513;
+  box-sizing: content-box;
+}
+
+.hero .scan-arrow {
+  justify-self: end;
+}
+
+.hero .scan-button.is-scanning {
+  background: #f39a8c;
+  cursor: wait;
+}
+
+.hero .scan-button.is-confirmed {
+  background: #292522;
+  color: #fff8eb;
+  box-shadow: 0 5px 0 #0f0e0d, 0 12px 24px rgba(23, 21, 19, 0.2);
+}
+
+.hero .scan-button.is-confirmed .scan-icon {
+  border-color: #fff8eb;
+}
+
+.privacy-principles {
+  margin: auto 0 0;
+  color: #4b4540;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.075em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.privacy-active .card-stage {
+  filter: blur(9px);
+  user-select: none;
+}
+
+.privacy-active .card-stage button {
+  pointer-events: none;
+}
+
 @media (max-width: 1180px) {
   .site-header {
     grid-template-columns: auto 1fr auto;
@@ -1936,6 +2413,240 @@ dialog img {
   footer {
     align-items: flex-start;
     flex-direction: column;
+  }
+}
+
+@media (max-width: 1180px) {
+  .site-header {
+    grid-template-columns: 205px minmax(430px, 1fr) auto;
+    gap: 2px 18px;
+    padding-inline: 28px;
+  }
+
+  .wordmark-logo,
+  .wordmark-logo img {
+    width: 194px;
+  }
+
+  .site-header nav a {
+    padding-inline: 14px;
+  }
+
+  #privacy-toggle {
+    display: inline-flex;
+  }
+
+  .hero {
+    grid-template-columns: minmax(280px, 0.38fr) minmax(560px, 1fr);
+    gap: 32px;
+    padding-right: 30px;
+    padding-left: 72px;
+  }
+
+  .scan-row {
+    grid-template-columns: 180px minmax(380px, 1fr);
+  }
+
+  .hero .primary-button {
+    padding-inline: 25px;
+  }
+}
+
+@media (max-width: 940px) {
+  .site-header {
+    grid-template-columns: 190px 1fr;
+    grid-template-areas:
+      "brand date"
+      "brand actions";
+    min-height: 120px;
+  }
+
+  .site-header nav {
+    display: none;
+  }
+
+  .wordmark-logo,
+  .wordmark-logo img {
+    width: 180px;
+    height: 104px;
+  }
+
+  .header-actions {
+    justify-self: end;
+  }
+
+  .hero {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 26px;
+    padding: 54px 34px 42px;
+  }
+
+  .authority-rail {
+    display: none;
+  }
+
+  .hero-copy {
+    padding-top: 0;
+  }
+
+  .hero h1 {
+    width: fit-content;
+    font-size: clamp(2.3rem, 6vw, 3.2rem);
+  }
+
+  .case-date {
+    align-self: flex-start;
+  }
+
+  .hero-lead {
+    max-width: 610px;
+    margin-top: 30px;
+  }
+
+  .hero-lead p {
+    margin-bottom: 16px;
+  }
+
+  .education-mark {
+    margin: 14px 0 0;
+  }
+
+  .access-console {
+    max-width: none;
+  }
+
+  .card-stage {
+    min-height: 430px;
+  }
+
+  .scan-row {
+    grid-template-columns: minmax(190px, 0.35fr) minmax(430px, 1fr);
+  }
+
+  .privacy-principles {
+    margin-top: 28px;
+  }
+}
+
+@media (max-width: 680px) {
+  .site-header {
+    grid-template-columns: 145px 1fr;
+    min-height: 104px;
+    padding: 8px 16px 10px;
+  }
+
+  .wordmark-logo,
+  .wordmark-logo img {
+    width: 142px;
+    height: 86px;
+  }
+
+  .header-date {
+    font-size: 0.54rem;
+  }
+
+  .utility-button {
+    min-height: 38px;
+    padding: 6px 10px;
+    font-size: 0.59rem;
+  }
+
+  .hero {
+    padding: 40px 20px 34px;
+  }
+
+  .access-console {
+    order: -1;
+  }
+
+  .hero h1 {
+    max-width: 100%;
+    font-size: clamp(1.9rem, 9.3vw, 2.8rem);
+    white-space: normal;
+  }
+
+  .case-date {
+    flex-direction: row;
+  }
+
+  .hero-lead {
+    font-size: 1.22rem;
+  }
+
+  .card-stage {
+    min-height: 300px;
+    aspect-ratio: 1.24;
+  }
+
+  .hero .compact-artifact {
+    top: 15%;
+    left: 8%;
+    width: 79%;
+    border-radius: 16px 16px 16px 6px;
+  }
+
+  .artifact-meta {
+    display: none;
+  }
+
+  .scan-row {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .hero .access-result {
+    max-width: 310px;
+    padding-right: 0;
+  }
+
+  .hero .primary-button {
+    min-height: 82px;
+  }
+
+  .hero .scan-button {
+    grid-template-columns: 32px 1fr 32px;
+    gap: 14px;
+    padding-inline: 20px;
+    font-size: 1rem;
+  }
+
+  .hero .scan-icon,
+  .hero .scan-arrow {
+    width: 28px;
+    height: 28px;
+  }
+
+  .hero .scan-icon {
+    padding-right: 10px;
+  }
+}
+
+@media (max-width: 440px) {
+  .site-header {
+    grid-template-columns: 130px 1fr;
+    grid-template-areas:
+      "brand actions"
+      "brand actions";
+  }
+
+  .header-date {
+    display: none;
+  }
+
+  .wordmark-logo,
+  .wordmark-logo img {
+    width: 126px;
+    height: 80px;
+  }
+
+  .header-actions {
+    flex-direction: column;
+  }
+
+  .utility-button {
+    justify-content: flex-start;
+    border-left: 0;
   }
 }
 

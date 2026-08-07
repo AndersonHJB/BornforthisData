@@ -39,7 +39,7 @@ FUNCTIONAL TEST RECORD
 [PASS] All images loaded at their natural dimensions.
 [PASS] Video reported readyState 4, 1280x720 and 41-second duration.
 [PASS] Audio reported readyState 4 and 76.4-second duration.
-[PASS] Card scan and identity reveal tested.
+[PASS] Card scan, identity confirmation and second-click jump to Lina's ability record tested.
 [PASS] Category and score explorers tested.
 [PASS] Mood selection changed live score data and final receipt.
 [PASS] Activity allocation changed system feedback and final receipt.

@@ -16,7 +16,7 @@ Typical experienced word count: approximately 970–1,040 words, including inter
 
 AUTHORED INTERACTIONS
 ---------------------
-1. Scan Lina's learning card to unlock the case.
+1. Scan Lina's learning card, then use the confirmed identity button to open her ability record.
 2. Explore six measurement categories.
 3. Audit the evidence behind seven student scores.
 4. Classify Lina's emotional state and change her live data.
@@ -50,7 +50,7 @@ The unrelated temporary wedding video from the source folder was intentionally n
 
 PROJECT FILES
 -------------
-- index.html — complete page structure and English narrative
+- index.html — complete page structure and English narrative, including the two-step identity gate
 - styles.css — visual design, responsive layout and motion
 - script.js — all choices, score changes, messages, sound, endings and the generated reviewer audit
 - assets/images — five supplied LearnScore drawings, plus tightly cropped display copies; full originals remain available in the artefact viewer

@@ -31,7 +31,9 @@ ORIGINAL MEDIA CREATED FOR THIS SITE
 - video.mp4: assembled locally from the five supplied drawings using deterministic pan, zoom and crossfade animation. No generative AI and no stock footage were used.
 - learnscore-ambient.mp3: built from procedural sine tones and filtered noise. No third-party recording or music was used.
 - Interface notification tones: synthesised at runtime with the Web Audio API.
+- student-studio-paper-stage.png: generated specifically for this interface as a text-free decorative paper background. It contains no third-party photography or identifying information.
 
 EXTERNAL MATERIALS
 ------------------
-None. The website has no external fonts, libraries, images, APIs, analytics or network dependencies.
+- Six interface icons are unmodified regular-weight SVG assets from Phosphor Icons, distributed under the MIT License. A copy of the license is included at assets/icons/PHOSPHOR-LICENSE.txt.
+- The finished website has no runtime network dependencies, analytics or external APIs. All assets are stored locally.
