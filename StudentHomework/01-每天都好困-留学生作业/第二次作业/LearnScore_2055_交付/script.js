@@ -1,8 +1,3 @@
-/*
-  LEARNSCORE 2055 — interaction controller
-  The page stores choices only in memory. Nothing is transmitted or retained.
-*/
-
 'use strict';
 
 const select = (selector, context = document) => context.querySelector(selector);
